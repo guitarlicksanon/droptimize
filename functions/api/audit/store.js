@@ -8,8 +8,8 @@ export async function onRequestPost(context) {
   const { request, env } = context;
 
   const secret = request.headers.get('X-Audit-Secret') || '';
-  const expected = env.OYE_KV
-    ? (await env.OYE_KV.get('audit_secret')) || DEFAULT_SECRET
+  const expected = env.DROPTIMIZE_KV
+    ? (await env.DROPTIMIZE_KV.get('audit_secret')) || DEFAULT_SECRET
     : DEFAULT_SECRET;
 
   if (secret !== expected) {
@@ -20,10 +20,10 @@ export async function onRequestPost(context) {
     const audit = await request.json();
     audit.stored_at = new Date().toISOString();
 
-    if (env.OYE_KV) {
-      await env.OYE_KV.put('audit:latest', JSON.stringify(audit));
+    if (env.DROPTIMIZE_KV) {
+      await env.DROPTIMIZE_KV.put('audit:latest', JSON.stringify(audit));
       const week = audit.week || new Date().toISOString().slice(0, 10);
-      await env.OYE_KV.put(`audit:${week}`, JSON.stringify(audit), { expirationTtl: 60 * 60 * 24 * 90 });
+      await env.DROPTIMIZE_KV.put(`audit:${week}`, JSON.stringify(audit), { expirationTtl: 60 * 60 * 24 * 90 });
     }
 
     return new Response(JSON.stringify({ ok: true }), { headers: { 'Content-Type': 'application/json' } });

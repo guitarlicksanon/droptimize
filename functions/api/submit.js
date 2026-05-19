@@ -35,10 +35,10 @@ export async function onRequestPost(context) {
       return json({ ok: false, error: 'Missing required fields' }, 400);
     }
 
-    if (env.OYE_KV) {
-      const existing = await env.OYE_KV.get('submissions', 'json') || [];
+    if (env.DROPTIMIZE_KV) {
+      const existing = await env.DROPTIMIZE_KV.get('submissions', 'json') || [];
       existing.unshift(submission);
-      await env.OYE_KV.put('submissions', JSON.stringify(existing.slice(0, 1000)));
+      await env.DROPTIMIZE_KV.put('submissions', JSON.stringify(existing.slice(0, 1000)));
     }
 
     if (env.RESEND_API_KEY) {
