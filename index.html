@@ -83,20 +83,25 @@
   .oye-net-links {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.1rem;
   }
-  .oye-net-links a {
+  .oye-net-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     font-family: "DM Mono", monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.72);
+    color: rgba(255,255,255,0.65);
     text-decoration: none;
     transition: color 0.15s;
     white-space: nowrap;
   }
-  .oye-net-links a:hover { color: #C9A84C; }
-  @media (max-width: 540px) { .oye-net-links { display: none; } }
+  .oye-net-link svg { opacity: 0.65; transition: opacity 0.15s; flex-shrink: 0; }
+  .oye-net-link:hover { color: #C9A84C; }
+  .oye-net-link:hover svg { opacity: 1; }
+  @media (max-width: 700px) { .oye-net-links { display: none; } }
 
   nav {
     position: sticky;
@@ -461,12 +466,20 @@
     </svg>
     <span>OYE <em>Creations</em></span>
   </a>
-  <nav class="oye-net-links" aria-label="OYE network">
-    <a href="https://multilingo.studio" target="_blank" rel="noopener noreferrer">Multilingo</a>
-    <a href="https://guitaranon.com" target="_blank" rel="noopener noreferrer">GuitarAnon</a>
-    <a href="https://buzzresume.com" target="_blank" rel="noopener noreferrer">ResumeBuzz</a>
-    <a href="https://oyecreations.com" target="_blank" rel="noopener noreferrer">All Projects ↗</a>
-  </nav>
+  <div class="oye-net-links" role="navigation" aria-label="OYE network">
+    <a href="https://multilingo.studio" target="_blank" rel="noopener noreferrer" class="oye-net-link">
+      <svg viewBox="0 0 28 20" fill="none" style="height:11px;width:auto" aria-hidden="true"><line x1="2" y1="5" x2="20" y2="5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="6" y1="15" x2="26" y2="15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <span>Multilingo</span>
+    </a>
+    <a href="https://guitaranon.com" target="_blank" rel="noopener noreferrer" class="oye-net-link">
+      <svg viewBox="0 0 26 32" fill="none" style="height:13px;width:auto" aria-hidden="true"><path d="M13,2 C7,2 3,7 3,13 C3,20 13,30 13,30 C13,30 23,20 23,13 C23,7 19,2 13,2 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+      <span>GuitarAnon</span>
+    </a>
+    <a href="https://buzzresume.com" target="_blank" rel="noopener noreferrer" class="oye-net-link">
+      <svg viewBox="0 0 24 28" fill="none" style="height:13px;width:auto" aria-hidden="true"><rect x="2" y="2" width="20" height="24" rx="2" stroke="currentColor" stroke-width="2.5"/><line x1="6" y1="10" x2="18" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="15" x2="18" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="20" x2="13" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span>ResumeBuzz</span>
+    </a>
+  </div>
 </div>
 
 <nav>
