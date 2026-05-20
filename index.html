@@ -46,13 +46,61 @@
     color: var(--text);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    padding-top: 36px;
   }
   a { transition: color 150ms; }
   a:hover { color: var(--gold); }
 
+  /* ── OYE BAR ─────────────────────────────────────────────── */
+  .oye-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 102;
+    height: 36px;
+    background: #090806;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+  }
+  .oye-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-decoration: none;
+    color: rgba(255,255,255,0.82);
+    font-family: "Playfair Display", serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: color 150ms;
+  }
+  .oye-brand em { font-style: normal; color: #C9A84C; transition: color 150ms; }
+  .oye-brand svg ellipse, .oye-brand svg circle, .oye-brand svg line { stroke: rgba(255,255,255,0.65); transition: stroke 150ms; }
+  .oye-brand:hover { color: #C9A84C; }
+  .oye-brand:hover em { color: rgba(255,255,255,0.82); }
+  .oye-brand:hover svg ellipse, .oye-brand:hover svg circle, .oye-brand:hover svg line { stroke: #C9A84C; }
+  .oye-net-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .oye-net-links a {
+    font-family: "DM Mono", monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+    text-decoration: none;
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+  .oye-net-links a:hover { color: #C9A84C; }
+  @media (max-width: 540px) { .oye-net-links { display: none; } }
+
   nav {
     position: sticky;
-    top: 0;
+    top: 36px;
     z-index: 100;
     background: rgba(17,17,17,0.92);
     backdrop-filter: blur(12px);
@@ -397,22 +445,36 @@
 </head>
 <body>
 
+<!-- ── OYE BAR ──────────────────────────────────────────── -->
+<div class="oye-bar">
+  <a href="https://oyecreations.com" target="_blank" rel="noopener noreferrer" class="oye-brand" aria-label="OYE Creations">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" style="height:18px;width:auto" aria-hidden="true">
+      <ellipse cx="250" cy="175" rx="205" ry="135" fill="none" stroke="#C9A84C" stroke-width="13" stroke-linecap="round"/>
+      <defs><clipPath id="oyecp-dt"><ellipse cx="250" cy="175" rx="191" ry="121"/></clipPath></defs>
+      <g clip-path="url(#oyecp-dt)" stroke="#C9A84C" stroke-width="13" stroke-linecap="round" fill="none">
+        <circle cx="148" cy="175" r="63"/>
+        <line x1="175" y1="80" x2="250" y2="168"/><line x1="320" y1="80" x2="250" y2="168"/>
+        <line x1="250" y1="168" x2="250" y2="265"/>
+        <line x1="318" y1="112" x2="318" y2="240"/><line x1="318" y1="112" x2="388" y2="112"/>
+        <line x1="318" y1="176" x2="383" y2="176"/><line x1="318" y1="240" x2="393" y2="240"/>
+      </g>
+    </svg>
+    <span>OYE <em>Creations</em></span>
+  </a>
+  <nav class="oye-net-links" aria-label="OYE network">
+    <a href="https://multilingo.studio" target="_blank" rel="noopener noreferrer">Multilingo</a>
+    <a href="https://guitaranon.com" target="_blank" rel="noopener noreferrer">GuitarAnon</a>
+    <a href="https://buzzresume.com" target="_blank" rel="noopener noreferrer">ResumeBuzz</a>
+    <a href="https://oyecreations.com" target="_blank" rel="noopener noreferrer">All Projects ↗</a>
+  </nav>
+</div>
+
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-brand" aria-label="Droptimize home">
-      <svg class="nav-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" width="500" height="350" role="img" aria-label="Droptimize logo">
-        <ellipse cx="250" cy="175" rx="205" ry="135" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round"/>
-        <defs><clipPath id="ocn"><ellipse cx="250" cy="175" rx="191" ry="121"/></clipPath></defs>
-        <g clip-path="url(#ocn)" stroke="currentColor" stroke-width="13" stroke-linecap="round" fill="none">
-          <circle cx="148" cy="175" r="63"/>
-          <line x1="175" y1="80" x2="250" y2="168"/>
-          <line x1="320" y1="80" x2="250" y2="168"/>
-          <line x1="250" y1="168" x2="250" y2="265"/>
-          <line x1="318" y1="112" x2="318" y2="240"/>
-          <line x1="318" y1="112" x2="388" y2="112"/>
-          <line x1="318" y1="176" x2="383" y2="176"/>
-          <line x1="318" y1="240" x2="393" y2="240"/>
-        </g>
+      <svg class="nav-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" width="48" height="56" role="img" aria-label="Droptimize logo" fill="none">
+        <path d="M6,20 A18,18 0 0,1 42,20 Q42,38 24,54 Q6,38 6,20 Z" fill="#C9A84C"/>
+        <polyline points="13,28 24,14 35,28" stroke="#111111" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <span class="nav-name"><span>Drop</span>timize</span>
     </a>
