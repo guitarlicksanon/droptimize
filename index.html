@@ -135,11 +135,12 @@
   .nav-logo { height: 32px; width: auto; }
   .nav-logo ellipse, .nav-logo circle, .nav-logo line { stroke: var(--gold); transition: stroke 150ms; }
   .nav-name { font-family: "Playfair Display", serif; font-size: 18px; font-weight: 700; color: var(--text); transition: color 150ms; }
-  .nav-name span { color: var(--gold); }
+  .nav-name span { color: var(--gold); transition: color 150ms; }
   .nav-brand:hover .nav-logo ellipse,
   .nav-brand:hover .nav-logo circle,
   .nav-brand:hover .nav-logo line { stroke: var(--warm); }
   .nav-brand:hover .nav-name { color: var(--gold); }
+  .nav-brand:hover .nav-name span { color: var(--text); }
   .nav-links {
     display: flex;
     gap: 24px;
@@ -486,12 +487,12 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-brand" aria-label="Droptimize home">
-      <svg class="nav-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" width="48" height="56" role="img" aria-label="Droptimize logo" fill="none">
+    <a href="/" class="nav-brand" aria-label="droptimize.org home">
+      <svg class="nav-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" width="48" height="56" role="img" aria-label="droptimize.org logo" fill="none">
         <path d="M6,20 A18,18 0 0,1 42,20 Q42,38 24,54 Q6,38 6,20 Z" fill="#C9A84C"/>
         <polyline points="13,28 24,14 35,28" stroke="#111111" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <span class="nav-name"><span>Drop</span>timize</span>
+      <span class="nav-name">droptimize<span>.org</span></span>
     </a>
     <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
       <span class="hamburger-line"></span>
