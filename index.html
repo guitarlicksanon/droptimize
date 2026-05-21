@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Droptimize - Drop Your URL. Get Optimized. | Web Audit & Rebuild</title>
+<title>droptimize.org - Drop Your URL. Get Optimized. | Web Audit & Rebuild</title>
 <meta name="description" content="Drop your URL. Get a full SEO, security, performance, and accessibility audit - plus a clean rebuild that hits 100% across the board. 10% of every project goes to a 501(c)(3) nonprofit of your choice. No lock-in. You own everything." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://droptimize.org" />
 
-<meta property="og:title" content="Droptimize - Drop Your URL. Get Optimized." />
+<meta property="og:title" content="droptimize.org - Drop Your URL. Get Optimized." />
 <meta property="og:description" content="Drop your URL. Get a full audit and a clean rebuild that hits 100% across the board. 10% of every project goes to charity. No lock-in. You own everything." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://droptimize.org" />
 <meta property="og:image" content="https://droptimize.org/assets/og/og-optimize.png" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Droptimize - Drop Your URL. Get Optimized." />
+<meta name="twitter:title" content="droptimize.org - Drop Your URL. Get Optimized." />
 <meta name="twitter:description" content="Drop your URL. Get a full audit and a clean rebuild that hits 100% across the board. 10% of every project goes to charity. No lock-in." />
 <meta name="twitter:image" content="https://droptimize.org/assets/og/og-optimize.png" />
 
@@ -50,6 +50,8 @@
   }
   a { transition: color 150ms; }
   a:hover { color: var(--gold); }
+  h1, h2, h3 { transition: color 150ms; }
+  h1:hover, h2:hover, h3:hover { color: var(--gold); }
 
   /* ── OYE BAR ─────────────────────────────────────────────── */
   .oye-bar {
@@ -608,7 +610,7 @@
           <li>Live 100% verification</li>
           <li>You own everything - no lock-in</li>
         </ul>
-        <a href="#audit-form" class="pricing-cta pricing-cta--ghost">Get Started</a>
+        <a href="#" class="pricing-cta pricing-cta--ghost checkout-btn" data-plan="single">Get Started</a>
       </div>
 
       <div class="pricing-card pricing-card--featured">
@@ -625,7 +627,7 @@
           <li>Live 100% verification</li>
           <li>You own everything - no lock-in</li>
         </ul>
-        <a href="#audit-form" class="pricing-cta">Get Started</a>
+        <a href="#" class="pricing-cta checkout-btn" data-plan="standard">Get Started</a>
       </div>
 
       <div class="pricing-card pricing-card--featured">
@@ -642,7 +644,7 @@
           <li>Priority turnaround (5-7 days)</li>
           <li>30-day post-launch support</li>
         </ul>
-        <a href="#audit-form" class="pricing-cta">Get Started</a>
+        <a href="#" class="pricing-cta checkout-btn" data-plan="professional">Get Started</a>
       </div>
 
       <div class="pricing-card">
@@ -665,7 +667,7 @@
 
     <div class="give-back-banner">
       <h3>The Give Back Standard</h3>
-      <p>Every Droptimize project includes a charitable donation to a 501(c)(3) nonprofit. When you drop your URL, you choose where it goes. Our default partner is <a href="https://tkf.org" target="_blank" rel="noopener">TKF (Tariq Khamisa Foundation)</a> - a nonprofit we've partnered with and believe in. We send confirmation once the donation is made.</p>
+      <p>Every droptimize.org project includes a charitable donation to a 501(c)(3) nonprofit. When you drop your URL, you choose where it goes. Our default partner is <a href="https://tkf.org" target="_blank" rel="noopener">TKF (Tariq Khamisa Foundation)</a> - a nonprofit we've partnered with and believe in. We send confirmation once the donation is made.</p>
       <div class="charity-chips">
         <span class="charity-chip charity-chip--default">TKF - Tariq Khamisa Foundation (default)</span>
         <span class="charity-chip">St. Jude Children's Research Hospital</span>
@@ -868,7 +870,7 @@
       <div class="pt-entry" style="padding-top:20px;">
         <div class="pt-header"><div>
           <a href="https://droptimize.org" target="_blank" rel="noopener" class="pt-domain">droptimize.org <span class="p-arrow">&#x2197;</span></a>
-          <span class="pt-biz">Droptimize - by OYE Creations</span>
+          <span class="pt-biz">droptimize.org - by OYE Creations</span>
         </div></div>
         <p style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.06em;color:var(--muted);">Loading...</p>
       </div>
@@ -1013,5 +1015,33 @@
 
 <script defer src="/assets/nav.js"></script>
 <script defer src="/assets/optimize.js?v=9"></script>
+<script>
+document.querySelectorAll('.checkout-btn').forEach(function(btn) {
+  btn.addEventListener('click', async function(e) {
+    e.preventDefault();
+    var plan = this.dataset.plan;
+    var orig = this.textContent;
+    this.textContent = 'Loading...';
+    this.style.pointerEvents = 'none';
+    try {
+      var url = (document.getElementById('audit-url') || {}).value || '';
+      var name = (document.getElementById('contact-name') || {}).value || '';
+      var email = (document.getElementById('contact-email') || {}).value || '';
+      var res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan: plan, email: email, url: url, name: name })
+      });
+      var data = await res.json();
+      if (!res.ok || !data.url) throw new Error(data.error || 'Checkout failed');
+      window.location.href = data.url;
+    } catch(err) {
+      alert(err.message || 'Could not start checkout. Please try again.');
+      this.textContent = orig;
+      this.style.pointerEvents = '';
+    }
+  });
+});
+</script>
 </body>
 </html>

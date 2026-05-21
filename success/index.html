@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Confirmed — droptimize.org</title>
+<style>
+@font-face{font-family:'DM Mono';src:url('/assets/fonts/dm-mono-400.woff2') format('woff2');font-weight:400;font-display:optional}
+@font-face{font-family:'DM Sans';src:url('/assets/fonts/dm-sans.woff2') format('woff2');font-weight:100 900;font-display:optional}
+@font-face{font-family:'Playfair Display';src:url('/assets/fonts/playfair.woff2') format('woff2');font-weight:700 900;font-display:optional}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#13131A;--surface:#1C1C26;--border:#2A2A38;
+  --gold:#C9A84C;--gold-dim:#8A6F2E;
+  --text:#EBEBEB;--muted:#8C8C8C;
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:3rem 2.5rem;max-width:540px;width:100%;text-align:center}
+.icon{font-size:3rem;margin-bottom:1.25rem}
+h1{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--text);margin-bottom:0.75rem;transition:color 150ms}
+h1:hover{color:var(--gold)}
+.plan-label{font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+p{color:var(--muted);font-size:0.95rem;line-height:1.7;margin-bottom:1rem}
+p:last-of-type{margin-bottom:0}
+.divider{border:none;border-top:1px solid var(--border);margin:1.75rem 0}
+.back{display:inline-block;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--gold-dim);border-radius:5px;padding:0.55rem 1.2rem;transition:border-color 0.15s,color 0.15s}
+.back:hover{border-color:var(--gold);color:var(--text)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">&#10003;</div>
+  <h1>You're Booked</h1>
+  <div class="plan-label" id="planLabel">droptimize.org</div>
+  <p>Payment confirmed. We'll reach out within <strong>1 business day</strong> to gather your project details and get started.</p>
+  <p>Keep an eye on your inbox - we'll send next steps, a project timeline, and a link to share any files or access we need.</p>
+  <hr class="divider">
+  <a href="https://droptimize.org" class="back">Back to droptimize.org</a>
+</div>
+<script>
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var plan = params.get('plan') || '';
+  var labels = {
+    'single': 'Single Site - $199',
+    'standard': 'Standard - $799',
+    'professional': 'Professional - $1,299',
+    'audit-watch-solo': 'Audit Watch Solo',
+    'audit-watch-business': 'Audit Watch Business',
+    'audit-watch-agency': 'Audit Watch Agency',
+  };
+  var el = document.getElementById('planLabel');
+  if (labels[plan]) el.textContent = labels[plan];
+})();
+</script>
+</body>
+</html>
