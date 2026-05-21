@@ -1,0 +1,21 @@
+name = "droptimize"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "."
+
+[[kv_namespaces]]
+binding = "DROPTIMIZE_KV"
+id = "3a65033dab2a4058aff09e354761e3c4"
+
+[vars]
+PRICE_SINGLE       = "price_1TZYmtJvPEXScjfdHn6UCh71"
+PRICE_STANDARD     = "price_1TZYp7JvPEXScjfdIiRM2sNq"
+PRICE_PROFESSIONAL = "price_1TZYrYJvPEXScjfdkYrXeFE2"
+PRICE_AUDIT_WATCH_SOLO     = "price_1TZYxlJvPEXScjfdOuOhCKUB"
+PRICE_AUDIT_WATCH_BUSINESS = "price_1TZZ0PJvPEXScjfd5nrNjILM"
+PRICE_AUDIT_WATCH_AGENCY   = "price_1TZZ3YJvPEXScjfdaBUf0eK6"
+
+# Secrets set via Cloudflare Pages dashboard:
+#   STRIPE_SECRET_KEY
+#   STRIPE_WEBHOOK_SECRET
+#   RESEND_API_KEY
+#   PSI_KEY  (Google PageSpeed Insights API key - optional, improves rate limits)

@@ -17,7 +17,7 @@
     return '<div class="pt-entry" style="padding-top:20px;">' +
       '<div class="pt-header"><div>' +
         '<a href="https://droptimize.org" target="_blank" rel="noopener" class="pt-domain">droptimize.org <span class="p-arrow">↗</span></a>' +
-        '<span class="pt-biz">Droptimize - by OYE Creations</span>' +
+        '<span class="pt-biz">droptimize.org - by OYE Creations</span>' +
       '</div></div>' +
       '<p style="font-family:\'DM Mono\',monospace;font-size:12px;letter-spacing:0.06em;color:var(--muted);">Audit runs every Monday automatically.</p>' +
     '</div>';
@@ -66,7 +66,7 @@
           '<div class="pt-header">' +
             '<div>' +
               '<a href="https://droptimize.org" target="_blank" rel="noopener" class="pt-domain">droptimize.org <span class="p-arrow">↗</span></a>' +
-              '<span class="pt-biz">Droptimize - by OYE Creations</span>' +
+              '<span class="pt-biz">droptimize.org - by OYE Creations</span>' +
             '</div>' +
             '<div class="p-tags">' +
               '<span class="p-tag p-tag--gold">Live</span>' +
@@ -119,25 +119,72 @@
 (function() {
   var form = document.getElementById('contact-form');
   if (!form) return;
+
+  var ORDER = ['seo', 'security', 'performance', 'accessibility', 'best_practices'];
+  var LABEL = { seo:'SEO', security:'Security', performance:'Performance', accessibility:'Accessibility', best_practices:'Best Practices' };
+
+  function colorClass(n) {
+    if (n == null) return '';
+    return n >= 90 ? 'pv-gold' : n >= 70 ? 'pv-amber' : 'pv-red';
+  }
+
+  function renderScores(scores, website) {
+    var tiles = ORDER.map(function(k) {
+      var v   = scores[k];
+      var cls = 'live-score-val' + (v != null ? ' ' + colorClass(v) : '');
+      return '<div class="live-score-tile">' +
+        '<div class="' + cls + '">' + (v != null ? v + '%' : '—') + '</div>' +
+        '<div class="live-score-lbl">' + LABEL[k] + '</div>' +
+      '</div>';
+    }).join('');
+
+    return '<div class="audit-inline-result">' +
+      '<p class="eyebrow" style="margin-bottom:14px;">Audit Complete</p>' +
+      '<p style="font-family:\'Playfair Display\',serif;font-size:20px;font-weight:700;color:var(--warm);margin-bottom:6px;word-break:break-all;">' + website + '</p>' +
+      '<p style="font-family:\'DM Mono\',monospace;font-size:12px;color:var(--muted);letter-spacing:0.05em;margin-bottom:24px;">Results emailed to you. We\'ll follow up with a full breakdown.</p>' +
+      '<div class="live-score-grid" style="margin-bottom:24px;">' + tiles + '</div>' +
+      '<div style="display:flex;gap:12px;flex-wrap:wrap;">' +
+        '<a href="#pricing" class="cta" style="font-size:13px;padding:12px 24px;">See rebuild packages &rarr;</a>' +
+        '<a href="#pricing" style="font-family:\'DM Mono\',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:12px 20px;text-decoration:none;transition:color 150ms,border-color 150ms;" onmouseover="this.style.color=\'var(--gold)\';this.style.borderColor=\'var(--gold-dim)\';" onmouseout="this.style.color=\'var(--muted)\';this.style.borderColor=\'var(--border)\';">Audit Watch plans</a>' +
+      '</div>' +
+    '</div>';
+  }
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    var btn = form.querySelector('.form-submit');
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
+    var btn     = form.querySelector('.form-submit');
+    var website = (form.querySelector('[name="website"]') || {}).value || '';
+    website = website.trim();
+
+    btn.disabled    = true;
+    btn.textContent = website ? 'Running audit...' : 'Sending...';
+
+    // Show loading dots while PSI runs
+    var loader = document.createElement('div');
+    loader.className = 'audit-loader';
+    loader.innerHTML = website
+      ? '<span class="audit-loader-dot"></span><span class="audit-loader-dot"></span><span class="audit-loader-dot"></span><span style="font-family:\'DM Mono\',monospace;font-size:12px;letter-spacing:0.08em;color:var(--muted);margin-left:10px;">Scanning ' + website + '</span>'
+      : '';
+    if (website) form.appendChild(loader);
+
     try {
-      var res = await fetch('/api/submit', {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        form.innerHTML = '<div class="form-sent">Request sent. We\'ll run your audit and be in touch shortly.</div>';
+      var res  = await fetch('/api/submit', { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
+      var data = res.ok ? await res.json() : null;
+
+      if (data && data.ok && data.scores) {
+        form.insertAdjacentHTML('afterend', renderScores(data.scores, website));
+        form.remove();
+      } else if (data && data.ok) {
+        form.insertAdjacentHTML('afterend', '<p class="eyebrow" style="margin-bottom:12px;">Request Sent</p><p style="color:var(--muted);font-family:\'DM Mono\',monospace;font-size:13px;">We\'ll run your audit and be in touch shortly.</p>');
+        form.remove();
       } else {
-        btn.disabled = false;
+        if (loader.parentNode) loader.remove();
+        btn.disabled    = false;
         btn.textContent = 'Send Audit Request';
       }
     } catch(err) {
-      btn.disabled = false;
+      if (loader.parentNode) loader.remove();
+      btn.disabled    = false;
       btn.textContent = 'Send Audit Request';
     }
   });
