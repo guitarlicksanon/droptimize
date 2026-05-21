@@ -372,6 +372,11 @@
     .live-check-grid { grid-template-columns: 1fr 1fr; }
   }
 
+  .free-audit-cta { flex-shrink:0; margin-left:auto; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:#ADADAD; background:none; border:1px solid var(--border); padding:11px 20px; text-decoration:none; white-space:nowrap; transition:color 150ms,border-color 150ms; }
+  .free-audit-cta:hover { color:var(--gold); border-color:var(--gold-dim); }
+  .story-link { display:inline-block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold-dim); padding-bottom:2px; transition:color 150ms,border-color 150ms; }
+  .story-link:hover { color:var(--warm); border-bottom-color:var(--muted); }
+
   .cta-section { padding: 96px 24px; border-top: 1px solid var(--border); text-align: center; }
   .cta-section h2 { font-family: "Playfair Display", serif; font-size: clamp(28px, 4vw, 48px); color: var(--warm); margin-bottom: 16px; }
   .cta-section p { color: var(--muted); font-size: 16px; margin-bottom: 36px; }
@@ -545,7 +550,7 @@
     <div class="gallery">
       <div class="gallery-item">
         <img
-          src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=75&auto=format&fit=crop"
+          src="/assets/img/gallery-website.webp"
           alt="Clean modern website on a laptop screen"
           width="800" height="450"
           loading="lazy"
@@ -554,7 +559,7 @@
       </div>
       <div class="gallery-item">
         <img
-          src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=75&auto=format&fit=crop"
+          src="/assets/img/gallery-business.webp"
           alt="Local business storefront"
           width="800" height="450"
           loading="lazy"
@@ -563,7 +568,7 @@
       </div>
       <div class="gallery-item">
         <img
-          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=75&auto=format&fit=crop"
+          src="/assets/img/gallery-analytics.webp"
           alt="SEO and analytics dashboard"
           width="800" height="450"
           loading="lazy"
@@ -609,7 +614,7 @@
         <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Free - Audit Only</div>
         <div style="font-family:'DM Mono',monospace;font-size:13px;color:#C0C0C0;line-height:1.6;">Full scored report across all 5 categories - SEO, Security, Performance, Accessibility, Best Practices. Gap analysis with plain-English fixes. No rebuild, no commitment. 1-3 business days.</div>
       </div>
-      <a href="#audit-form" style="flex-shrink:0;margin-left:auto;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#ADADAD;background:none;border:1px solid var(--border);padding:11px 20px;text-decoration:none;white-space:nowrap;transition:color 150ms,border-color 150ms;" onmouseover="this.style.color='var(--gold)';this.style.borderColor='var(--gold-dim)';" onmouseout="this.style.color='#ADADAD';this.style.borderColor='var(--border)';">Request Free Audit</a>
+      <a href="#audit-form" class="free-audit-cta">Request Free Audit</a>
     </div>
 
     <div class="pricing-grid">
@@ -974,7 +979,7 @@
     <h2 class="section-title" style="max-width:640px;">The standard wasn't written. <span style="color:var(--gold);">It was earned.</span></h2>
     <p style="font-size:16px;color:#ADADAD;max-width:640px;line-height:1.8;margin-bottom:14px;">droptimize.org started by auditing every OYE Creations property - the podcast site, the resume service, the AI platform. Most had missing security headers, contrast failures, ARIA issues, and incomplete SEO. We fixed them all and wrote down every rule.</p>
     <p style="font-size:16px;color:#ADADAD;max-width:640px;line-height:1.8;margin-bottom:32px;">Those rules became the build standard. When OYE Scholar launched - built from scratch using that standard - it audited at 96-100% across all five categories before a single fix was applied. That's the difference between patching a site and building from a process.</p>
-    <a href="/about/" style="display:inline-block;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-dim);padding-bottom:2px;transition:color 150ms,border-color 150ms;" onmouseover="this.style.color='var(--warm)';this.style.borderColor='var(--muted)';" onmouseout="this.style.color='var(--gold)';this.style.borderColor='var(--gold-dim)';">Read the full story &rarr;</a>
+    <a href="/about/" class="story-link">Read the full story &rarr;</a>
   </div>
 </section>
 
