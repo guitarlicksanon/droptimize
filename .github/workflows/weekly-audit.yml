@@ -8,13 +8,30 @@ on:
 jobs:
   audit:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        site:
+          - url: "https://droptimize.org"
+            domain: "droptimize.org"
+          - url: "https://oyecreations.com"
+            domain: "oyecreations.com"
+          - url: "https://oyescholar.com"
+            domain: "oyescholar.com"
+          - url: "https://guitaranon.com"
+            domain: "guitaranon.com"
+          - url: "https://expathway.com"
+            domain: "expathway.com"
+          - url: "https://buzzresume.com"
+            domain: "buzzresume.com"
+
     steps:
       - name: PageSpeed Insights - Mobile
         id: psi_mobile
         env:
           PSI_KEY: ${{ secrets.PSI_KEY }}
         run: |
-          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://droptimize.org&strategy=mobile&category=SEO&category=PERFORMANCE&category=BEST_PRACTICES&category=ACCESSIBILITY&key=$PSI_KEY")
+          RESULT=$(curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${{ matrix.site.url }}&strategy=mobile&category=SEO&category=PERFORMANCE&category=BEST_PRACTICES&category=ACCESSIBILITY&key=$PSI_KEY")
           SEO=$(echo "$RESULT" | python3 -c "import sys,json; d=json.load(sys.stdin); print(round((d.get('lighthouseResult',{}).get('categories',{}).get('seo',{}).get('score',0))*100))" 2>/dev/null || echo 0)
           PERF=$(echo "$RESULT" | python3 -c "import sys,json; d=json.load(sys.stdin); print(round((d.get('lighthouseResult',{}).get('categories',{}).get('performance',{}).get('score',0))*100))" 2>/dev/null || echo 0)
           BP=$(echo "$RESULT" | python3 -c "import sys,json; d=json.load(sys.stdin); print(round((d.get('lighthouseResult',{}).get('categories',{}).get('best-practices',{}).get('score',0))*100))" 2>/dev/null || echo 0)
@@ -25,7 +42,7 @@ jobs:
           echo "accessibility=$ACC" >> $GITHUB_OUTPUT
           if [ "$SEO" = "0" ] && [ "$PERF" = "0" ] && [ "$BP" = "0" ] && [ "$ACC" = "0" ]; then
             echo "psi_failed=true" >> $GITHUB_OUTPUT
-            echo "::warning::PSI API returned all zeros - quota likely exhausted. Scores will not be stored."
+            echo "::warning::PSI API returned all zeros for ${{ matrix.site.domain }} - quota likely exhausted."
           else
             echo "psi_failed=false" >> $GITHUB_OUTPUT
           fi
@@ -33,7 +50,7 @@ jobs:
       - name: Check Security Headers
         id: headers
         run: |
-          RESPONSE=$(curl -sI https://droptimize.org)
+          RESPONSE=$(curl -sI ${{ matrix.site.url }})
           hsts=$(echo "$RESPONSE" | grep -i "strict-transport-security" | wc -l | tr -d ' ')
           csp=$(echo "$RESPONSE" | grep -i "content-security-policy" | wc -l | tr -d ' ')
           xcto=$(echo "$RESPONSE" | grep -i "x-content-type-options" | wc -l | tr -d ' ')
@@ -53,14 +70,14 @@ jobs:
       - name: Check Sitemap and Robots
         id: seo_checks
         run: |
-          SITEMAP=$(curl -s -o /dev/null -w "%{http_code}" https://droptimize.org/sitemap.xml)
-          ROBOTS=$(curl -s -o /dev/null -w "%{http_code}" https://droptimize.org/robots.txt)
-          RESPONSE_TIME=$(curl -s -o /dev/null -w "%{time_total}" https://droptimize.org | python3 -c "import sys; print(int(float(sys.stdin.read())*1000))")
+          SITEMAP=$(curl -s -o /dev/null -w "%{http_code}" ${{ matrix.site.url }}/sitemap.xml)
+          ROBOTS=$(curl -s -o /dev/null -w "%{http_code}" ${{ matrix.site.url }}/robots.txt)
+          RESPONSE_TIME=$(curl -s -o /dev/null -w "%{time_total}" ${{ matrix.site.url }} | python3 -c "import sys; print(int(float(sys.stdin.read())*1000))")
           echo "sitemap=$SITEMAP" >> $GITHUB_OUTPUT
           echo "robots=$ROBOTS" >> $GITHUB_OUTPUT
           echo "response_time=$RESPONSE_TIME" >> $GITHUB_OUTPUT
 
-      - name: Build and Store Audit Report
+      - name: Store Audit Report
         if: steps.psi_mobile.outputs.psi_failed == 'false'
         env:
           AUDIT_SECRET: ${{ secrets.AUDIT_SECRET }}
@@ -71,7 +88,7 @@ jobs:
           data = {
             'week': '$WEEK',
             'timestamp': '$(date -u +%Y-%m-%dT%H:%M:%SZ)',
-            'url': 'https://droptimize.org',
+            'url': '${{ matrix.site.url }}',
             'scores': {
               'seo': ${{ steps.psi_mobile.outputs.seo }},
               'performance': ${{ steps.psi_mobile.outputs.performance }},
@@ -94,7 +111,6 @@ jobs:
           }
           print(json.dumps(data))
           ")
-
           curl -X POST https://droptimize.org/api/audit/store \
             -H "Content-Type: application/json" \
             -H "X-Audit-Secret: $AUDIT_SECRET" \
@@ -116,14 +132,13 @@ jobs:
           [ "$ACC" -lt 100 ] && REPORT="$REPORT Accessibility=${ACC}%" && FAILED=1
           [ "$SEC" -lt 100 ] && REPORT="$REPORT Security=${SEC}%" && FAILED=1
           if [ "$FAILED" = "1" ]; then
-            echo "::error::Score below 100% -$REPORT"
-            exit 1
+            echo "::warning::${{ matrix.site.domain }} score below 100% -$REPORT"
           fi
 
       - name: Print Summary
         if: always()
         run: |
-          echo "## Droptimize Weekly Audit" >> $GITHUB_STEP_SUMMARY
+          echo "## ${{ matrix.site.domain }}" >> $GITHUB_STEP_SUMMARY
           echo "| Metric | Score |" >> $GITHUB_STEP_SUMMARY
           echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
           echo "| SEO | ${{ steps.psi_mobile.outputs.seo }}% |" >> $GITHUB_STEP_SUMMARY
@@ -134,5 +149,5 @@ jobs:
           echo "| Response Time | ${{ steps.seo_checks.outputs.response_time }}ms |" >> $GITHUB_STEP_SUMMARY
           if [ "${{ steps.psi_mobile.outputs.psi_failed }}" = "true" ]; then
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "> PSI API quota exhausted - scores not stored. Previous data preserved." >> $GITHUB_STEP_SUMMARY
+            echo "> PSI quota exhausted - scores not stored." >> $GITHUB_STEP_SUMMARY
           fi

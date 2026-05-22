@@ -189,3 +189,65 @@
     }
   });
 })();
+
+// Audit log dropdowns
+(function() {
+  var SCORE_COLS = ['seo', 'security', 'performance', 'accessibility', 'best_practices'];
+
+  function scoreColor(n) {
+    if (!n || n <= 0) return 'color:var(--muted);';
+    return n >= 90 ? 'color:var(--gold);' : n >= 70 ? 'color:#F59E0B;' : 'color:#E05A3A;';
+  }
+
+  function renderHistory(history) {
+    if (!history || !history.length) {
+      return '<p class="al-empty">No history yet - first automated audit runs Monday.</p>' +
+        '<div class="al-cta">Subscribe to <a href="#pricing">Audit Watch</a> to get weekly scores and automatic alerts when they drop.</div>';
+    }
+    var rows = history.slice().reverse().map(function(entry) {
+      var s = entry.scores || {};
+      var d = entry.date ? new Date(entry.date + 'T12:00:00Z').toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) : '-';
+      var cells = SCORE_COLS.map(function(k) {
+        var v = s[k];
+        return '<td style="' + scoreColor(v) + '">' + (v > 0 ? v : '-') + '</td>';
+      }).join('');
+      return '<tr><td class="al-date">' + d + '</td>' + cells + '</tr>';
+    }).join('');
+
+    return '<div class="al-table-wrap"><table class="al-table">' +
+      '<thead><tr><th>Date</th><th>SEO</th><th>Sec</th><th>Perf</th><th>A11y</th><th>BP</th></tr></thead>' +
+      '<tbody>' + rows + '</tbody>' +
+      '</table></div>' +
+      '<div class="al-cta">Scores can drop between audits. <a href="#pricing">Subscribe to Audit Watch</a> for weekly monitoring and automatic alerts.</div>';
+  }
+
+  document.querySelectorAll('.al-btn').forEach(function(btn) {
+    var panelId = btn.getAttribute('aria-controls');
+    var panel = panelId ? document.getElementById(panelId) : null;
+    if (!panel) return;
+
+    btn.addEventListener('click', function() {
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        panel.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+        return;
+      }
+      panel.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+      if (panel.dataset.loaded) return;
+
+      var domain = btn.dataset.domain;
+      panel.innerHTML = '<p class="al-empty">Loading...</p>';
+      fetch('/api/audit/history?domain=' + encodeURIComponent(domain))
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          panel.innerHTML = renderHistory(data.history);
+          panel.dataset.loaded = '1';
+        })
+        .catch(function() {
+          panel.innerHTML = '<p class="al-empty">Could not load history.</p>';
+        });
+    });
+  });
+})();

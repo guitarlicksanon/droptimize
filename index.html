@@ -768,6 +768,10 @@
           </table>
         </div>
         <p class="pt-note">New OYE internal property built from scratch. Initial audit exposed three gaps: (1) Accessibility 95% - muted text color #64748B on light blue #F0F9FF measured 4.46:1, just under the 4.5:1 WCAG AA threshold for small text; 5 social links had aria-labels that didn't include full visible text, triggering label-in-name failures. (2) Best Practices 92% - inline window.OYEChat config script blocked by CSP since script-src had no unsafe-inline. (3) SEO 91% - no robots.txt file, CF Pages serving 404 which Lighthouse parsed as 335 malformed directives. Fixes: darkened muted text to #546070 (5.56:1 on that bg), removed mismatched aria-labels from social links (visible text is descriptive), moved chat config to external /assets/chat-config.js, added robots.txt and sitemap.xml. All four categories verified at 100%.</p>
+        <div class="al-wrap">
+          <button class="al-btn" data-domain="expathway.com" aria-expanded="false" aria-controls="al-expathway-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+          <div class="al-panel" id="al-expathway-com" hidden></div>
+        </div>
       </div>
 
       <!-- 2 - OYE Scholar (oyescholar.com) - internal, May 2026 -->
@@ -796,6 +800,10 @@
           </table>
         </div>
         <p class="pt-note">Migrated from oyecreations.com/scholar to standalone oyescholar.com. Pre-transfer audit: scholar landing (100/94/92/100 perf/a11y/bp/seo) and essay builder (96/93/92/92) - lower score per category shown. Final build: 98/100/100/100 across Performance, Accessibility, Best Practices, and SEO. Accessibility and Best Practices hit 100% after contrast fixes, label corrections, and CSP tuning. SEO hit 100% after disabling Cloudflare's robots.txt AI signal injection.</p>
+        <div class="al-wrap">
+          <button class="al-btn" data-domain="oyescholar.com" aria-expanded="false" aria-controls="al-oyescholar-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+          <div class="al-panel" id="al-oyescholar-com" hidden></div>
+        </div>
       </div>
 
       <!-- 2 - bottomsupfam.com - internal, May 2026 -->
@@ -824,6 +832,10 @@
           </table>
         </div>
         <p class="pt-note">New OYE internal site audited at launch. Security gap: X-XSS-Protection legacy value, HSTS max-age 1yr vs 2yr, missing COOP/CORP headers. Inline scripts blocked a tight CSP - extracted to external files, removed unsafe-inline from script-src. Accessibility contrast failures on #888/#999 text on white - fixed to #767676 (passes 4.5:1). Scores verified live: SEO 92%, A11y 97%, Best Practices 92%, Performance 85% (Google Fonts CDN - font migration pending).</p>
+        <div class="al-wrap">
+          <button class="al-btn" data-domain="bottomsupfam.com" aria-expanded="false" aria-controls="al-bottomsupfam-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+          <div class="al-panel" id="al-bottomsupfam-com" hidden></div>
+        </div>
       </div>
 
       <!-- 2 - buzzresume.com - internal, May 2026 -->
@@ -851,6 +863,10 @@
           </table>
         </div>
         <p class="pt-note">Subdomain migration to standalone domain. Cloudflare's default robots.txt caused 2,064 SEO errors; missing security headers left the site exposed at 58%. Performance held at 96% - external Google Fonts CDN is the remaining gap, not a security or accessibility issue.</p>
+        <div class="al-wrap">
+          <button class="al-btn" data-domain="buzzresume.com" aria-expanded="false" aria-controls="al-buzzresume-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+          <div class="al-panel" id="al-buzzresume-com" hidden></div>
+        </div>
       </div>
 
       <!-- 3 - multilingo.studio - internal, May 2026 -->
@@ -878,6 +894,10 @@
           </table>
         </div>
         <p class="pt-note">Worst security score in the portfolio at ~38% - the Next.js app had no CSP, no HSTS, and no CORP headers at all. Accessibility issues came from component library defaults that didn't meet WCAG AA contrast. Dynamic routes were missing canonical tags, holding SEO back. All rebuilt and verified at 100%.</p>
+        <div class="al-wrap">
+          <button class="al-btn" data-domain="multilingo.studio" aria-expanded="false" aria-controls="al-multilingo-studio"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+          <div class="al-panel" id="al-multilingo-studio" hidden></div>
+        </div>
       </div>
 
       <!-- 4 - guitaranon.com - internal, May 2026 -->
@@ -905,6 +925,10 @@
           </table>
         </div>
         <p class="pt-note">SEO started at 100% - strong existing domain signals meant no indexing work needed. Accessibility gaps were unlabeled interactive elements on chord cards and contrast failures on secondary label text. Security was one header short at audit and pre-launch. All closed at 100% after rebuild.</p>
+        <div class="al-wrap">
+          <button class="al-btn" data-domain="guitaranon.com" aria-expanded="false" aria-controls="al-guitaranon-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+          <div class="al-panel" id="al-guitaranon-com" hidden></div>
+        </div>
       </div>
 
       <!-- hidden - oyecreations.com - internal, May 2026 -->
@@ -932,6 +956,10 @@
           </table>
         </div>
         <p class="pt-note">Incomplete security headers at audit - HSTS and CORP were missing, holding security at 68%. A late pre-launch config push partially reverted those settings, dropping security back to 80% right before go-live. Rebuilt from scratch with the full OYE header stack. All five categories closed at 100%.</p>
+        <div class="al-wrap">
+          <button class="al-btn" data-domain="oyecreations.com" aria-expanded="false" aria-controls="al-oyecreations-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+          <div class="al-panel" id="al-oyecreations-com" hidden></div>
+        </div>
       </div>
 
 
@@ -956,6 +984,10 @@
         </div></div>
         <p style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.06em;color:var(--muted);">Loading...</p>
         <p class="pt-note" style="margin-top:12px;">All five categories verified at 100%. Checkout handler and chat config extracted to external scripts to satisfy the CSP. Table headers updated with proper scope attributes. No inline scripts, no label mismatches.</p>
+        <div class="al-wrap">
+          <button class="al-btn" data-domain="droptimize.org" aria-expanded="false" aria-controls="al-droptimize-org"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+          <div class="al-panel" id="al-droptimize-org" hidden></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1109,7 +1141,7 @@
 </footer>
 
 <script defer src="/assets/nav.js"></script>
-<script defer src="/assets/optimize.js?v=10"></script>
+<script defer src="/assets/optimize.js?v=11"></script>
 <script defer src="/assets/checkout.js"></script>
 <script src="/assets/chat-config.js"></script>
 <script defer src="https://bink.oyecreations.com/assets/chat-widget.js?v=5"></script>
