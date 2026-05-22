@@ -337,8 +337,8 @@
   .pt-row { background: var(--surface); }
   .pt-row--hidden { display: none; }
   .pt-row-head { width: 100%; display: flex; align-items: center; gap: 10px; padding: 0; background: none; border: none; text-align: left; min-height: 38px; }
-  .pt-chevron { font-size: 9px; color: var(--muted); transition: transform 0.18s; flex-shrink: 0; width: 28px; text-align: center; cursor: pointer; padding: 10px 0; align-self: stretch; display: flex; align-items: center; justify-content: center; }
-  .pt-chevron:hover { color: var(--gold); }
+  .pt-chevron { font-size: 9px; color: var(--gold); transition: transform 0.18s; flex-shrink: 0; width: 28px; text-align: center; cursor: pointer; padding: 10px 0; align-self: stretch; display: flex; align-items: center; justify-content: center; }
+  .pt-chevron:hover { opacity: 0.7; }
   .pt-row[data-open="true"] .pt-chevron { transform: rotate(90deg); }
   .pt-row-domain { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--text); text-decoration: none; white-space: nowrap; flex-shrink: 0; }
   .pt-row-domain:hover { color: var(--gold); }
@@ -793,13 +793,13 @@
         <div class="pt-detail">
           <div class="pt-table-wrap">
             <table class="pt-table">
-              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Fixed</th><th scope="col" class="pt-th-final">3 - Verified</th></tr></thead>
+              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Fixed</th><th scope="col">3 - Pre-Launch</th><th scope="col" class="pt-th-final">4 - Verified</th></tr></thead>
               <tbody>
-                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">91%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">95%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">92%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">91%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">95%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">92%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
               </tbody>
             </table>
           </div>
@@ -830,13 +830,13 @@
         <div class="pt-detail">
           <div class="pt-table-wrap">
             <table class="pt-table">
-              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Transfer</th><th scope="col" class="pt-th-final">3 - Final</th></tr></thead>
+              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Transfer</th><th scope="col">3 - Pre-Launch</th><th scope="col" class="pt-th-final">4 - Final</th></tr></thead>
               <tbody>
-                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">92%</td><td class="pv-gold">91%</td><td class="pv-gold pt-final">100%</td></tr>
-                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-amber">~92%</td><td style="color:var(--muted);">Pending</td><td class="pt-final" style="color:var(--muted);">Pending</td></tr>
-                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">96%</td><td class="pv-gold">99%</td><td class="pv-gold pt-final">99%</td></tr>
-                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">93%</td><td class="pv-gold">93%</td><td class="pv-gold pt-final">100%</td></tr>
-                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">92%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">92%</td><td class="pv-amber">91%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-amber">~92%</td><td style="color:var(--muted);">Pending</td><td style="color:var(--muted);">Pending</td><td class="pt-final" style="color:var(--muted);">Pending</td></tr>
+                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">96%</td><td class="pv-gold">99%</td><td class="pv-gold">99%</td><td class="pv-gold pt-final">99%</td></tr>
+                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">93%</td><td class="pv-amber">93%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">92%</td><td class="pv-amber">92%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
               </tbody>
             </table>
           </div>
@@ -867,13 +867,13 @@
         <div class="pt-detail">
           <div class="pt-table-wrap">
             <table class="pt-table">
-              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Fixed</th><th scope="col" class="pt-th-final">3 - Verified</th></tr></thead>
+              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Fixed</th><th scope="col">3 - Pre-Launch</th><th scope="col" class="pt-th-final">4 - Verified</th></tr></thead>
               <tbody>
-                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">~75%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
-                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-amber">~67%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~80%</td><td class="pv-gold">97%</td><td class="pv-gold pt-final">100%</td></tr>
-                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~75%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
-                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">~60%</td><td class="pv-amber">85%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">~75%</td><td class="pv-gold">92%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-amber">~67%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~80%</td><td class="pv-gold">97%</td><td class="pv-gold">97%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~75%</td><td class="pv-gold">92%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">~60%</td><td class="pv-amber">85%</td><td class="pv-amber">85%</td><td class="pv-gold pt-final">100%</td></tr>
               </tbody>
             </table>
           </div>
