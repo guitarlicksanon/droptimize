@@ -784,7 +784,7 @@
           <div class="pt-row-final">
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEO</span></span>
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEC</span></span>
-            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> PERF</span></span>
+            <span><span class="pt-fc pv-gold">98</span><span class="pt-fc-lbl"> PERF</span></span>
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> ACC</span></span>
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> BP</span></span>
           </div>
@@ -797,13 +797,13 @@
               <tbody>
                 <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">91%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
                 <tr><th scope="row" class="pt-cat">Security</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">93%</td><td class="pv-gold">95%</td><td class="pv-gold">95%</td><td class="pv-gold pt-final">98%</td></tr>
                 <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">95%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
                 <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">92%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
               </tbody>
             </table>
           </div>
-          <p class="pt-note">New OYE internal property built from scratch. Initial audit exposed three gaps: (1) Accessibility 95% - muted text color #64748B on light blue #F0F9FF measured 4.46:1, just under the 4.5:1 WCAG AA threshold for small text; 5 social links had aria-labels that didn't include full visible text, triggering label-in-name failures. (2) Best Practices 92% - inline window.OYEChat config script blocked by CSP since script-src had no unsafe-inline. (3) SEO 91% - no robots.txt file, CF Pages serving 404 which Lighthouse parsed as 335 malformed directives. Fixes: darkened muted text to #546070 (5.56:1 on that bg), removed mismatched aria-labels from social links (visible text is descriptive), moved chat config to external /assets/chat-config.js, added robots.txt and sitemap.xml. All four categories verified at 100%.</p>
+          <p class="pt-note">New OYE internal property built from scratch. Audit exposed: Accessibility 95% - contrast failures on city marquee text (#8C9EA6 on cream = 2.27:1) and 12 links with aria-labels that didn't contain their visible text (WCAG 2.5.3). Best Practices 92% - feed rendering script inline, blocked by CSP. SEO 91% - no robots.txt. Performance boosted to 98% by converting PNG logos to WebP (78KB+101KB down to 13KB+17KB) and disabling Cloudflare email obfuscation, which was injecting a render-blocking script. Final: 100/100/100/100 across SEO, Security, Accessibility, and Best Practices. Performance 98%.</p>
           <div class="al-wrap">
             <button class="al-btn" data-domain="expathway.com" aria-expanded="false" aria-controls="al-expathway-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
             <div class="al-panel" id="al-expathway-com" hidden></div>
@@ -820,8 +820,8 @@
           <span class="pt-row-biz">College &amp; Higher Education Advisory</span>
           <div class="pt-row-final">
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEO</span></span>
-            <span><span class="pt-fc" style="color:var(--muted);">--</span><span class="pt-fc-lbl"> SEC</span></span>
-            <span><span class="pt-fc pv-gold">99</span><span class="pt-fc-lbl"> PERF</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> PERF</span></span>
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> ACC</span></span>
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> BP</span></span>
           </div>
@@ -833,14 +833,14 @@
               <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Transfer</th><th scope="col">3 - Pre-Launch</th><th scope="col" class="pt-th-final">4 - Final</th></tr></thead>
               <tbody>
                 <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">92%</td><td class="pv-amber">91%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-amber">~92%</td><td style="color:var(--muted);">Pending</td><td style="color:var(--muted);">Pending</td><td class="pt-final" style="color:var(--muted);">Pending</td></tr>
-                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">96%</td><td class="pv-gold">99%</td><td class="pv-gold">99%</td><td class="pv-gold pt-final">99%</td></tr>
+                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-amber">~92%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">96%</td><td class="pv-gold">99%</td><td class="pv-gold">99%</td><td class="pv-gold pt-final">100%</td></tr>
                 <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">93%</td><td class="pv-amber">93%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
                 <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">92%</td><td class="pv-amber">92%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
               </tbody>
             </table>
           </div>
-          <p class="pt-note">Migrated from oyecreations.com/scholar to standalone oyescholar.com. Pre-transfer audit: scholar landing (100/94/92/100 perf/a11y/bp/seo) and essay builder (96/93/92/92) - lower score per category shown. Final build: 98/100/100/100 across Performance, Accessibility, Best Practices, and SEO. Accessibility and Best Practices hit 100% after contrast fixes, label corrections, and CSP tuning. SEO hit 100% after disabling Cloudflare's robots.txt AI signal injection.</p>
+          <p class="pt-note">Migrated from oyecreations.com/scholar to standalone oyescholar.com. Pre-transfer audit: scholar landing and essay builder both in the 92-96% range across all categories. Performance was stuck at 76% due to Cloudflare's Bot Management JavaScript detections injecting a 2,374ms script on every page load - disabled via API. Best Practices hit 100% after the same fix removed deprecated API calls from that injected script. All five categories verified at 100%.</p>
           <div class="al-wrap">
             <button class="al-btn" data-domain="oyescholar.com" aria-expanded="false" aria-controls="al-oyescholar-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
             <div class="al-panel" id="al-oyescholar-com" hidden></div>
@@ -895,7 +895,7 @@
           <div class="pt-row-final">
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEO</span></span>
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEC</span></span>
-            <span><span class="pt-fc pv-gold">96</span><span class="pt-fc-lbl"> PERF</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> PERF</span></span>
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> ACC</span></span>
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> BP</span></span>
           </div>
@@ -908,12 +908,13 @@
               <tbody>
                 <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">~75%</td><td class="pv-gold">92%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
                 <tr><th scope="row" class="pt-cat">Security</th><td class="pv-red">~58%</td><td class="pv-red">~58%</td><td class="pv-gold">~92%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">~89%</td><td class="pv-amber">~89%</td><td class="pv-gold">~89%</td><td class="pv-gold pt-final">100%</td></tr>
                 <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~82%</td><td class="pv-gold">94%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
                 <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~85%</td><td class="pv-gold">92%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
               </tbody>
             </table>
           </div>
-          <p class="pt-note">Subdomain migration to standalone domain. Cloudflare's default robots.txt caused 2,064 SEO errors; missing security headers left the site exposed at 58%. Performance held at 96% - external Google Fonts CDN is the remaining gap, not a security or accessibility issue.</p>
+          <p class="pt-note">Subdomain migration to standalone domain. Cloudflare's default robots.txt caused 2,064 SEO errors; missing security headers left the site exposed at 58%. Performance reached 100% after migrating from Google Fonts CDN to self-hosted woff2 files - eliminates the external font request entirely. All five categories verified at 100%.</p>
           <div class="al-wrap">
             <button class="al-btn" data-domain="buzzresume.com" aria-expanded="false" aria-controls="al-buzzresume-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
             <div class="al-panel" id="al-buzzresume-com" hidden></div>
@@ -967,7 +968,7 @@
           <div class="pt-row-final">
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEO</span></span>
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEC</span></span>
-            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> PERF</span></span>
+            <span><span class="pt-fc pv-amber">93</span><span class="pt-fc-lbl"> PERF</span></span>
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> ACC</span></span>
             <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> BP</span></span>
           </div>
@@ -980,12 +981,13 @@
               <tbody>
                 <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
                 <tr><th scope="row" class="pt-cat">Security</th><td class="pv-gold">92%</td><td class="pv-gold">100%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">76%</td><td class="pv-amber">76%</td><td class="pv-amber">91%</td><td class="pv-amber pt-final">93%</td></tr>
                 <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~79%</td><td class="pv-gold">100%</td><td class="pv-amber">88%</td><td class="pv-gold pt-final">100%</td></tr>
                 <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~85%</td><td class="pv-gold">100%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
               </tbody>
             </table>
           </div>
-          <p class="pt-note">SEO started at 100% - strong existing domain signals meant no indexing work needed. Accessibility gaps were unlabeled interactive elements on chord cards and contrast failures on secondary label text. Security was one header short at audit and pre-launch. All closed at 100% after rebuild.</p>
+          <p class="pt-note">SEO started at 100% - strong existing domain signals meant no indexing work needed. Accessibility gaps were unlabeled interactive elements on chord cards and contrast failures on secondary label text. Security was one header short at audit and pre-launch. Best Practices hit 100% after disabling Cloudflare Bot Management JS detections, which had been injecting deprecated-API code on every page load. Performance at 93% - the news section pulls cover images from Wikimedia Commons which can't be served as WebP or cached locally. Full news section rebuild pending.</p>
           <div class="al-wrap">
             <button class="al-btn" data-domain="guitaranon.com" aria-expanded="false" aria-controls="al-guitaranon-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
             <div class="al-panel" id="al-guitaranon-com" hidden></div>
