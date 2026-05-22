@@ -14,12 +14,17 @@
   }
 
   function fallbackEntry() {
-    return '<div class="pt-entry" style="padding-top:20px;">' +
-      '<div class="pt-header"><div>' +
-        '<a href="https://droptimize.org" target="_blank" rel="noopener" class="pt-domain">droptimize.org <span class="p-arrow">↗</span></a>' +
-        '<span class="pt-biz">droptimize.org - by OYE Creations</span>' +
-      '</div></div>' +
-      '<p style="font-family:\'DM Mono\',monospace;font-size:12px;letter-spacing:0.06em;color:var(--muted);">Audit runs every Monday automatically.</p>' +
+    return '<div class="live-audit-bar">' +
+      '<div class="live-audit-meta">' +
+        '<div class="live-audit-indicator"><span class="live-pulse"></span><span class="live-audit-lbl">Live</span></div>' +
+        '<a href="https://droptimize.org" target="_blank" rel="noopener" class="live-audit-domain">droptimize.org &#x2197;</a>' +
+        '<span class="live-audit-date">Audit runs every Monday</span>' +
+      '</div>' +
+      '<div class="live-score-grid">' +
+        ['SEO','Security','Perf','Access','BP'].map(function(l) {
+          return '<div class="live-score-tile"><div class="live-score-val" style="color:var(--border);">-</div><div class="live-score-lbl">' + l + '</div></div>';
+        }).join('') +
+      '</div>' +
     '</div>';
   }
 
@@ -40,43 +45,29 @@
       var psiUnavailable = ['seo', 'performance', 'accessibility', 'best_practices']
         .every(function(k) { return !scores[k]; });
 
+      var SCORE_SHORT = { seo:'SEO', security:'Security', performance:'Perf', accessibility:'Access', best_practices:'BP' };
+
       var scoreBlocks = SCORE_ORDER.map(function(k) {
         var v = scores[k];
         var hasScore = v !== undefined && v > 0;
         var valClass = hasScore ? 'live-score-val ' + colorClass(v) : 'live-score-val';
         var valStyle = hasScore ? '' : ' style="color:var(--border);"';
         return '<div class="live-score-tile">' +
-          '<div class="' + valClass + '"' + valStyle + '>' + (hasScore ? v + '%' : '—') + '</div>' +
-          '<div class="live-score-lbl">' + SCORE_LABEL[k] + '</div>' +
-        '</div>';
-      }).join('');
-
-      var checks = audit.checks || [];
-      var checkItems = checks.map(function(c) {
-        var passClass = c.pass ? 'pv-gold' : 'pv-red';
-        var nameColor = c.pass ? 'var(--muted)' : '#E05A3A';
-        return '<div class="live-check-item">' +
-          '<span class="' + passClass + '" style="font-size:13px;">' + (c.pass ? '✓' : '✗') + '</span>' +
-          '<span style="font-size:12px;text-transform:uppercase;letter-spacing:0.07em;color:' + nameColor + ';">' + c.name + '</span>' +
+          '<div class="' + valClass + '"' + valStyle + '>' + (hasScore ? v + '%' : '-') + '</div>' +
+          '<div class="live-score-lbl">' + SCORE_SHORT[k] + '</div>' +
         '</div>';
       }).join('');
 
       list.innerHTML =
-        '<div class="pt-entry" style="padding-top:20px;">' +
-          '<div class="pt-header">' +
-            '<div>' +
-              '<a href="https://droptimize.org" target="_blank" rel="noopener" class="pt-domain">droptimize.org <span class="p-arrow">↗</span></a>' +
-              '<span class="pt-biz">droptimize.org - by OYE Creations</span>' +
-            '</div>' +
-            '<div class="p-tags">' +
-              '<span class="p-tag p-tag--gold">Live</span>' +
-              '<span class="p-date">' + date + '</span>' +
-            '</div>' +
+        '<div class="live-audit-bar">' +
+          '<div class="live-audit-meta">' +
+            '<div class="live-audit-indicator"><span class="live-pulse"></span><span class="live-audit-lbl">Live</span></div>' +
+            '<a href="https://droptimize.org" target="_blank" rel="noopener" class="live-audit-domain">droptimize.org &#x2197;</a>' +
+            '<span class="live-audit-date">' + date + '</span>' +
           '</div>' +
           '<div class="live-score-grid">' + scoreBlocks + '</div>' +
-          (checks.length ? '<div class="live-check-grid">' + checkItems + '</div>' : '') +
-          (psiUnavailable ? '<p style="font-family:\'DM Mono\',monospace;font-size:12px;letter-spacing:0.06em;color:var(--muted);margin-top:10px;">Lighthouse scores unavailable - PSI quota. Security verified via headers.</p>' : '') +
-        '</div>';
+        '</div>' +
+        '';
     })
     .catch(function() {
       var list = document.getElementById('live-audit-list');

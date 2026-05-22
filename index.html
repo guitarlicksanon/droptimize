@@ -309,13 +309,13 @@
   .pricing-cta--ghost:hover { color: var(--gold); border-color: var(--gold-dim); opacity: 1; }
 
   /* Give Back */
-  .give-back-banner { background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.18); border-left: 3px solid var(--gold); padding: 28px 32px; }
-  .give-back-banner h3 { font-family: "DM Mono", monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-  .give-back-banner p { font-family: "DM Mono", monospace; font-size: 13px; color: #B8B8B8; line-height: 1.7; letter-spacing: 0.02em; }
+  .give-back-banner { background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.18); border-left: 3px solid var(--gold); padding: 10px 16px; }
+  .give-back-banner h3 { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .give-back-banner p { font-family: "DM Mono", monospace; font-size: 11px; color: #B8B8B8; line-height: 1.5; letter-spacing: 0.02em; }
   .give-back-banner a { color: var(--gold); text-decoration: underline; }
   .give-back-banner a:hover { opacity: 0.85; }
-  .charity-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-  .charity-chip { font-family: "DM Mono", monospace; font-size: 12px; letter-spacing: 0.08em; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted); }
+  .charity-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .charity-chip { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.06em; padding: 3px 8px; border: 1px solid var(--border); color: var(--muted); }
   .charity-chip--default { border-color: rgba(201,168,76,0.4); color: var(--gold); }
 
   .deliverables { padding: 56px 24px; border-top: 1px solid var(--border); background: var(--surface); }
@@ -359,17 +359,32 @@
   .pv-amber { color: #E6A817; }
   .pv-red { color: #E05A3A; }
 
-  .live-score-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-bottom: 2px; }
-  .live-score-tile { background: var(--surface); padding: 14px 16px; }
-  .live-score-val { font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 500; line-height: 1; }
-  .live-score-lbl { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #6EE7B7; margin-top: 6px; }
-  .live-check-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-  .live-check-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--surface); font-family: 'DM Mono', monospace; }
+  .live-audit-section { border-top: 1px solid var(--border); padding: 14px 24px; }
+  .live-audit-bar { display: flex; align-items: stretch; border: 1px solid rgba(74,222,128,0.18); overflow: hidden; box-shadow: 0 0 24px rgba(74,222,128,0.05); }
+  .live-audit-meta { display: flex; flex-direction: column; justify-content: center; gap: 5px; padding: 12px 16px; background: rgba(74,222,128,0.03); border-right: 1px solid rgba(74,222,128,0.12); min-width: 160px; flex-shrink: 0; }
+  .live-audit-indicator { display: flex; align-items: center; gap: 6px; }
+  .live-pulse { width: 5px; height: 5px; border-radius: 50%; background: #4ADE80; box-shadow: 0 0 6px #4ADE80; animation: live-blink 2s ease infinite; flex-shrink: 0; }
+  @keyframes live-blink { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+  .live-audit-lbl { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4ADE80; }
+  .live-audit-domain { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text); text-decoration: none; transition: color 0.15s; }
+  .live-audit-domain:hover { color: var(--gold); }
+  .live-audit-date { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
+  .live-score-grid { display: flex; flex: 1; }
+  .live-score-tile { flex: 1; padding: 10px 8px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .live-score-tile:last-child { border-right: none; }
+  .live-score-val { font-family: 'DM Mono', monospace; font-size: 15px; font-weight: 500; line-height: 1; color: var(--muted); }
+  .live-score-val.pv-gold { color: var(--gold); text-shadow: 0 0 16px rgba(201,168,76,0.5); }
+  .live-score-val.pv-amber { color: #F59E0B; }
+  .live-score-val.pv-red { color: #E05A3A; }
+  .live-score-lbl { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.09em; text-transform: uppercase; color: #4ADE80; }
+  .live-check-grid { display: none; }
+  .live-check-item { display: none; }
   @media (max-width: 540px) {
-    .live-score-tile { padding: 10px 8px; }
-    .live-score-val { font-size: 17px; }
-    .live-score-lbl { font-size: 12px; letter-spacing: 0.06em; }
-    .live-check-grid { grid-template-columns: 1fr 1fr; }
+    .live-audit-bar { flex-direction: column; }
+    .live-audit-meta { border-right: none; border-bottom: 1px solid rgba(74,222,128,0.12); flex-direction: row; align-items: center; gap: 12px; }
+    .live-score-tile { padding: 8px 4px; }
+    .live-score-val { font-size: 13px; }
+    .live-score-lbl { font-size: 8px; }
   }
 
   .free-audit-cta { flex-shrink:0; margin-left:auto; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:#ADADAD; background:none; border:1px solid var(--border); padding:11px 20px; text-decoration:none; white-space:nowrap; transition:color 150ms,border-color 150ms; }
@@ -709,22 +724,20 @@
 
     </div>
 
-    <div style="background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.2);padding:24px 32px;margin-top:16px;margin-bottom:16px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-      <div style="font-size:28px;line-height:1;">&#x2713;</div>
-      <div>
-        <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#4ADE80;margin-bottom:6px;">The Score Guarantee</div>
-        <div style="font-family:'DM Mono',monospace;font-size:13px;color:#C0C0C0;line-height:1.6;">Every paid rebuild is guaranteed to hit 90 or above in all five Lighthouse categories - SEO, Security, Performance, Accessibility, and Best Practices. We push for 100. If we deliver and any category lands below 90, you get a full refund. No argument.</div>
-      </div>
+    <div style="background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.2);padding:10px 16px;margin-top:12px;margin-bottom:8px;display:flex;align-items:center;gap:12px;">
+      <span style="font-size:14px;line-height:1;color:#4ADE80;">&#x2713;</span>
+      <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#4ADE80;">Score Guarantee</span>
+      <span style="font-family:'DM Mono',monospace;font-size:11px;color:#8C8C8C;">90+ across all 5 Lighthouse categories or full refund.</span>
     </div>
 
     <div class="give-back-banner">
       <h3>The Give Back Standard</h3>
-      <p>Every droptimize.org project includes a charitable donation to a 501(c)(3) nonprofit. When you drop your URL, you choose where it goes. Our default partner is <a href="https://tkf.org" target="_blank" rel="noopener">TKF (Tariq Khamisa Foundation)</a> - a nonprofit we've partnered with and believe in. We send confirmation once the donation is made.</p>
+      <p>Every project includes a charitable donation to a 501(c)(3) of your choice. Default: <a href="https://tkf.org" target="_blank" rel="noopener">TKF (Tariq Khamisa Foundation)</a>.</p>
       <div class="charity-chips">
-        <span class="charity-chip charity-chip--default">TKF - Tariq Khamisa Foundation (default)</span>
-        <span class="charity-chip">St. Jude Children's Research Hospital</span>
+        <span class="charity-chip charity-chip--default">TKF (default)</span>
+        <span class="charity-chip">St. Jude</span>
         <span class="charity-chip">Feeding America</span>
-        <span class="charity-chip">Local food bank of your choice</span>
+        <span class="charity-chip">Local food bank</span>
         <span class="charity-chip">Any IRS-verified 501(c)(3)</span>
       </div>
     </div>
@@ -972,96 +985,27 @@
 </section>
 
 <!-- Live Audit Report -->
-<section style="border-top:1px solid var(--border);padding:40px 24px 56px;">
+<section class="live-audit-section">
   <div class="container">
-    <p class="eyebrow">Live Report - Updated weekly</p>
-    <h2 class="section-title" style="margin-bottom:8px;">Current <span style="color:var(--gold);">live audit.</span></h2>
-    <div class="pt-list" id="live-audit-list">
-      <div class="pt-entry" style="padding-top:20px;">
-        <div class="pt-header"><div>
-          <a href="https://droptimize.org" target="_blank" rel="noopener" class="pt-domain">droptimize.org <span class="p-arrow">&#x2197;</span></a>
-          <span class="pt-biz">droptimize.org - by OYE Creations</span>
-        </div></div>
-        <p style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.06em;color:var(--muted);">Loading...</p>
-        <p class="pt-note" style="margin-top:12px;">All five categories verified at 100%. Checkout handler and chat config extracted to external scripts to satisfy the CSP. Table headers updated with proper scope attributes. No inline scripts, no label mismatches.</p>
-        <div class="al-wrap">
-          <button class="al-btn" data-domain="droptimize.org" aria-expanded="false" aria-controls="al-droptimize-org"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
-          <div class="al-panel" id="al-droptimize-org" hidden></div>
+    <div id="live-audit-list">
+      <div class="live-audit-bar">
+        <div class="live-audit-meta">
+          <div class="live-audit-indicator"><span class="live-pulse"></span><span class="live-audit-lbl">Live</span></div>
+          <a href="https://droptimize.org" target="_blank" rel="noopener" class="live-audit-domain">droptimize.org &#x2197;</a>
+          <span class="live-audit-date">Loading...</span>
+        </div>
+        <div class="live-score-grid">
+          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">SEO</div></div>
+          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Security</div></div>
+          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Perf</div></div>
+          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Access</div></div>
+          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">BP</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Standard + What's included -->
-<section class="deliverables">
-  <div class="container">
-    <p class="eyebrow">The standard - What's included</p>
-    <h2 class="section-title" style="margin-bottom:8px;">Everything at <span style="color:var(--gold);">100%. Once.</span></h2>
-
-    <div class="scores" style="margin-bottom:40px;gap:28px;">
-      <div class="score">
-        <div class="score-num">100%</div>
-        <div class="score-label">SEO</div>
-        <div class="score-blurb">Google can find you</div>
-      </div>
-      <div class="score">
-        <div class="score-num">100%</div>
-        <div class="score-label">Security</div>
-        <div class="score-blurb">Encrypted + hardened</div>
-      </div>
-      <div class="score">
-        <div class="score-num">100%</div>
-        <div class="score-label">Performance</div>
-        <div class="score-blurb">Under a second</div>
-      </div>
-      <div class="score">
-        <div class="score-num">100%</div>
-        <div class="score-label">Accessibility</div>
-        <div class="score-blurb">Works for everyone</div>
-      </div>
-      <div class="score">
-        <div class="score-num">100%</div>
-        <div class="score-label">Best Practices</div>
-        <div class="score-blurb">Modern, no shortcuts</div>
-      </div>
-      <div class="score">
-        <div class="score-num" style="color:#E05A3A;">0</div>
-        <div class="score-label">Lock-in</div>
-        <div class="score-blurb">You own everything</div>
-      </div>
-    </div>
-
-    <div style="border-top:1px solid var(--border);margin-bottom:32px;"></div>
-
-    <div class="deliver-grid">
-      <div class="deliver-item">
-        <h3><span style="color:var(--gold);">Audit Report</span></h3>
-        <p>Every gap scored and ranked by impact.</p>
-      </div>
-      <div class="deliver-item">
-        <h3><span style="color:var(--gold);">Clean Rebuild</span></h3>
-        <p>Hand-coded HTML/CSS/JS on Cloudflare Pages.</p>
-      </div>
-      <div class="deliver-item">
-        <h3><span style="color:var(--gold);">Admin Panel</span></h3>
-        <p>Edit content without touching code.</p>
-      </div>
-      <div class="deliver-item">
-        <h3><span style="color:var(--gold);">Handover Docs</span></h3>
-        <p>GitHub, DNS, Cloudflare - written for humans.</p>
-      </div>
-      <div class="deliver-item">
-        <h3><span style="color:var(--gold);">Verified 100%</span></h3>
-        <p>Scores run live before we call it done.</p>
-      </div>
-      <div class="deliver-item">
-        <h3><span style="color:var(--gold);">You Own Everything</span></h3>
-        <p>Domain, code, hosting - all in your name.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- About Snippet -->
 <section style="border-top:1px solid var(--border);padding:72px 24px;">
