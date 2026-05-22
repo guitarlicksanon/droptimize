@@ -76,35 +76,39 @@
 })();
 
 (function() {
-  var btn = document.getElementById('pt-toggle-btn');
-  if (!btn) return;
-  var hidden = document.querySelectorAll('.pt-entry--hidden');
-  var PAGE = 10;
-  var shown = 0;
-
-  btn.addEventListener('click', function() {
-    var expanded = btn.getAttribute('aria-expanded') === 'true';
-    if (expanded) {
-      // collapse back
-      shown = 0;
-      hidden.forEach(function(el) { el.classList.add('pt-entry--hidden'); });
-      btn.textContent = 'Show ' + hidden.length + ' more';
-      btn.setAttribute('aria-expanded', 'false');
-    } else {
-      // reveal up to next PAGE
-      var toShow = Math.min(shown + PAGE, hidden.length);
-      for (var i = shown; i < toShow; i++) {
-        hidden[i].classList.remove('pt-entry--hidden');
-      }
-      shown = toShow;
-      if (shown >= hidden.length) {
-        btn.textContent = 'Show less';
-        btn.setAttribute('aria-expanded', 'true');
-      } else {
-        btn.textContent = 'Show ' + Math.min(PAGE, hidden.length - shown) + ' more';
-      }
-    }
+  // Portfolio accordion
+  document.querySelectorAll('.pt-chevron').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var row = btn.closest('.pt-row');
+      var open = row.getAttribute('data-open') === 'true';
+      row.setAttribute('data-open', open ? 'false' : 'true');
+      btn.setAttribute('aria-label', (open ? 'Expand ' : 'Collapse ') + (row.querySelector('.pt-row-domain') || {}).textContent);
+    });
   });
+
+  // Show more hidden rows
+  var moreBtn = document.getElementById('pt-more-btn');
+  if (moreBtn) {
+    var hiddenRows = Array.from(document.querySelectorAll('.pt-row--hidden'));
+    var PAGE = 10;
+    var shown = 0;
+
+    if (!hiddenRows.length) { document.getElementById('pt-more-wrap').style.display = 'none'; }
+
+    moreBtn.addEventListener('click', function() {
+      var allShown = !hiddenRows.some(function(r) { return r.classList.contains('pt-row--hidden'); });
+      if (allShown) {
+        shown = 0;
+        hiddenRows.forEach(function(r) { r.classList.add('pt-row--hidden'); r.setAttribute('data-open','false'); });
+        moreBtn.textContent = 'Show ' + hiddenRows.length + ' more';
+      } else {
+        var toShow = Math.min(shown + PAGE, hiddenRows.length);
+        for (var i = shown; i < toShow; i++) { hiddenRows[i].classList.remove('pt-row--hidden'); }
+        shown = toShow;
+        moreBtn.textContent = shown >= hiddenRows.length ? 'Show less' : 'Show ' + Math.min(PAGE, hiddenRows.length - shown) + ' more';
+      }
+    });
+  }
 })();
 
 (function() {

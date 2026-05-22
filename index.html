@@ -330,31 +330,50 @@
   .score-label { font-family: "DM Mono", monospace; font-size: 12px; letter-spacing: 0.1em; color: #4ADE80; text-transform: uppercase; }
   .score-blurb { font-family: "DM Mono", monospace; font-size: 12px; color: var(--muted); letter-spacing: 0.04em; margin-top: 3px; }
 
-  .portfolio { padding: 96px 24px; border-top: 1px solid var(--border); }
-  .pt-list { display: flex; flex-direction: column; }
-  .pt-entry { padding: 28px 0; border-bottom: 1px solid var(--border); }
-  .pt-entry:last-child { border-bottom: none; }
-  .pt-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
-  .pt-domain { font-family: 'DM Mono', monospace; font-size: 15px; font-weight: 500; color: var(--text); text-decoration: none; }
-  .pt-domain:hover { color: var(--gold); }
-  .pt-biz { display: block; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
-  .pt-table-wrap { overflow-x: auto; }
-  .pt-table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; }
-  .pt-table th { padding: 6px 18px 6px 0; text-align: left; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 400; white-space: nowrap; }
+  .portfolio { padding: 48px 24px 40px; border-top: 1px solid var(--border); }
+  .pt-list { display: flex; flex-direction: column; gap: 1px; margin-top: 16px; }
+
+  /* Collapsed row */
+  .pt-row { background: var(--surface); }
+  .pt-row--hidden { display: none; }
+  .pt-row-head { width: 100%; display: flex; align-items: center; gap: 10px; padding: 0; background: none; border: none; text-align: left; min-height: 38px; }
+  .pt-chevron { font-size: 9px; color: var(--muted); transition: transform 0.18s; flex-shrink: 0; width: 28px; text-align: center; cursor: pointer; padding: 10px 0; align-self: stretch; display: flex; align-items: center; justify-content: center; }
+  .pt-chevron:hover { color: var(--gold); }
+  .pt-row[data-open="true"] .pt-chevron { transform: rotate(90deg); }
+  .pt-row-domain { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--text); text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+  .pt-row-domain:hover { color: var(--gold); }
+  .pt-row-sep { color: var(--border); font-size: 10px; flex-shrink: 0; }
+  .pt-row-biz { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pt-row-final { display: flex; gap: 8px; flex-shrink: 0; align-items: center; }
+  .pt-fc { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; }
+  .pt-fc-lbl { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .pt-row-date { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); white-space: nowrap; padding-right: 14px; flex-shrink: 0; }
+
+  /* Expanded detail */
+  .pt-detail { display: none; padding: 12px 14px 14px 28px; border-top: 1px solid var(--border); background: rgba(255,255,255,0.01); }
+  .pt-row[data-open="true"] .pt-detail { display: block; }
+  .pt-table-wrap { overflow-x: auto; margin-bottom: 10px; }
+  .pt-table { border-collapse: collapse; font-family: 'DM Mono', monospace; min-width: 360px; }
+  .pt-table th { padding: 4px 14px 4px 0; text-align: left; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 400; white-space: nowrap; }
   .pt-th-final { color: var(--gold) !important; }
-  .pt-table td { padding: 8px 18px 8px 0; border-top: 1px solid var(--border); font-size: 12px; white-space: nowrap; font-family: 'DM Mono', monospace; }
-  .pt-cat { color: var(--muted) !important; font-size: 12px !important; letter-spacing: 0.08em; text-transform: uppercase; min-width: 110px; }
+  .pt-table td { padding: 5px 14px 5px 0; border-top: 1px solid rgba(46,46,46,0.6); font-size: 11px; white-space: nowrap; font-family: 'DM Mono', monospace; }
+  .pt-cat { color: var(--muted) !important; font-size: 10px !important; letter-spacing: 0.08em; text-transform: uppercase; min-width: 100px; }
   .pt-final { font-weight: 600; }
-  .pt-note { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: var(--muted); margin-top: 12px; padding: 10px 14px; border-left: 2px solid #E05A3A; background: rgba(224,90,58,0.06); border-radius: 0 4px 4px 0; line-height: 1.6; }
-  .pt-entry--hidden { display: none; }
-  .pt-toggle-wrap { padding: 20px 0 4px; }
-  .pt-toggle-btn { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid var(--border); border-radius: 4px; padding: 7px 14px; cursor: pointer; transition: color 0.15s, border-color 0.15s; }
-  .pt-toggle-btn:hover { color: var(--gold); border-color: var(--gold-dim); }
-  .p-tags { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .p-tag { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--border); color: var(--muted); }
-  .p-tag--gold { border-color: rgba(201,168,76,0.4); color: var(--gold); }
-  .p-date { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); padding: 3px 0; }
-  .p-arrow { color: var(--gold); font-size: 14px; }
+  .pt-note { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.03em; color: var(--muted); padding: 8px 12px; border-left: 2px solid rgba(224,90,58,0.5); background: rgba(224,90,58,0.04); line-height: 1.6; }
+
+  /* Audit history inside detail */
+  .al-wrap { margin-top: 8px; }
+  .al-btn { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: pointer; padding: 4px 0; transition: color 0.15s; }
+  .al-btn:hover { color: var(--gold); }
+  .al-icon { font-size: 9px; }
+  .al-panel { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+  /* Show more */
+  .pt-more-wrap { padding: 12px 0 0; }
+  .pt-more-btn { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid var(--border); padding: 6px 14px; cursor: pointer; transition: color 0.15s, border-color 0.15s; }
+  .pt-more-btn:hover { color: var(--gold); border-color: var(--gold-dim); }
+
+  .p-arrow { color: var(--gold); }
   .pv-gold { color: var(--gold); }
   .pv-amber { color: #E6A817; }
   .pv-red { color: #E05A3A; }
@@ -745,239 +764,273 @@
 </section>
 
 <!-- Portfolio -->
+<!-- ORDERING RULE: newest first. Add new rows at the top. Hidden rows visible via "show more".
+     To add an entry: copy a .pt-row block, update data, set data-open="false".
+     First 6 rows visible; add pt-row--hidden to older entries. -->
 <section class="portfolio" id="portfolio">
   <div class="container">
     <p class="eyebrow">Portfolio - Verified scores</p>
-    <h2 class="section-title">Sites we've <span style="color:var(--warm);">drop</span><span style="color:var(--gold);">timized.</span></h2>
+    <h2 class="section-title" style="margin-bottom:4px;">Sites we've <span style="color:var(--warm);">drop</span><span style="color:var(--gold);">timized.</span></h2>
+    <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:0;">Click any row to expand scores and notes.</p>
+    <div class="pt-list" id="pt-list">
 
-    <!-- ORDERING RULE: top 3 slots always reserved for internal audits (newest first).
-         External entries fill remaining slots. Hidden entries are latest-first within each group.
-         When adding new entries: internal goes before colinautorepairs; colinautorepairs drops to hidden. -->
-    <div class="pt-list">
-
-      <!-- 1 - expathway.com - internal, May 2026 -->
-      <div class="pt-entry">
-        <div class="pt-header">
-          <div>
-            <a href="https://expathway.com" target="_blank" rel="noopener" class="pt-domain">expathway.com <span class="p-arrow">&#x2197;</span></a>
-            <span class="pt-biz">Expathway - Expat Life &amp; Travel Advice</span>
+      <!-- expathway.com -->
+      <div class="pt-row" data-open="false">
+        <div class="pt-row-head">
+          <button class="pt-chevron" aria-label="Expand expathway.com">&#x25B6;</button>
+          <a href="https://expathway.com" target="_blank" rel="noopener" class="pt-row-domain">expathway.com <span class="p-arrow">&#x2197;</span></a>
+          <span class="pt-row-sep">|</span>
+          <span class="pt-row-biz">Expat Life &amp; Travel</span>
+          <div class="pt-row-final">
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEO</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> PERF</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> ACC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> BP</span></span>
           </div>
-          <div class="p-tags">
-            <span class="p-tag p-tag--gold">Completed</span>
-            <span class="p-tag">Internal</span>
-            <span class="p-date">May 2026</span>
+          <span class="pt-row-date">May 2026</span>
+        </div>
+        <div class="pt-detail">
+          <div class="pt-table-wrap">
+            <table class="pt-table">
+              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Fixed</th><th scope="col" class="pt-th-final">3 - Verified</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">91%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">95%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">92%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div class="pt-table-wrap">
-          <table class="pt-table">
-            <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Fixed</th><th scope="col" class="pt-th-final">3 - Verified</th></tr></thead>
-            <tbody>
-              <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">91%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Security</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">95%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">92%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="pt-note">New OYE internal property built from scratch. Initial audit exposed three gaps: (1) Accessibility 95% - muted text color #64748B on light blue #F0F9FF measured 4.46:1, just under the 4.5:1 WCAG AA threshold for small text; 5 social links had aria-labels that didn't include full visible text, triggering label-in-name failures. (2) Best Practices 92% - inline window.OYEChat config script blocked by CSP since script-src had no unsafe-inline. (3) SEO 91% - no robots.txt file, CF Pages serving 404 which Lighthouse parsed as 335 malformed directives. Fixes: darkened muted text to #546070 (5.56:1 on that bg), removed mismatched aria-labels from social links (visible text is descriptive), moved chat config to external /assets/chat-config.js, added robots.txt and sitemap.xml. All four categories verified at 100%.</p>
-        <div class="al-wrap">
-          <button class="al-btn" data-domain="expathway.com" aria-expanded="false" aria-controls="al-expathway-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
-          <div class="al-panel" id="al-expathway-com" hidden></div>
+          <p class="pt-note">New OYE internal property built from scratch. Initial audit exposed three gaps: (1) Accessibility 95% - muted text color #64748B on light blue #F0F9FF measured 4.46:1, just under the 4.5:1 WCAG AA threshold for small text; 5 social links had aria-labels that didn't include full visible text, triggering label-in-name failures. (2) Best Practices 92% - inline window.OYEChat config script blocked by CSP since script-src had no unsafe-inline. (3) SEO 91% - no robots.txt file, CF Pages serving 404 which Lighthouse parsed as 335 malformed directives. Fixes: darkened muted text to #546070 (5.56:1 on that bg), removed mismatched aria-labels from social links (visible text is descriptive), moved chat config to external /assets/chat-config.js, added robots.txt and sitemap.xml. All four categories verified at 100%.</p>
+          <div class="al-wrap">
+            <button class="al-btn" data-domain="expathway.com" aria-expanded="false" aria-controls="al-expathway-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+            <div class="al-panel" id="al-expathway-com" hidden></div>
+          </div>
         </div>
       </div>
 
-      <!-- 2 - OYE Scholar (oyescholar.com) - internal, May 2026 -->
-      <div class="pt-entry">
-        <div class="pt-header">
-          <div>
-            <a href="https://oyescholar.com" target="_blank" rel="noopener" class="pt-domain">oyescholar.com <span class="p-arrow">&#x2197;</span></a>
-            <span class="pt-biz">OYE Scholar - College &amp; Higher Education Advisory</span>
+      <!-- oyescholar.com -->
+      <div class="pt-row" data-open="false">
+        <div class="pt-row-head">
+          <button class="pt-chevron" aria-label="Expand oyescholar.com">&#x25B6;</button>
+          <a href="https://oyescholar.com" target="_blank" rel="noopener" class="pt-row-domain">oyescholar.com <span class="p-arrow">&#x2197;</span></a>
+          <span class="pt-row-sep">|</span>
+          <span class="pt-row-biz">College &amp; Higher Education Advisory</span>
+          <div class="pt-row-final">
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEO</span></span>
+            <span><span class="pt-fc" style="color:var(--muted);">--</span><span class="pt-fc-lbl"> SEC</span></span>
+            <span><span class="pt-fc pv-gold">99</span><span class="pt-fc-lbl"> PERF</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> ACC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> BP</span></span>
           </div>
-          <div class="p-tags">
-            <span class="p-tag p-tag--gold">Completed</span>
-            <span class="p-tag">Internal</span>
-            <span class="p-date">May 2026</span>
+          <span class="pt-row-date">May 2026</span>
+        </div>
+        <div class="pt-detail">
+          <div class="pt-table-wrap">
+            <table class="pt-table">
+              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Transfer</th><th scope="col" class="pt-th-final">3 - Final</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">92%</td><td class="pv-gold">91%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-amber">~92%</td><td style="color:var(--muted);">Pending</td><td class="pt-final" style="color:var(--muted);">Pending</td></tr>
+                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">96%</td><td class="pv-gold">99%</td><td class="pv-gold pt-final">99%</td></tr>
+                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">93%</td><td class="pv-gold">93%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">92%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div class="pt-table-wrap">
-          <table class="pt-table">
-            <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Transfer</th><th scope="col" class="pt-th-final">3 - Final</th></tr></thead>
-            <tbody>
-              <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">92%</td><td class="pv-gold">91%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Security</th><td class="pv-amber">~92%</td><td class="pv-muted" style="color:var(--muted);">Pending</td><td class="pv-muted pt-final" style="color:var(--muted);">Pending</td></tr>
-              <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">96%</td><td class="pv-gold">99%</td><td class="pv-gold pt-final">99%</td></tr>
-              <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">93%</td><td class="pv-gold">93%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">92%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="pt-note">Migrated from oyecreations.com/scholar to standalone oyescholar.com. Pre-transfer audit: scholar landing (100/94/92/100 perf/a11y/bp/seo) and essay builder (96/93/92/92) - lower score per category shown. Final build: 98/100/100/100 across Performance, Accessibility, Best Practices, and SEO. Accessibility and Best Practices hit 100% after contrast fixes, label corrections, and CSP tuning. SEO hit 100% after disabling Cloudflare's robots.txt AI signal injection.</p>
-        <div class="al-wrap">
-          <button class="al-btn" data-domain="oyescholar.com" aria-expanded="false" aria-controls="al-oyescholar-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
-          <div class="al-panel" id="al-oyescholar-com" hidden></div>
+          <p class="pt-note">Migrated from oyecreations.com/scholar to standalone oyescholar.com. Pre-transfer audit: scholar landing (100/94/92/100 perf/a11y/bp/seo) and essay builder (96/93/92/92) - lower score per category shown. Final build: 98/100/100/100 across Performance, Accessibility, Best Practices, and SEO. Accessibility and Best Practices hit 100% after contrast fixes, label corrections, and CSP tuning. SEO hit 100% after disabling Cloudflare's robots.txt AI signal injection.</p>
+          <div class="al-wrap">
+            <button class="al-btn" data-domain="oyescholar.com" aria-expanded="false" aria-controls="al-oyescholar-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+            <div class="al-panel" id="al-oyescholar-com" hidden></div>
+          </div>
         </div>
       </div>
 
-      <!-- 2 - bottomsupfam.com - internal, May 2026 -->
-      <div class="pt-entry">
-        <div class="pt-header">
-          <div>
-            <a href="https://bottomsupfam.com" target="_blank" rel="noopener" class="pt-domain">bottomsupfam.com <span class="p-arrow">&#x2197;</span></a>
-            <span class="pt-biz">OYE Creations - Sobriety &amp; Accountability Podcast</span>
+      <!-- bottomsupfam.com -->
+      <div class="pt-row" data-open="false">
+        <div class="pt-row-head">
+          <button class="pt-chevron" aria-label="Expand bottomsupfam.com">&#x25B6;</button>
+          <a href="https://bottomsupfam.com" target="_blank" rel="noopener" class="pt-row-domain">bottomsupfam.com <span class="p-arrow">&#x2197;</span></a>
+          <span class="pt-row-sep">|</span>
+          <span class="pt-row-biz">Sobriety &amp; Accountability Podcast</span>
+          <div class="pt-row-final">
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEO</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> PERF</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> ACC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> BP</span></span>
           </div>
-          <div class="p-tags">
-            <span class="p-tag p-tag--gold">Completed</span>
-            <span class="p-tag">Internal</span>
-            <span class="p-date">May 2026</span>
+          <span class="pt-row-date">May 2026</span>
+        </div>
+        <div class="pt-detail">
+          <div class="pt-table-wrap">
+            <table class="pt-table">
+              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Fixed</th><th scope="col" class="pt-th-final">3 - Verified</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">~75%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-amber">~67%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~80%</td><td class="pv-gold">97%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~75%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">~60%</td><td class="pv-amber">85%</td><td class="pv-gold pt-final">100%</td></tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div class="pt-table-wrap">
-          <table class="pt-table">
-            <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Fixed</th><th scope="col" class="pt-th-final">3 - Verified</th></tr></thead>
-            <tbody>
-              <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">~75%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Security</th><td class="pv-amber">~67%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~80%</td><td class="pv-gold">97%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~75%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">~60%</td><td class="pv-amber">85%</td><td class="pv-gold pt-final">100%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="pt-note">New OYE internal site audited at launch. Security gap: X-XSS-Protection legacy value, HSTS max-age 1yr vs 2yr, missing COOP/CORP headers. Inline scripts blocked a tight CSP - extracted to external files, removed unsafe-inline from script-src. Accessibility contrast failures on #888/#999 text on white - fixed to #767676 (passes 4.5:1). Scores verified live: SEO 92%, A11y 97%, Best Practices 92%, Performance 85% (Google Fonts CDN - font migration pending).</p>
-        <div class="al-wrap">
-          <button class="al-btn" data-domain="bottomsupfam.com" aria-expanded="false" aria-controls="al-bottomsupfam-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
-          <div class="al-panel" id="al-bottomsupfam-com" hidden></div>
+          <p class="pt-note">New OYE internal site audited at launch. Security gap: X-XSS-Protection legacy value, HSTS max-age 1yr vs 2yr, missing COOP/CORP headers. Inline scripts blocked a tight CSP - extracted to external files, removed unsafe-inline from script-src. Accessibility contrast failures on #888/#999 text on white - fixed to #767676 (passes 4.5:1). Scores verified live: SEO 92%, A11y 97%, Best Practices 92%, Performance 85% (Google Fonts CDN - font migration pending).</p>
+          <div class="al-wrap">
+            <button class="al-btn" data-domain="bottomsupfam.com" aria-expanded="false" aria-controls="al-bottomsupfam-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+            <div class="al-panel" id="al-bottomsupfam-com" hidden></div>
+          </div>
         </div>
       </div>
 
-      <!-- 2 - buzzresume.com - internal, May 2026 -->
-      <div class="pt-entry">
-        <div class="pt-header">
-          <div>
-            <a href="https://buzzresume.com" target="_blank" rel="noopener" class="pt-domain">buzzresume.com <span class="p-arrow">&#x2197;</span></a>
-            <span class="pt-biz">OYE Creations - AI Resume Writing Service</span>
+      <!-- buzzresume.com -->
+      <div class="pt-row" data-open="false">
+        <div class="pt-row-head">
+          <button class="pt-chevron" aria-label="Expand buzzresume.com">&#x25B6;</button>
+          <a href="https://buzzresume.com" target="_blank" rel="noopener" class="pt-row-domain">buzzresume.com <span class="p-arrow">&#x2197;</span></a>
+          <span class="pt-row-sep">|</span>
+          <span class="pt-row-biz">AI Resume Writing Service</span>
+          <div class="pt-row-final">
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEO</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEC</span></span>
+            <span><span class="pt-fc pv-gold">96</span><span class="pt-fc-lbl"> PERF</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> ACC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> BP</span></span>
           </div>
-          <div class="p-tags">
-            <span class="p-tag p-tag--gold">Completed</span>
-            <span class="p-tag">Internal</span>
-            <span class="p-date">May 2026</span>
+          <span class="pt-row-date">May 2026</span>
+        </div>
+        <div class="pt-detail">
+          <div class="pt-table-wrap">
+            <table class="pt-table">
+              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Transfer</th><th scope="col">3 - Pre-Launch</th><th scope="col" class="pt-th-final">4 - Verified</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">~75%</td><td class="pv-gold">92%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-red">~58%</td><td class="pv-red">~58%</td><td class="pv-gold">~92%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~82%</td><td class="pv-gold">94%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~85%</td><td class="pv-gold">92%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div class="pt-table-wrap">
-          <table class="pt-table">
-            <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Transfer</th><th scope="col">3 - Pre-Launch</th><th scope="col" class="pt-th-final">4 - Verified</th></tr></thead>
-            <tbody>
-              <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">~75%</td><td class="pv-gold">92%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Security</th><td class="pv-red">~58%</td><td class="pv-red">~58%</td><td class="pv-gold">~92%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~82%</td><td class="pv-gold">94%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~85%</td><td class="pv-gold">92%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="pt-note">Subdomain migration to standalone domain. Cloudflare's default robots.txt caused 2,064 SEO errors; missing security headers left the site exposed at 58%. Performance held at 96% - external Google Fonts CDN is the remaining gap, not a security or accessibility issue.</p>
-        <div class="al-wrap">
-          <button class="al-btn" data-domain="buzzresume.com" aria-expanded="false" aria-controls="al-buzzresume-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
-          <div class="al-panel" id="al-buzzresume-com" hidden></div>
+          <p class="pt-note">Subdomain migration to standalone domain. Cloudflare's default robots.txt caused 2,064 SEO errors; missing security headers left the site exposed at 58%. Performance held at 96% - external Google Fonts CDN is the remaining gap, not a security or accessibility issue.</p>
+          <div class="al-wrap">
+            <button class="al-btn" data-domain="buzzresume.com" aria-expanded="false" aria-controls="al-buzzresume-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+            <div class="al-panel" id="al-buzzresume-com" hidden></div>
+          </div>
         </div>
       </div>
 
-      <!-- 3 - multilingo.studio - internal, May 2026 -->
-      <div class="pt-entry">
-        <div class="pt-header">
-          <div>
-            <a href="https://multilingo.studio" target="_blank" rel="noopener" class="pt-domain">multilingo.studio <span class="p-arrow">&#x2197;</span></a>
-            <span class="pt-biz">OYE Creations - AI Translation &amp; Voice Platform</span>
+      <!-- multilingo.studio -->
+      <div class="pt-row" data-open="false">
+        <div class="pt-row-head">
+          <button class="pt-chevron" aria-label="Expand multilingo.studio">&#x25B6;</button>
+          <a href="https://multilingo.studio" target="_blank" rel="noopener" class="pt-row-domain">multilingo.studio <span class="p-arrow">&#x2197;</span></a>
+          <span class="pt-row-sep">|</span>
+          <span class="pt-row-biz">AI Translation &amp; Voice Platform</span>
+          <div class="pt-row-final">
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEO</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> PERF</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> ACC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> BP</span></span>
           </div>
-          <div class="p-tags">
-            <span class="p-tag p-tag--gold">Completed</span>
-            <span class="p-tag">Internal</span>
-            <span class="p-date">May 2026</span>
+          <span class="pt-row-date">May 2026</span>
+        </div>
+        <div class="pt-detail">
+          <div class="pt-table-wrap">
+            <table class="pt-table">
+              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Rebuilt</th><th scope="col">3 - Pre-Launch</th><th scope="col" class="pt-th-final">4 - Verified</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">~84%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-red">~38%</td><td class="pv-gold">100%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~76%</td><td class="pv-gold">100%</td><td class="pv-amber">~86%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~80%</td><td class="pv-gold">100%</td><td class="pv-gold">91%</td><td class="pv-gold pt-final">100%</td></tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div class="pt-table-wrap">
-          <table class="pt-table">
-            <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Rebuilt</th><th scope="col">3 - Pre-Launch</th><th scope="col" class="pt-th-final">4 - Verified</th></tr></thead>
-            <tbody>
-              <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">~84%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Security</th><td class="pv-red">~38%</td><td class="pv-gold">100%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~76%</td><td class="pv-gold">100%</td><td class="pv-amber">~86%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~80%</td><td class="pv-gold">100%</td><td class="pv-gold">91%</td><td class="pv-gold pt-final">100%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="pt-note">Worst security score in the portfolio at ~38% - the Next.js app had no CSP, no HSTS, and no CORP headers at all. Accessibility issues came from component library defaults that didn't meet WCAG AA contrast. Dynamic routes were missing canonical tags, holding SEO back. All rebuilt and verified at 100%.</p>
-        <div class="al-wrap">
-          <button class="al-btn" data-domain="multilingo.studio" aria-expanded="false" aria-controls="al-multilingo-studio"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
-          <div class="al-panel" id="al-multilingo-studio" hidden></div>
+          <p class="pt-note">Worst security score in the portfolio at ~38% - the Next.js app had no CSP, no HSTS, and no CORP headers at all. Accessibility issues came from component library defaults that didn't meet WCAG AA contrast. Dynamic routes were missing canonical tags, holding SEO back. All rebuilt and verified at 100%.</p>
+          <div class="al-wrap">
+            <button class="al-btn" data-domain="multilingo.studio" aria-expanded="false" aria-controls="al-multilingo-studio"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+            <div class="al-panel" id="al-multilingo-studio" hidden></div>
+          </div>
         </div>
       </div>
 
-      <!-- 4 - guitaranon.com - internal, May 2026 -->
-      <div class="pt-entry">
-        <div class="pt-header">
-          <div>
-            <a href="https://guitaranon.com" target="_blank" rel="noopener" class="pt-domain">guitaranon.com <span class="p-arrow">&#x2197;</span></a>
-            <span class="pt-biz">OYE Creations - Guitar Education &amp; Tab Archive</span>
+      <!-- guitaranon.com -->
+      <div class="pt-row" data-open="false">
+        <div class="pt-row-head">
+          <button class="pt-chevron" aria-label="Expand guitaranon.com">&#x25B6;</button>
+          <a href="https://guitaranon.com" target="_blank" rel="noopener" class="pt-row-domain">guitaranon.com <span class="p-arrow">&#x2197;</span></a>
+          <span class="pt-row-sep">|</span>
+          <span class="pt-row-biz">Guitar Education &amp; Tab Archive</span>
+          <div class="pt-row-final">
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEO</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> PERF</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> ACC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> BP</span></span>
           </div>
-          <div class="p-tags">
-            <span class="p-tag p-tag--gold">Completed</span>
-            <span class="p-tag">Internal</span>
-            <span class="p-date">May 2026</span>
+          <span class="pt-row-date">May 2026</span>
+        </div>
+        <div class="pt-detail">
+          <div class="pt-table-wrap">
+            <table class="pt-table">
+              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Rebuilt</th><th scope="col">3 - Pre-Launch</th><th scope="col" class="pt-th-final">4 - Verified</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-gold">92%</td><td class="pv-gold">100%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~79%</td><td class="pv-gold">100%</td><td class="pv-amber">88%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~85%</td><td class="pv-gold">100%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div class="pt-table-wrap">
-          <table class="pt-table">
-            <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Rebuilt</th><th scope="col">3 - Pre-Launch</th><th scope="col" class="pt-th-final">4 - Verified</th></tr></thead>
-            <tbody>
-              <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold">100%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Security</th><td class="pv-gold">92%</td><td class="pv-gold">100%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~79%</td><td class="pv-gold">100%</td><td class="pv-amber">88%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~85%</td><td class="pv-gold">100%</td><td class="pv-gold">92%</td><td class="pv-gold pt-final">100%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="pt-note">SEO started at 100% - strong existing domain signals meant no indexing work needed. Accessibility gaps were unlabeled interactive elements on chord cards and contrast failures on secondary label text. Security was one header short at audit and pre-launch. All closed at 100% after rebuild.</p>
-        <div class="al-wrap">
-          <button class="al-btn" data-domain="guitaranon.com" aria-expanded="false" aria-controls="al-guitaranon-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
-          <div class="al-panel" id="al-guitaranon-com" hidden></div>
+          <p class="pt-note">SEO started at 100% - strong existing domain signals meant no indexing work needed. Accessibility gaps were unlabeled interactive elements on chord cards and contrast failures on secondary label text. Security was one header short at audit and pre-launch. All closed at 100% after rebuild.</p>
+          <div class="al-wrap">
+            <button class="al-btn" data-domain="guitaranon.com" aria-expanded="false" aria-controls="al-guitaranon-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+            <div class="al-panel" id="al-guitaranon-com" hidden></div>
+          </div>
         </div>
       </div>
 
-      <!-- hidden - oyecreations.com - internal, May 2026 -->
-      <div class="pt-entry pt-entry--hidden">
-        <div class="pt-header">
-          <div>
-            <a href="https://oyecreations.com" target="_blank" rel="noopener" class="pt-domain">oyecreations.com <span class="p-arrow">&#x2197;</span></a>
-            <span class="pt-biz">OYE Creations LLC - Albuquerque, NM</span>
+      <!-- oyecreations.com - hidden -->
+      <div class="pt-row pt-row--hidden" data-open="false">
+        <div class="pt-row-head">
+          <button class="pt-chevron" aria-label="Expand oyecreations.com">&#x25B6;</button>
+          <a href="https://oyecreations.com" target="_blank" rel="noopener" class="pt-row-domain">oyecreations.com <span class="p-arrow">&#x2197;</span></a>
+          <span class="pt-row-sep">|</span>
+          <span class="pt-row-biz">OYE Creations LLC</span>
+          <div class="pt-row-final">
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEO</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> SEC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> PERF</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> ACC</span></span>
+            <span><span class="pt-fc pv-gold">100</span><span class="pt-fc-lbl"> BP</span></span>
           </div>
-          <div class="p-tags">
-            <span class="p-tag p-tag--gold">Completed</span>
-            <span class="p-tag">Internal</span>
-            <span class="p-date">May 2026</span>
+          <span class="pt-row-date">May 2026</span>
+        </div>
+        <div class="pt-detail">
+          <div class="pt-table-wrap">
+            <table class="pt-table">
+              <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Rebuilt</th><th scope="col">3 - Pre-Launch</th><th scope="col" class="pt-th-final">4 - Verified</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-gold">91%</td><td class="pv-gold">100%</td><td class="pv-gold">94%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-red">68%</td><td class="pv-gold">100%</td><td class="pv-amber">80%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~82%</td><td class="pv-gold">100%</td><td class="pv-gold">91%</td><td class="pv-gold pt-final">100%</td></tr>
+                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~76%</td><td class="pv-gold">100%</td><td class="pv-amber">84%</td><td class="pv-gold pt-final">100%</td></tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div class="pt-table-wrap">
-          <table class="pt-table">
-            <thead><tr><th scope="col"></th><th scope="col">1 - Audit</th><th scope="col">2 - Rebuilt</th><th scope="col">3 - Pre-Launch</th><th scope="col" class="pt-th-final">4 - Verified</th></tr></thead>
-            <tbody>
-              <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-gold">91%</td><td class="pv-gold">100%</td><td class="pv-gold">94%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Security</th><td class="pv-red">68%</td><td class="pv-gold">100%</td><td class="pv-amber">80%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">~82%</td><td class="pv-gold">100%</td><td class="pv-gold">91%</td><td class="pv-gold pt-final">100%</td></tr>
-              <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-amber">~76%</td><td class="pv-gold">100%</td><td class="pv-amber">84%</td><td class="pv-gold pt-final">100%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="pt-note">Incomplete security headers at audit - HSTS and CORP were missing, holding security at 68%. A late pre-launch config push partially reverted those settings, dropping security back to 80% right before go-live. Rebuilt from scratch with the full OYE header stack. All five categories closed at 100%.</p>
-        <div class="al-wrap">
-          <button class="al-btn" data-domain="oyecreations.com" aria-expanded="false" aria-controls="al-oyecreations-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
-          <div class="al-panel" id="al-oyecreations-com" hidden></div>
+          <p class="pt-note">Incomplete security headers at audit - HSTS and CORP were missing, holding security at 68%. A late pre-launch config push partially reverted those settings, dropping security back to 80% right before go-live. Rebuilt from scratch with the full OYE header stack. All five categories closed at 100%.</p>
+          <div class="al-wrap">
+            <button class="al-btn" data-domain="oyecreations.com" aria-expanded="false" aria-controls="al-oyecreations-com"><span class="al-icon" aria-hidden="true">&#x25BE;</span> Audit History</button>
+            <div class="al-panel" id="al-oyecreations-com" hidden></div>
+          </div>
         </div>
       </div>
 
-
-      <div class="pt-toggle-wrap" id="pt-toggle-wrap">
-        <button class="pt-toggle-btn" id="pt-toggle-btn" aria-expanded="false">Show 1 more</button>
+      <div class="pt-more-wrap" id="pt-more-wrap">
+        <button class="pt-more-btn" id="pt-more-btn">Show 1 more</button>
       </div>
 
     </div>
