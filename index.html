@@ -525,6 +525,20 @@
   .al-cta { margin-top: 12px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.05em; line-height: 1.6; }
   .al-cta a { color: var(--gold); text-decoration: none; }
   .al-cta a:hover { text-decoration: underline; }
+
+  @media (max-width: 560px) {
+    .pt-row-sep, .pt-row-date { display: none; }
+    .pt-row-head { flex-wrap: wrap; min-height: auto; padding: 4px 0; }
+    .pt-row-domain { max-width: 55%; overflow: hidden; text-overflow: ellipsis; }
+    .pt-row-biz { flex: 1 1 auto; min-width: 0; }
+    .pt-row-final { flex-basis: 100%; gap: 6px; padding: 2px 0 5px 28px; }
+    .pt-fc { font-size: 10px; }
+    .pt-fc-lbl { font-size: 8px; }
+    .pt-detail { padding: 10px 10px 12px 10px; }
+    .pt-table { min-width: 0; width: 100%; }
+    .pt-cat { min-width: 80px; }
+    .pt-table th, .pt-table td { padding-right: 8px; font-size: 10px; }
+  }
 </style>
 </head>
 <body>
