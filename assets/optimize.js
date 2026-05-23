@@ -21,7 +21,7 @@
         '<span class="live-audit-date">Audit runs every Monday</span>' +
       '</div>' +
       '<div class="live-score-grid">' +
-        ['SEO','Security','Perf','Access','BP'].map(function(l) {
+        ['Search Engine','Security','Performance','Accessibility','Best Practices'].map(function(l) {
           return '<div class="live-score-tile"><div class="live-score-val" style="color:var(--border);">-</div><div class="live-score-lbl">' + l + '</div></div>';
         }).join('') +
       '</div>' +
@@ -45,7 +45,7 @@
       var psiUnavailable = ['seo', 'performance', 'accessibility', 'best_practices']
         .every(function(k) { return !scores[k]; });
 
-      var SCORE_SHORT = { seo:'SEO', security:'Security', performance:'Perf', accessibility:'Access', best_practices:'BP' };
+      var SCORE_SHORT = { seo:'Search Engine', security:'Security', performance:'Performance', accessibility:'Accessibility', best_practices:'Best Practices' };
 
       var scoreBlocks = SCORE_ORDER.map(function(k) {
         var v = scores[k];
