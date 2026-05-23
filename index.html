@@ -389,21 +389,21 @@
   .live-audit-domain:hover { color: var(--gold); }
   .live-audit-date { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
   .live-score-grid { display: flex; flex: 1; }
-  .live-score-tile { flex: 1; padding: 10px 8px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .live-score-tile { flex: 1; padding: 12px 8px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; text-align: center; }
   .live-score-tile:last-child { border-right: none; }
-  .live-score-val { font-family: 'DM Mono', monospace; font-size: 15px; font-weight: 500; line-height: 1; color: var(--muted); }
-  .live-score-val.pv-gold { color: var(--gold); text-shadow: 0 0 16px rgba(201,168,76,0.5); }
+  .live-score-val { font-family: 'DM Mono', monospace; font-size: 24px; font-weight: 700; line-height: 1; color: var(--muted); }
+  .live-score-val.pv-gold { color: var(--gold); text-shadow: 0 0 20px rgba(201,168,76,0.5); }
   .live-score-val.pv-amber { color: #F59E0B; }
   .live-score-val.pv-red { color: #E05A3A; }
-  .live-score-lbl { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.09em; text-transform: uppercase; color: #4ADE80; }
+  .live-score-lbl { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: #4ADE80; }
   .live-check-grid { display: none; }
   .live-check-item { display: none; }
   @media (max-width: 540px) {
     .live-audit-bar { flex-direction: column; }
     .live-audit-meta { border-right: none; border-bottom: 1px solid rgba(74,222,128,0.12); flex-direction: row; align-items: center; gap: 12px; }
     .live-score-tile { padding: 8px 4px; }
-    .live-score-val { font-size: 13px; }
-    .live-score-lbl { font-size: 8px; }
+    .live-score-val { font-size: 18px; }
+    .live-score-lbl { font-size: 9px; }
   }
 
   .free-audit-cta { flex-shrink:0; margin-left:auto; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:#ADADAD; background:none; border:1px solid var(--border); padding:11px 20px; text-decoration:none; white-space:nowrap; transition:color 150ms,border-color 150ms; }
@@ -602,10 +602,10 @@
 <main>
 
 <!-- Hero -->
-<section class="hero">
-  <p class="eyebrow">Web Audit &amp; Rebuild - by OYE Creations</p>
-  <h1><em>Drop</em> your URL.<br>Get <em>optimized.</em></h1>
-  <p>Full SEO, security, performance, and accessibility audit - plus a clean rebuild targeting 90-100 across all five Lighthouse categories. We push for 100. One drop. No lock-in. You own everything.</p>
+<section class="hero" id="heroSection">
+  <p class="eyebrow" id="heroEyebrow">Web Audit &amp; Rebuild - by OYE Creations</p>
+  <h1 id="heroH1"><em>Drop</em> your URL.<br>Get <em>optimized.</em></h1>
+  <p id="heroSub">Full SEO, security, performance, and accessibility audit - plus a clean rebuild targeting 90-100 across all five Lighthouse categories. We push for 100. One drop. No lock-in. You own everything.</p>
   <span class="hero-mission">10% of every project goes to a 501(c)(3) nonprofit of your choice.</span>
   <a href="#audit-form" class="cta">Drop Your URL &rarr;</a>
 </section>
@@ -1194,6 +1194,23 @@
 <script defer src="/assets/optimize.js?v=12"></script>
 <script defer src="/assets/checkout.js"></script>
 <script src="/assets/chat-config.js"></script>
-<script defer src="https://bink.oyecreations.com/assets/chat-widget.js?v=12"></script>
+<script defer src="https://bink.oyecreations.com/assets/chat-widget.js?v=16"></script>
+<script>
+(function(){
+  var S={
+    es:{ey:'Auditoria Web y Rediseno - por OYE Creations',h1:'<em>Envia</em> tu URL.<br>Queda <em>optimizado.</em>',sub:'Auditoria completa de SEO, seguridad, rendimiento y accesibilidad - mas un rediseno limpio. Una sola caida. Sin contratos. El codigo es tuyo.'},
+    fr:{ey:'Audit Web et Refonte - par OYE Creations',h1:'<em>Deposez</em> votre URL.<br>Soyez <em>optimise.</em>',sub:'Audit complet SEO, securite, performance et accessibilite - plus une refonte propre. Un seul depot. Sans engagement. Vous etes proprietaire du code.'},
+    pt:{ey:'Auditoria Web e Reconstrucao - por OYE Creations',h1:'<em>Envie</em> sua URL.<br>Fique <em>otimizado.</em>',sub:'Auditoria completa de SEO, seguranca, desempenho e acessibilidade - mais uma reconstrucao limpa. Uma queda. Sem contrato. O codigo e seu.'},
+    de:{ey:'Web-Audit und Neubau - von OYE Creations',h1:'<em>Drop</em> deine URL.<br>Werde <em>optimiert.</em>',sub:'Vollstaendiger SEO-, Sicherheits-, Performance- und Accessibility-Audit - plus ein sauberer Neubau. Ein Drop. Kein Vertrag. Der Code gehoert dir.'}
+  };
+  fetch('https://bink.oyecreations.com/api/region').then(function(r){return r.json()}).then(function(d){
+    var s=S[(d.languageCode||'').split('-')[0]];if(!s)return;
+    var el;
+    el=document.getElementById('heroEyebrow');if(el)el.textContent=s.ey;
+    el=document.getElementById('heroH1');if(el)el.innerHTML=s.h1;
+    el=document.getElementById('heroSub');if(el)el.textContent=s.sub;
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>
