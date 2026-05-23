@@ -401,7 +401,10 @@
   @media (max-width: 540px) {
     .live-audit-bar { flex-direction: column; }
     .live-audit-meta { border-right: none; border-bottom: 1px solid rgba(74,222,128,0.12); flex-direction: row; align-items: center; gap: 12px; }
-    .live-score-tile { padding: 8px 4px; }
+    .live-score-grid { flex-wrap: wrap; }
+    .live-score-tile { flex: 0 0 33.333%; padding: 10px 4px; border-bottom: 1px solid var(--border); }
+    .live-score-tile:nth-child(3n) { border-right: none; }
+    .live-score-tile:nth-child(n+4) { border-bottom: none; }
     .live-score-val { font-size: 18px; }
     .live-score-lbl { font-size: 9px; }
   }
