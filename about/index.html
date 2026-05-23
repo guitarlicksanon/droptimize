@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About droptimize.org - How the Standard Was Built | OYE Creations</title>
+<title>About droptimize.org | How the Standard Was Built | OYE Creations</title>
 <meta name="description" content="droptimize.org started by fixing our own sites. Every broken header, every contrast failure, every ARIA gap became a rule. That rule library is now the build standard - and it shows." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://droptimize.org/about/" />
@@ -12,6 +12,11 @@
 <meta property="og:description" content="Started by fixing our own sites. Every fix became a rule. Every rule became a standard. Now new builds start at 96-100% before we touch anything." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://droptimize.org/about/" />
+<meta property="og:image" content="https://droptimize.org/assets/og/og-optimize.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://droptimize.org/assets/og/og-optimize.png" />
 
 <style>
 @font-face{font-family:'DM Mono';font-style:normal;font-weight:400;font-display:optional;src:url('/assets/fonts/dm-mono-400.woff2') format('woff2')}
@@ -184,7 +189,7 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
   <div class="container">
     <span class="eyebrow">About droptimize.org</span>
     <h1>Built by fixing<br>our own <em>mistakes.</em></h1>
-    <p>droptimize.org didn't start as a service. It started as a process we built for ourselves - auditing every OYE Creations property, fixing what was broken, and writing down every rule we learned. This is that story, and what it means for your site.</p>
+    <p>droptimize.org didn't start as a service. It started as a process we built for ourselves: auditing every OYE Creations property, fixing what was broken, and writing down every rule we learned. This is that story, and what it means for your site.</p>
   </div>
 </section>
 
@@ -193,8 +198,8 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
   <div class="container">
     <span class="section-label">The origin</span>
     <h2>We audited ourselves first.</h2>
-    <p class="body-text">Every OYE Creations property - the podcast site, the resume service, the AI platform, the main brand page - had been built at different times, by different people, under different constraints. When we looked at them honestly, they weren't in great shape.</p>
-    <p class="body-text">Security headers missing. Contrast ratios failing. ARIA attributes wrong. Meta tags incomplete. Performance held back by external fonts and unoptimized images. None of it was catastrophic on its own - but together, it meant Google was ranking the sites lower than they deserved, some browsers were flashing security warnings before visitors even landed, and screen reader users couldn't navigate key sections at all.</p>
+    <p class="body-text">Every OYE Creations property, the podcast site, the resume service, the AI platform, the main brand page, had been built at different times, by different people, under different constraints. When we looked at them honestly, they weren't in great shape.</p>
+    <p class="body-text">Security headers missing. Contrast ratios failing. ARIA attributes wrong. Meta tags incomplete. Performance held back by external fonts and unoptimized images. None of it was catastrophic on its own, but together it meant Google was ranking the sites lower than they deserved, some browsers were flashing security warnings before visitors even landed, and screen reader users couldn't navigate key sections at all.</p>
     <p class="body-text">So we fixed them. All of them. And every fix got written down.</p>
 
     <div class="timeline">
@@ -205,7 +210,7 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
         </div>
         <div class="tl-body">
           <h3>Worst security score in the portfolio.</h3>
-          <p>No CSP. No HSTS. No CORP headers at all - the Next.js app shipped with nothing. Accessibility issues came from component library defaults that quietly failed WCAG AA contrast. Dynamic routes were missing canonical tags, costing SEO signals on every page.</p>
+          <p>No CSP. No HSTS. No CORP headers at all. The Next.js app shipped with nothing. Accessibility issues came from component library defaults that quietly failed WCAG AA contrast. Dynamic routes were missing canonical tags, costing SEO signals on every page.</p>
           <div class="tl-scores">
             <span class="tl-score bad">Security ~38%</span>
             <span class="tl-score ok">SEO ~84%</span>
@@ -221,7 +226,7 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
         </div>
         <div class="tl-body">
           <h3>Migrated from subdomain. Exposed immediately.</h3>
-          <p>Cloudflare's default robots.txt blocked all crawlers - 2,064 SEO errors before the site was even announced. Security landed at 58% with no protective headers. The domain migration wiped config we thought would carry over. It didn't.</p>
+          <p>Cloudflare's default robots.txt blocked all crawlers. 2,064 SEO errors before the site was even announced. Security landed at 58% with no protective headers. The domain migration wiped config we thought would carry over. It didn't.</p>
           <div class="tl-scores">
             <span class="tl-score bad">Security ~58%</span>
             <span class="tl-score ok">SEO ~75%</span>
@@ -236,7 +241,7 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
         </div>
         <div class="tl-body">
           <h3>First external client. Handover went sideways.</h3>
-          <p>Built clean to 100% on our end. Client-side DNS changes during handover tanked all scores - security dropped to ~20%, accessibility to ~30%, SEO to ~40%. We stepped back in, identified what changed, and closed everything at 100%.</p>
+          <p>Built clean to 100% on our end. Client-side DNS changes during handover tanked all scores: security dropped to ~20%, accessibility to ~30%, SEO to ~40%. We stepped back in, identified what changed, and closed everything at 100%.</p>
           <div class="tl-scores">
             <span class="tl-score bad">Security 0% audit</span>
             <span class="tl-score bad">Post-transfer ~20%</span>
@@ -254,11 +259,11 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
     <span class="section-label">How the standard was built</span>
     <h2>Every fix became a rule.<br>Every rule became <em>the build.</em></h2>
     <p class="body-text">After enough audits, the patterns stopped being surprising. Security headers were missing on every site that didn't specifically set them. Contrast ratios failed on text that looked fine to the designer but failed WCAG AA at actual measurements. ARIA attributes were added by developers who had the right idea but the wrong implementation. Meta descriptions got skipped under deadline pressure.</p>
-    <p class="body-text">So we stopped treating these as individual bugs and started treating them as a checklist - a build standard applied before the first line of HTML, not patched in after the audit. Self-hosted fonts. Explicit image dimensions. Security headers on every path. Muted text at minimum #8C8C8C, never #777777. Aria-labels on every interactive element without visible text.</p>
+    <p class="body-text">So we stopped treating these as individual bugs and started treating them as a checklist, a build standard applied before the first line of HTML, not patched in after the audit. Self-hosted fonts. Explicit image dimensions. Security headers on every path. Muted text at minimum #8C8C8C, never #777777. Aria-labels on every interactive element without visible text.</p>
     <p class="body-text">The standard is now what we build from, not what we fix toward.</p>
 
     <div class="proof-bar">
-      <span class="proof-bar-label">The proof - OYE Scholar, built from scratch using the standard</span>
+      <span class="proof-bar-label">The proof: OYE Scholar, built from scratch using the standard</span>
       <p style="font-family:'DM Mono',monospace;font-size:13px;color:#B0B0B0;letter-spacing:0.04em;line-height:1.6;margin-bottom:16px;">Audited at launch on oyecreations.com/scholar before a single fix was applied. These are opening scores, not final ones.</p>
       <div class="proof-scores">
         <div class="proof-score">
@@ -291,37 +296,37 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
   <div class="container">
     <span class="section-label">Plain terms</span>
     <h2>What these scores<br>actually do to your business.</h2>
-    <p class="body-text">Lighthouse scores aren't vanity metrics. Each one maps directly to something that costs you customers, ranking, or trust - usually all three.</p>
+    <p class="body-text">Lighthouse scores aren't vanity metrics. Each one maps directly to something that costs you customers, ranking, or trust. Usually all three.</p>
 
     <div class="score-grid">
       <div class="score-card">
         <span class="score-card-label">Performance</span>
         <h3>Your site is too slow. People are leaving.</h3>
-        <p>Every additional second of load time costs roughly 7% of visitors. Google uses page speed as a direct ranking factor - a slow site ranks lower than a fast one with identical content.</p>
+        <p>Every additional second of load time costs roughly 7% of visitors. Google uses page speed as a direct ranking factor. A slow site ranks lower than a fast one with identical content.</p>
         <p class="real-talk">A 60% performance score isn't a yellow flag. It means your homepage takes 4-6 seconds to load on a mobile connection. Most people are gone by second 3.</p>
       </div>
       <div class="score-card">
         <span class="score-card-label">SEO</span>
         <h3>Google can't read you. You don't exist.</h3>
         <p>SEO isn't just keywords. It's whether search engines can crawl your pages, understand what they're about, and trust that the content is legitimate. Missing meta tags, broken canonical URLs, and blocked robots.txt all count against you.</p>
-        <p class="real-talk">A 65% SEO score means Google is guessing at what half your pages are about. It's ranking you for things you didn't intend - or not ranking you at all.</p>
+        <p class="real-talk">A 65% SEO score means Google is guessing at what half your pages are about. It's ranking you for things you didn't intend, or not ranking you at all.</p>
       </div>
       <div class="score-card">
         <span class="score-card-label">Security</span>
         <h3>Open doors. Some browsers warn visitors before they arrive.</h3>
-        <p>Missing security headers - HSTS, Content Security Policy, X-Frame-Options - leave your site vulnerable to clickjacking, script injection, and cross-origin attacks. Some of these gaps trigger browser-level warnings that visitors see before your page loads.</p>
+        <p>Missing security headers (HSTS, Content Security Policy, X-Frame-Options) leave your site vulnerable to clickjacking, script injection, and cross-origin attacks. Some of these gaps trigger browser-level warnings that visitors see before your page loads.</p>
         <p class="real-talk">A 0% security score, like Colin Auto had at initial audit, means no protective headers at all. Any halfway-decent scanner flags your site as unsafe. That includes the scanners potential clients and partners run.</p>
       </div>
       <div class="score-card">
         <span class="score-card-label">Accessibility</span>
         <h3>Part of your audience literally can't use your site.</h3>
-        <p>Contrast failures, missing labels, broken keyboard navigation - these aren't edge cases. 15-20% of people have some form of disability that affects how they browse. Screen readers, keyboard navigation, and zoom usage are more common than most developers account for.</p>
+        <p>Contrast failures, missing labels, broken keyboard navigation. These aren't edge cases. 15-20% of people have some form of disability that affects how they browse. Screen readers, keyboard navigation, and zoom usage are more common than most developers account for.</p>
         <p class="real-talk">Beyond the human cost, ADA compliance is increasingly enforced in the US. Businesses have been successfully sued over inaccessible websites. A 70% accessibility score is a documented liability.</p>
       </div>
       <div class="score-card">
         <span class="score-card-label">Best Practices</span>
         <h3>It works today. It breaks quietly over time.</h3>
-        <p>Best Practices catches deprecated APIs, insecure HTTP requests, outdated libraries, and techniques browsers are actively phasing out. None of these cause immediate visible failures - they accumulate until something stops working and nobody knows why.</p>
+        <p>Best Practices catches deprecated APIs, insecure HTTP requests, outdated libraries, and techniques browsers are actively phasing out. None of these cause immediate visible failures. They accumulate until something stops working and nobody knows why.</p>
         <p class="real-talk">The site your developer handed over in 2019 has been aging against browser updates ever since. Best Practices is the score that tells you how much it's drifted.</p>
       </div>
     </div>
@@ -349,7 +354,7 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
       <div class="process-step gold-top">
         <span class="process-num">STEP 03</span>
         <h3>Transfer</h3>
-        <p>Your code goes to your GitHub. Your site goes to your Cloudflare account. DNS setup is documented step by step. You own everything - including the ability to walk away.</p>
+        <p>Your code goes to your GitHub. Your site goes to your Cloudflare account. DNS setup is documented step by step. You own everything, including the ability to walk away.</p>
       </div>
       <div class="process-step gold-top">
         <span class="process-num">STEP 04</span>
@@ -358,7 +363,7 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
       </div>
     </div>
 
-    <a href="/#audit-form" class="cta-link">Drop Your URL - Free Audit &rarr;</a>
+    <a href="/#audit-form" class="cta-link">Drop Your URL, Free Audit &rarr;</a>
   </div>
 </section>
 
