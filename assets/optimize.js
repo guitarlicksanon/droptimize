@@ -13,9 +13,12 @@
     return n >= 90 ? 'pv-gold' : n >= 70 ? 'pv-amber' : 'pv-red';
   }
 
+  var LOGO_SVG = '<svg class="live-audit-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" aria-hidden="true" fill="none"><path d="M6,20 A18,18 0 0,1 42,20 Q42,38 24,54 Q6,38 6,20 Z" fill="#C9A84C"/><polyline points="13,28 24,14 35,28" stroke="#111111" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
   function fallbackEntry() {
     return '<div class="live-audit-bar">' +
       '<div class="live-audit-meta">' +
+        LOGO_SVG +
         '<div class="live-audit-indicator"><span class="live-pulse"></span><span class="live-audit-lbl">Live</span></div>' +
         '<a href="https://droptimize.org" target="_blank" rel="noopener" class="live-audit-domain">droptimize.org &#x2197;</a>' +
         '<span class="live-audit-date">Audit runs every Monday</span>' +
@@ -61,6 +64,7 @@
       list.innerHTML =
         '<div class="live-audit-bar">' +
           '<div class="live-audit-meta">' +
+            LOGO_SVG +
             '<div class="live-audit-indicator"><span class="live-pulse"></span><span class="live-audit-lbl">Live</span></div>' +
             '<a href="https://droptimize.org" target="_blank" rel="noopener" class="live-audit-domain">droptimize.org &#x2197;</a>' +
             '<span class="live-audit-date">' + date + '</span>' +
