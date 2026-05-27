@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About droptimize.org | How the Standard Was Built | OYE Creations</title>
-<meta name="description" content="droptimize.org started by fixing our own sites. Every broken header, every contrast failure, every ARIA gap became a rule. That rule library is now the build standard - and it shows." />
+<title>About droptimize.org | Why Audits Matter - And Why They Need to Repeat</title>
+<meta name="description" content="Most sites score poorly not because of bad code - but because of the automated processes running on top of it. Cloudflare features, CDN caching, and browser requirement drift can tank a 100% site without a single line change. Here's why that matters, and why we monitor for 30-60 days post-launch." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://droptimize.org/about/" />
 
-<meta property="og:title" content="About droptimize.org - How the Standard Was Built" />
-<meta property="og:description" content="Started by fixing our own sites. Every fix became a rule. Every rule became a standard. Now new builds start at 96-100% before we touch anything." />
+<meta property="og:title" content="About droptimize.org - Why Audits Matter" />
+<meta property="og:description" content="Automated processes running on top of your site - Cloudflare features, CDN caching, third-party scripts - can drop a 100% site to 81% without a single code change. We know because we documented every failure pattern on our own properties first." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://droptimize.org/about/" />
 <meta property="og:image" content="https://droptimize.org/assets/og/og-optimize.png" />
@@ -18,6 +18,8 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://droptimize.org/assets/og/og-optimize.png" />
 
+<link rel="preload" href="/assets/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/playfair.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:'DM Mono';font-style:normal;font-weight:400;font-display:optional;src:url('/assets/fonts/dm-mono-400.woff2') format('woff2')}
 @font-face{font-family:'DM Mono';font-style:normal;font-weight:500;font-display:optional;src:url('/assets/fonts/dm-mono-500.woff2') format('woff2')}
@@ -59,6 +61,8 @@ a:hover { color: var(--warm); }
 nav { position: sticky; top: 36px; z-index: 100; background: rgba(17,17,17,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 64px; display: flex; align-items: center; }
 .nav-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
 .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+.nav-logo ellipse, .nav-logo circle, .nav-logo line { stroke: var(--gold); transition: stroke 150ms; }
+.nav-brand:hover .nav-logo ellipse, .nav-brand:hover .nav-logo circle, .nav-brand:hover .nav-logo line { stroke: var(--warm); }
 .nav-name { font-family: "Playfair Display", serif; font-size: 18px; font-weight: 700; color: var(--text); transition: color 150ms; }
 .nav-name span { color: var(--gold); }
 .nav-brand:hover .nav-name { color: var(--gold); }
@@ -66,7 +70,15 @@ nav { position: sticky; top: 36px; z-index: 100; background: rgba(17,17,17,0.92)
 .nav-links { display: flex; gap: 24px; list-style: none; }
 .nav-links a { font-family: "DM Mono", monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
 .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-@media (max-width: 640px) { .nav-links { display: none; } }
+.hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; background: none; border: none; cursor: pointer; min-width: 44px; min-height: 44px; padding: 14px 11px; margin: -14px -11px; }
+.hamburger-line { width: 22px; height: 2px; background: var(--muted); transition: background 150ms; display: block; }
+.hamburger:hover .hamburger-line { background: var(--gold); }
+@media (max-width: 640px) {
+  .hamburger { display: flex; }
+  .nav-links { display: none; position: fixed; top: 100px; left: 0; right: 0; background: rgba(17,17,17,0.97); backdrop-filter: blur(12px); flex-direction: column; padding: 24px 28px; gap: 24px; border-bottom: 1px solid var(--border); z-index: 99; }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 15px; letter-spacing: 0.1em; min-height: 44px; display: flex; align-items: center; }
+}
 
 .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
@@ -77,53 +89,53 @@ nav { position: sticky; top: 36px; z-index: 100; background: rgba(17,17,17,0.92)
 .hero h1 em { color: var(--gold); font-style: italic; }
 .hero p { font-size: 18px; color: var(--muted); max-width: 640px; margin: 0 auto; line-height: 1.75; }
 
-/* SECTION */
-.section { padding: 72px 24px; border-bottom: 1px solid var(--border); }
-.section-label { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 16px; }
-h2 { font-family: "Playfair Display", serif; font-size: clamp(26px, 3.5vw, 38px); color: var(--warm); line-height: 1.2; margin-bottom: 24px; }
-h2 em { font-style: italic; color: var(--gold); }
-.body-text { font-size: 16px; color: #C8C8C8; line-height: 1.8; margin-bottom: 18px; max-width: 720px; }
-.body-text:last-child { margin-bottom: 0; }
+/* PIPELINE BAR */
+.pipeline { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); }
+.pipeline-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; display: flex; align-items: stretch; overflow-x: auto; }
+.pipeline-step { flex: 1; min-width: 0; padding: 18px 20px; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 4px; }
+.pipeline-step:last-child { border-right: none; }
+.pipeline-num { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.pipeline-label { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.07em; color: var(--muted); line-height: 1.4; }
+@media (max-width: 540px) { .pipeline-inner { flex-direction: column; } .pipeline-step { border-right: none; border-bottom: 1px solid var(--border); } .pipeline-step:last-child { border-bottom: none; } }
 
-/* TIMELINE */
-.timeline { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
-.tl-entry { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 24px 0; border-top: 1px solid var(--border); }
-.tl-entry:last-child { border-bottom: 1px solid var(--border); }
-.tl-meta { display: flex; flex-direction: column; gap: 6px; padding-top: 2px; }
-.tl-site { font-family: "DM Mono", monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.05em; }
-.tl-date { font-family: "DM Mono", monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
-.tl-body h3 { font-family: "Playfair Display", serif; font-size: 18px; color: var(--warm); margin-bottom: 8px; }
-.tl-body p { font-size: 14px; color: var(--muted); line-height: 1.7; }
-.tl-scores { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-.tl-score { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.08em; padding: 3px 8px; border: 1px solid var(--border); color: var(--muted); }
-.tl-score.bad { border-color: rgba(224,90,58,0.4); color: #E05A3A; }
-.tl-score.ok { border-color: rgba(201,168,76,0.3); color: var(--gold); }
-.tl-score.good { border-color: rgba(74,222,128,0.3); color: #4ADE80; }
-@media (max-width: 600px) { .tl-entry { grid-template-columns: 1fr; gap: 8px; } }
+/* FAQ SECTION */
+.faq-section { padding: 72px 24px 0; }
+.faq-group { margin-bottom: 56px; }
+.faq-group-label { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 4px; }
+.faq-group-title { font-family: "Playfair Display", serif; font-size: clamp(22px, 3vw, 30px); color: var(--warm); line-height: 1.2; margin-bottom: 28px; }
+.faq-group-title em { font-style: italic; color: var(--gold); }
 
-/* SCORE CARDS */
-.score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px; margin-top: 40px; }
-.score-card { background: var(--surface); padding: 28px 24px; border-top: 3px solid var(--gold-dim); }
-.score-card-label { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
-.score-card h3 { font-family: "Playfair Display", serif; font-size: 18px; color: var(--warm); margin-bottom: 10px; }
-.score-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
-.score-card .real-talk { font-family: "DM Mono", monospace; font-size: 12px; color: #C0C0C0; letter-spacing: 0.04em; margin-top: 12px; padding: 8px 12px; border-left: 2px solid var(--gold-dim); line-height: 1.6; }
+/* ACCORDION */
+.faq-list { display: flex; flex-direction: column; gap: 1px; }
+.faq-item { background: var(--surface); }
+.faq-q { width: 100%; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 20px 24px; background: none; border: none; cursor: pointer; text-align: left; color: var(--text); font-family: "DM Sans", system-ui, sans-serif; font-size: 16px; font-weight: 500; line-height: 1.45; transition: color 150ms; }
+.faq-q:hover { color: var(--gold); }
+.faq-item[data-open="true"] .faq-q { color: var(--gold); }
+.faq-icon { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; position: relative; }
+.faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: var(--muted); transition: transform 200ms, opacity 200ms, background 150ms; border-radius: 1px; }
+.faq-icon::before { width: 2px; height: 10px; left: 8px; top: 4px; }
+.faq-icon::after { width: 10px; height: 2px; left: 4px; top: 8px; }
+.faq-q:hover .faq-icon::before, .faq-q:hover .faq-icon::after { background: var(--gold); }
+.faq-item[data-open="true"] .faq-icon::before { transform: rotate(90deg); opacity: 0; }
+.faq-item[data-open="true"] .faq-icon::after { background: var(--gold); }
+.faq-a { display: none; padding: 0 24px 24px 24px; border-top: 1px solid var(--border); }
+.faq-item[data-open="true"] .faq-a { display: block; }
+.faq-a p { font-size: 15px; color: #C8C8C8; line-height: 1.8; margin-bottom: 14px; }
+.faq-a p:last-child { margin-bottom: 0; }
+.faq-a .callout { font-family: "DM Mono", monospace; font-size: 12px; letter-spacing: 0.03em; color: #B0B0B0; padding: 12px 16px; border-left: 2px solid var(--gold-dim); background: rgba(201,168,76,0.04); line-height: 1.7; margin-top: 14px; }
+.faq-a .callout.warn { border-left-color: rgba(224,90,58,0.5); background: rgba(224,90,58,0.04); }
+.faq-a .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.faq-a .pill { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.06em; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted); }
+.faq-a .pill.bad { border-color: rgba(224,90,58,0.4); color: #E05A3A; }
+.faq-a .pill.good { border-color: rgba(74,222,128,0.3); color: #4ADE80; }
+.faq-a .pill.gold { border-color: rgba(201,168,76,0.4); color: var(--gold); }
 
-/* PROOF */
-.proof-bar { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 24px 28px; margin-top: 40px; }
-.proof-bar-label { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
-.proof-scores { display: flex; gap: 28px; flex-wrap: wrap; }
-.proof-score { display: flex; flex-direction: column; gap: 4px; }
-.proof-score-num { font-family: "DM Mono", monospace; font-size: 22px; font-weight: 500; color: #4ADE80; line-height: 1; }
-.proof-score-cat { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-
-/* PROCESS */
-.process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; margin-top: 40px; }
-.process-step { background: var(--surface); padding: 28px 24px; border-top: 3px solid var(--border); }
-.process-step.gold-top { border-top-color: var(--gold); }
-.process-num { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 14px; display: block; }
-.process-step h3 { font-family: "Playfair Display", serif; font-size: 18px; color: var(--warm); margin-bottom: 8px; }
-.process-step p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+/* CTA */
+.cta-section { padding: 80px 24px; border-top: 1px solid var(--border); text-align: center; }
+.cta-section h2 { font-family: "Playfair Display", serif; font-size: clamp(26px, 4vw, 42px); color: var(--warm); margin-bottom: 16px; }
+.cta-section p { color: var(--muted); font-size: 16px; margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto; }
+.cta-link { display: inline-block; background: var(--gold); color: #111; font-family: "DM Mono", monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; transition: opacity 150ms; }
+.cta-link:hover { opacity: 0.85; color: #111; }
 
 /* FOOTER */
 footer { background: var(--bg); border-top: 1px solid var(--border); padding: 48px 24px; }
@@ -134,9 +146,6 @@ footer .f-links { display: flex; gap: 20px; flex-wrap: wrap; }
 footer .f-links a { font-family: "DM Mono", monospace; font-size: 12px; letter-spacing: 0.08em; color: var(--muted); text-decoration: none; }
 footer .f-links a:hover { color: var(--gold); }
 footer .f-copy { font-size: 12px; color: var(--muted); }
-
-.cta-link { display: inline-block; background: var(--gold); color: #111; font-family: "DM Mono", monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 13px 28px; text-decoration: none; transition: opacity 150ms; margin-top: 32px; }
-.cta-link:hover { opacity: 0.85; color: #111; }
 </style>
 </head>
 <body>
@@ -167,12 +176,17 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
 <nav aria-label="Site navigation">
   <div class="nav-inner">
     <a href="/" class="nav-brand" aria-label="droptimize.org home">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" width="32" height="37" role="img" aria-label="droptimize logo" fill="none">
+      <svg class="nav-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" width="32" height="37" role="img" aria-label="droptimize logo" fill="none">
         <path d="M6,20 A18,18 0 0,1 42,20 Q42,38 24,54 Q6,38 6,20 Z" fill="#C9A84C"/>
         <polyline points="13,28 24,14 35,28" stroke="#111111" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <span class="nav-name">droptimize<span>.org</span></span>
     </a>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
     <ul class="nav-links">
       <li><a href="/#portfolio">Portfolio</a></li>
       <li><a href="/#pricing">Pricing</a></li>
@@ -188,182 +202,252 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
 <section class="hero">
   <div class="container">
     <span class="eyebrow">About droptimize.org</span>
-    <h1>Built by fixing<br>our own <em>mistakes.</em></h1>
-    <p>droptimize.org didn't start as a service. It started as a process we built for ourselves: auditing every OYE Creations property, fixing what was broken, and writing down every rule we learned. This is that story, and what it means for your site.</p>
+    <h1>Your scores dropped.<br>You didn't change <em>a thing.</em></h1>
+    <p>That's the part nobody warns you about. Automated processes running on top of your site - CDN features, bot management, third-party scripts, browser security updates - can tank a perfect score without touching a single line of your code. We've documented every pattern. Here's what you need to know.</p>
   </div>
 </section>
 
-<!-- ORIGIN STORY -->
-<section class="section">
-  <div class="container">
-    <span class="section-label">The origin</span>
-    <h2>We audited ourselves first.</h2>
-    <p class="body-text">Every OYE Creations property, the podcast site, the resume service, the AI platform, the main brand page, had been built at different times, by different people, under different constraints. When we looked at them honestly, they weren't in great shape.</p>
-    <p class="body-text">Security headers missing. Contrast ratios failing. ARIA attributes wrong. Meta tags incomplete. Performance held back by external fonts and unoptimized images. None of it was catastrophic on its own, but together it meant Google was ranking the sites lower than they deserved, some browsers were flashing security warnings before visitors even landed, and screen reader users couldn't navigate key sections at all.</p>
-    <p class="body-text">So we fixed them. All of them. And every fix got written down.</p>
+<!-- PIPELINE BAR -->
+<div class="pipeline" role="region" aria-label="The audit pipeline">
+  <div class="pipeline-inner">
+    <div class="pipeline-step">
+      <span class="pipeline-num">01</span>
+      <span class="pipeline-label">Why your site<br>needs an audit</span>
+    </div>
+    <div class="pipeline-step">
+      <span class="pipeline-num">02</span>
+      <span class="pipeline-label">Why processes<br>break scores</span>
+    </div>
+    <div class="pipeline-step">
+      <span class="pipeline-num">03</span>
+      <span class="pipeline-label">Why we're<br>uniquely qualified</span>
+    </div>
+    <div class="pipeline-step">
+      <span class="pipeline-num">04</span>
+      <span class="pipeline-label">Why you need<br>ongoing monitoring</span>
+    </div>
+  </div>
+</div>
 
-    <div class="timeline">
-      <div class="tl-entry">
-        <div class="tl-meta">
-          <span class="tl-site">multilingo.studio</span>
-          <span class="tl-date">May 2026</span>
-        </div>
-        <div class="tl-body">
-          <h3>Worst security score in the portfolio.</h3>
-          <p>No CSP. No HSTS. No CORP headers at all. The Next.js app shipped with nothing. Accessibility issues came from component library defaults that quietly failed WCAG AA contrast. Dynamic routes were missing canonical tags, costing SEO signals on every page.</p>
-          <div class="tl-scores">
-            <span class="tl-score bad">Security ~38%</span>
-            <span class="tl-score ok">SEO ~84%</span>
-            <span class="tl-score ok">A11y ~76%</span>
-            <span class="tl-score good">Final 100%</span>
+<!-- FAQ CONTENT -->
+<div class="faq-section">
+  <div class="container">
+
+    <!-- GROUP 1: Why audits -->
+    <div class="faq-group">
+      <span class="faq-group-label">Part 01</span>
+      <h2 class="faq-group-title">Why your site<br>needs an <em>audit.</em></h2>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            My site looks fine. Why would it score poorly?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Lighthouse doesn't measure how your site looks - it measures what search engines crawl, what visitors on slow connections experience, and what browsers flag before a page even loads. A site can look polished at your desk on a fast connection and fail in every category that actually moves the needle.</p>
+            <p>Missing security headers are invisible until a browser warning appears. Contrast ratios look fine until you run a WCAG measurement tool. Meta tags seem optional until Google starts ranking you for the wrong keywords - or not at all.</p>
+            <div class="callout warn">The gap between "looks fine" and "performs well" is exactly where we work. Every issue we've documented was invisible until we measured it.</div>
           </div>
         </div>
-      </div>
-      <div class="tl-entry">
-        <div class="tl-meta">
-          <span class="tl-site">buzzresume.com</span>
-          <span class="tl-date">May 2026</span>
-        </div>
-        <div class="tl-body">
-          <h3>Migrated from subdomain. Exposed immediately.</h3>
-          <p>Cloudflare's default robots.txt blocked all crawlers. 2,064 SEO errors before the site was even announced. Security landed at 58% with no protective headers. The domain migration wiped config we thought would carry over. It didn't.</p>
-          <div class="tl-scores">
-            <span class="tl-score bad">Security ~58%</span>
-            <span class="tl-score ok">SEO ~75%</span>
-            <span class="tl-score good">Final 100%</span>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            What do Lighthouse scores actually cost me in real terms?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Each category maps directly to lost revenue, ranking, or legal exposure:</p>
+            <p><strong style="color:var(--warm)">Performance:</strong> Every extra second of load time costs roughly 7% of visitors. Google uses page speed as a direct ranking factor. A 60% performance score means your page takes 4-6 seconds on a mobile connection - most people leave by second 3.</p>
+            <p><strong style="color:var(--warm)">SEO:</strong> A 65% SEO score means Google is guessing at what half your pages are about. You rank for things you didn't intend, or not at all.</p>
+            <p><strong style="color:var(--warm)">Security:</strong> Missing headers (HSTS, CSP, X-Frame-Options) leave you open to clickjacking and script injection. Some gaps trigger browser-level warnings that visitors see before your page loads.</p>
+            <p><strong style="color:var(--warm)">Accessibility:</strong> 15-20% of people have a disability that affects how they browse. Beyond the human cost, ADA compliance is increasingly enforced - businesses have been sued over inaccessible websites.</p>
+            <p><strong style="color:var(--warm)">Best Practices:</strong> Deprecated APIs and outdated libraries don't break immediately. They accumulate until something stops working and nobody knows why.</p>
           </div>
         </div>
-      </div>
-      <div class="tl-entry">
-        <div class="tl-meta">
-          <span class="tl-site">colinautorepairs.com</span>
-          <span class="tl-date">May 2026</span>
-        </div>
-        <div class="tl-body">
-          <h3>First external client. Handover went sideways.</h3>
-          <p>Built clean to 100% on our end. Client-side DNS changes during handover tanked all scores: security dropped to ~20%, accessibility to ~30%, SEO to ~40%. We stepped back in, identified what changed, and closed everything at 100%.</p>
-          <div class="tl-scores">
-            <span class="tl-score bad">Security 0% audit</span>
-            <span class="tl-score bad">Post-transfer ~20%</span>
-            <span class="tl-score good">Final 100%</span>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            I had my site built professionally. Wouldn't it already be clean?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Web standards move faster than most development shops update their defaults. Security header requirements have tightened significantly in the last three years. WCAG accessibility rules have been clarified in ways that break patterns that were acceptable in 2020. Chrome and Safari have each shifted what they flag and when.</p>
+            <p>The site your developer shipped two years ago was built against that era's standards. It hasn't been maintained against this era's. Neither has the platform it's hosted on.</p>
+            <div class="callout">We've audited sites built by reputable agencies that were genuinely excellent when they launched. Every one of them had drifted. Not because of bad work - because time passed.</div>
           </div>
         </div>
+
       </div>
     </div>
+
+    <!-- GROUP 2: Automated processes -->
+    <div class="faq-group">
+      <span class="faq-group-label">Part 02</span>
+      <h2 class="faq-group-title">Why automated processes<br>are often the <em>real culprit.</em></h2>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            What do you mean by "automated processes breaking scores"?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Your hosting provider, CDN, and any third-party tools running on your domain are all modifying what visitors actually receive - often without your knowledge. They inject scripts, override headers, rewrite URLs, and block crawlers using their own defaults.</p>
+            <p>The critical insight: a site can score 100% in a clean test environment and drop to 81% in production because of what the infrastructure layer adds after deploy. That gap is entirely invisible if you only audit the code you wrote.</p>
+            <div class="callout warn">This is the most common source of "inexplicable" score drops. The code didn't change. The environment did.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            What specific processes have you seen tank Lighthouse scores?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>These are patterns we've documented firsthand on live properties - not hypotheticals:</p>
+            <p><strong style="color:var(--warm)">Cloudflare Bot Management (Browser Integrity Check):</strong> When enabled, CF injects a challenge script from <code style="font-family:'DM Mono',monospace;font-size:13px;color:var(--gold)">cdn-cgi/challenge-platform/</code> on every page load. This script is render-blocking and uncontrolled - it dropped Best Practices from 100 to 92 and Performance from 100 to 81 on multiple sites. The code was clean. CF was the cause.</p>
+            <p><strong style="color:var(--warm)">Cloudflare Email Obfuscation:</strong> If your pages have mailto links or plain email addresses, CF's "Scrape Shield" feature injects <code style="font-family:'DM Mono',monospace;font-size:13px;color:var(--gold)">email-decode.min.js</code> - a render-blocking script that adds ~150ms to page load on every visit. Enabled by default on most Cloudflare plans.</p>
+            <p><strong style="color:var(--warm)">CF Managed robots.txt:</strong> Cloudflare's "Manage your robots.txt" feature injects a <code style="font-family:'DM Mono',monospace;font-size:13px;color:var(--gold)">Content-Signal</code> header that reduces SEO scores to 92. It operates separately from the "Block AI bots" setting - you can disable one without affecting the other.</p>
+            <p><strong style="color:var(--warm)">Stale CDN cache after deploy:</strong> Edge caches don't always clear immediately after a new deploy. Visitors receive old JS and CSS for hours or days after you've pushed a fix. Score improvements that are real in testing don't show up in production until cache purge propagates.</p>
+            <p><strong style="color:var(--warm)">Third-party script updates:</strong> Analytics, chat widgets, and review platforms update their embed scripts without notice. A script that passed last month's audit may have added 80KB or a new fingerprinting API this month.</p>
+            <div class="pill-row">
+              <span class="pill bad">BIC: BP 92 → 81</span>
+              <span class="pill bad">Email Obfuscation: +150ms LCP</span>
+              <span class="pill bad">robots.txt header: SEO 92</span>
+              <span class="pill bad">CSP + Turnstile: BP 92</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            How do you even find these infrastructure-level issues?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>You audit the live environment, not just the code. Every audit we run starts with a curl against the live domain before we look at a single line of source. We're checking what the domain actually delivers - injected scripts, headers, redirects - not what the repo says it should deliver.</p>
+            <div class="callout">A developer who only audits their local build or staging environment will miss every one of these. They're invisible until you curl the production URL and grep for what shouldn't be there.</div>
+            <p>This is why "my developer just fixed it" sometimes doesn't change the score. If the fix was applied to code but the infrastructure-level issue wasn't addressed, the score won't move.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GROUP 3: Why we're qualified -->
+    <div class="faq-group">
+      <span class="faq-group-label">Part 03</span>
+      <h2 class="faq-group-title">Why we're uniquely<br><em>qualified</em> to fix this.</h2>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            What makes droptimize different from any other web agency?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>We didn't build this service and then develop a methodology. We built the methodology on our own properties first - 8 live sites across different stacks, hosting configs, and use cases - and the service came from what we learned. Every failure pattern in our rulebook was discovered in production, not in theory.</p>
+            <p>When we say Cloudflare Email Obfuscation injects a render-blocking script, we're not citing documentation. We found it while debugging why a 100%-scored site was suddenly underperforming after a CF setting was changed. We diagnosed it with a curl check, disabled it via the API, and wrote down the exact command so it never takes more than 30 seconds to fix.</p>
+            <div class="callout">The build standard we use isn't a best-practices checklist from a blog post. It's a set of rules written specifically because we got burned by each one.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            Why plain HTML instead of WordPress or a page builder?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>WordPress and page builders introduce layers between your content and what the browser receives. Each layer adds opportunities for the automated processes described above to interfere - plugin JS that loads unconditionally, CSS that's render-blocking by default, CMS-injected headers that conflict with security settings you thought you'd configured.</p>
+            <p>Plain HTML/CSS/JS has no hidden layer. What you write is what ships. Security headers go in a single <code style="font-family:'DM Mono',monospace;font-size:13px;color:var(--gold)">_headers</code> file and apply exactly as written. Fonts are self-hosted. No dependency updates, no plugin compatibility breaks, no monthly platform fees that hold your content hostage.</p>
+            <p>You also own everything at handover - your GitHub repo, your Cloudflare account, your DNS. There's no proprietary format that requires our tools to edit or re-export.</p>
+            <div class="pill-row">
+              <span class="pill gold">Zero render-blocking defaults</span>
+              <span class="pill gold">Self-hosted fonts</span>
+              <span class="pill gold">No platform lock-in</span>
+              <span class="pill gold">You own the code</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GROUP 4: Ongoing monitoring -->
+    <div class="faq-group" style="padding-bottom:72px;border-bottom:1px solid var(--border);">
+      <span class="faq-group-label">Part 04</span>
+      <h2 class="faq-group-title">Why you need<br>ongoing monitoring - at least <em>30-60 days.</em></h2>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            If we launch at 100%, why would anything change?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Because the live environment continues to change after launch - without you doing anything. CDN edge caches take time to fully propagate new rules. Cloudflare periodically rolls out new default features (bot protection, image optimization, analytics) that can inject behavior into your pages. Google re-crawls on its own schedule and may start seeing things differently on the second or third visit.</p>
+            <p>The first 30 days after a new site goes live are when the environment settles. Cache layers stabilize. CF's monitoring tools start accumulating data about your domain and may trigger new rules. Real-device variance - the difference between a Pixel 6 on 4G in Dallas and the PSI test environment - becomes visible in the score data.</p>
+            <div class="callout">Launch day scores are a snapshot of one environment on one day. Monitoring scores over 30 days gives you a baseline of what real users actually experience.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            What does "automated processes being the culprit" look like post-launch?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Here's a real sequence we've observed: Site launches at 100%. Two weeks later, Best Practices drops to 92. No code changed. Investigation finds that Cloudflare's Browser Integrity Check was auto-enabled on the account - possibly by a security recommendation notification the owner dismissed without reading. The injected challenge script is now loading on every page.</p>
+            <p>This is not hypothetical. It's the exact scenario that prompted our three-step CF nuclear fix protocol: disable browser check, set security to essentially off, disable bot management JS via the API. Three commands. Score restored. But only if you're watching closely enough to catch the drop in the first place.</p>
+            <div class="callout warn">A site with no monitoring has no way of knowing when this happens. The scores quietly drift while the owner assumes everything is fine.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            What does monitoring look like after the first 30-60 days?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>After the environment has settled, the risk profile shifts from infrastructure-layer surprises to application-layer drift. Browser security requirements tighten roughly quarterly - what passes today may flag six months from now. Third-party embeds update their scripts. A new page gets added without following the build standard.</p>
+            <p>All client builds include an automated weekly audit that runs every Monday and stores results to a dashboard you can check any time. It won't catch everything - some CF-level injections require a live curl check - but it catches score movement before it compounds.</p>
+            <p>The recommended cadence after initial stabilization: review the weekly audit monthly, run a full manual audit any time you add pages, integrate a third party, or change hosting configuration. That's it.</p>
+            <div class="pill-row">
+              <span class="pill good">Weekly automated audit</span>
+              <span class="pill good">Score stored to dashboard</span>
+              <span class="pill gold">Catches drift before it compounds</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            What triggers a re-audit outside of the monthly review?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Any of these should prompt a full re-audit, not just a score check:</p>
+            <p><strong style="color:var(--warm)">DNS or hosting changes</strong> - transferring a domain, switching nameservers, or adding a CDN layer can wipe security headers and redirect configurations you thought were permanent.</p>
+            <p><strong style="color:var(--warm)">Third-party integrations</strong> - adding a chat widget, booking system, payment embed, or analytics tool. Each one is a new script loading on your domain with its own headers, CSP conflicts, and performance budget.</p>
+            <p><strong style="color:var(--warm)">New pages or sections</strong> - especially if someone other than the original developer added them. New content added outside the build standard will rarely meet it by accident.</p>
+            <p><strong style="color:var(--warm)">A score drop you notice</strong> - even one category, even a few points. Score drops are symptoms of a specific cause. Ignoring them means the cause is still running.</p>
+            <div class="callout">The handover documentation we provide includes a full re-audit checklist tied to each of these triggers. You'll know exactly what to check and in what order.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
-</section>
+</div>
 
-<!-- THE STANDARD -->
-<section class="section">
-  <div class="container">
-    <span class="section-label">How the standard was built</span>
-    <h2>Every fix became a rule.<br>Every rule became <em>the build.</em></h2>
-    <p class="body-text">After enough audits, the patterns stopped being surprising. Security headers were missing on every site that didn't specifically set them. Contrast ratios failed on text that looked fine to the designer but failed WCAG AA at actual measurements. ARIA attributes were added by developers who had the right idea but the wrong implementation. Meta descriptions got skipped under deadline pressure.</p>
-    <p class="body-text">So we stopped treating these as individual bugs and started treating them as a checklist, a build standard applied before the first line of HTML, not patched in after the audit. Self-hosted fonts. Explicit image dimensions. Security headers on every path. Muted text at minimum #8C8C8C, never #777777. Aria-labels on every interactive element without visible text.</p>
-    <p class="body-text">The standard is now what we build from, not what we fix toward.</p>
-
-    <div class="proof-bar">
-      <span class="proof-bar-label">The proof: OYE Scholar, built from scratch using the standard</span>
-      <p style="font-family:'DM Mono',monospace;font-size:13px;color:#B0B0B0;letter-spacing:0.04em;line-height:1.6;margin-bottom:16px;">Audited at launch on oyecreations.com/scholar before a single fix was applied. These are opening scores, not final ones.</p>
-      <div class="proof-scores">
-        <div class="proof-score">
-          <span class="proof-score-num">100%</span>
-          <span class="proof-score-cat">Performance</span>
-        </div>
-        <div class="proof-score">
-          <span class="proof-score-num">94%</span>
-          <span class="proof-score-cat">Accessibility</span>
-        </div>
-        <div class="proof-score">
-          <span class="proof-score-num">92%</span>
-          <span class="proof-score-cat">Best Practices</span>
-        </div>
-        <div class="proof-score">
-          <span class="proof-score-num">100%</span>
-          <span class="proof-score-cat">SEO</span>
-        </div>
-        <div class="proof-score">
-          <span class="proof-score-num">~92%</span>
-          <span class="proof-score-cat">Security</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT THE SCORES ACTUALLY MEAN -->
-<section class="section">
-  <div class="container">
-    <span class="section-label">Plain terms</span>
-    <h2>What these scores<br>actually do to your business.</h2>
-    <p class="body-text">Lighthouse scores aren't vanity metrics. Each one maps directly to something that costs you customers, ranking, or trust. Usually all three.</p>
-
-    <div class="score-grid">
-      <div class="score-card">
-        <span class="score-card-label">Performance</span>
-        <h3>Your site is too slow. People are leaving.</h3>
-        <p>Every additional second of load time costs roughly 7% of visitors. Google uses page speed as a direct ranking factor. A slow site ranks lower than a fast one with identical content.</p>
-        <p class="real-talk">A 60% performance score isn't a yellow flag. It means your homepage takes 4-6 seconds to load on a mobile connection. Most people are gone by second 3.</p>
-      </div>
-      <div class="score-card">
-        <span class="score-card-label">SEO</span>
-        <h3>Google can't read you. You don't exist.</h3>
-        <p>SEO isn't just keywords. It's whether search engines can crawl your pages, understand what they're about, and trust that the content is legitimate. Missing meta tags, broken canonical URLs, and blocked robots.txt all count against you.</p>
-        <p class="real-talk">A 65% SEO score means Google is guessing at what half your pages are about. It's ranking you for things you didn't intend, or not ranking you at all.</p>
-      </div>
-      <div class="score-card">
-        <span class="score-card-label">Security</span>
-        <h3>Open doors. Some browsers warn visitors before they arrive.</h3>
-        <p>Missing security headers (HSTS, Content Security Policy, X-Frame-Options) leave your site vulnerable to clickjacking, script injection, and cross-origin attacks. Some of these gaps trigger browser-level warnings that visitors see before your page loads.</p>
-        <p class="real-talk">A 0% security score, like Colin Auto had at initial audit, means no protective headers at all. Any halfway-decent scanner flags your site as unsafe. That includes the scanners potential clients and partners run.</p>
-      </div>
-      <div class="score-card">
-        <span class="score-card-label">Accessibility</span>
-        <h3>Part of your audience literally can't use your site.</h3>
-        <p>Contrast failures, missing labels, broken keyboard navigation. These aren't edge cases. 15-20% of people have some form of disability that affects how they browse. Screen readers, keyboard navigation, and zoom usage are more common than most developers account for.</p>
-        <p class="real-talk">Beyond the human cost, ADA compliance is increasingly enforced in the US. Businesses have been successfully sued over inaccessible websites. A 70% accessibility score is a documented liability.</p>
-      </div>
-      <div class="score-card">
-        <span class="score-card-label">Best Practices</span>
-        <h3>It works today. It breaks quietly over time.</h3>
-        <p>Best Practices catches deprecated APIs, insecure HTTP requests, outdated libraries, and techniques browsers are actively phasing out. None of these cause immediate visible failures. They accumulate until something stops working and nobody knows why.</p>
-        <p class="real-talk">The site your developer handed over in 2019 has been aging against browser updates ever since. Best Practices is the score that tells you how much it's drifted.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT WE DO -->
-<section class="section" style="border-bottom:none;">
-  <div class="container">
-    <span class="section-label">The process</span>
-    <h2>What actually happens<br>when you <em>drop your URL.</em></h2>
-    <p class="body-text">Four steps. One deliverable: a site that scores 100% across all five categories, lives in your name, and doesn't depend on us after handover.</p>
-
-    <div class="process-grid">
-      <div class="process-step gold-top">
-        <span class="process-num">STEP 01</span>
-        <h3>Audit</h3>
-        <p>Full scored report across all five categories. Every gap documented with a plain-English explanation and a fix priority. No jargon. No upsell. Just what's broken and how bad it is.</p>
-      </div>
-      <div class="process-step gold-top">
-        <span class="process-num">STEP 02</span>
-        <h3>Rebuild</h3>
-        <p>Plain HTML, CSS, and JavaScript. No WordPress. No page builders. No monthly platform fees that disappear if you stop paying. We don't ship until every category is in the 90-100 range. We push for 100.</p>
-      </div>
-      <div class="process-step gold-top">
-        <span class="process-num">STEP 03</span>
-        <h3>Transfer</h3>
-        <p>Your code goes to your GitHub. Your site goes to your Cloudflare account. DNS setup is documented step by step. You own everything, including the ability to walk away.</p>
-      </div>
-      <div class="process-step gold-top">
-        <span class="process-num">STEP 04</span>
-        <h3>Verify</h3>
-        <p>Post-transfer audit runs in your environment, not ours. Scores confirmed live. You get the report. If anything dropped during transfer, we fix it before we close.</p>
-      </div>
-    </div>
-
-    <a href="/#audit-form" class="cta-link">Drop Your URL, Free Audit &rarr;</a>
+<!-- CTA -->
+<section class="cta-section" id="audit-form">
+  <div class="container" style="max-width:600px;">
+    <h2>Drop your URL.<br>We'll tell you exactly what's running on it.</h2>
+    <p>Free audit. No sales call. Just a scored report across all five categories and plain-English documentation of every gap - including what infrastructure-level processes are running that you didn't write.</p>
+    <a href="/#audit-form" class="cta-link">Get the Free Audit &rarr;</a>
   </div>
 </section>
 
@@ -390,6 +474,6 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
   </div>
 </footer>
 
-</main>
+<script defer src="/assets/about.js?v=1"></script>
 </body>
 </html>
