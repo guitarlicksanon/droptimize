@@ -45,9 +45,9 @@ function scoreHex(n) {
 
 function buildCustomerEmail(name, url, scores) {
   const cats = [
-    { key: 'seo',           label: 'SEO' },
-    { key: 'security',      label: 'Security' },
-    { key: 'performance',   label: 'Performance' },
+    { key: 'seo', label: 'SEO' },
+    { key: 'security', label: 'Security' },
+    { key: 'performance', label: 'Performance' },
     { key: 'accessibility', label: 'Accessibility' },
     { key: 'best_practices', label: 'Best Practices' },
   ];
@@ -70,7 +70,7 @@ function buildCustomerEmail(name, url, scores) {
 <body style="margin:0;padding:0;background:#111111;font-family:Arial,sans-serif;">
   <div style="max-width:560px;margin:0 auto;padding:48px 24px;">
     <p style="font-family:monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#C9A84C;margin:0 0 32px;">droptimize.org</p>
-    <h1 style="font-size:28px;font-weight:900;color:#F5F3EE;margin:0 0 10px;line-height:1.2;">Your audit is in, ${firstName}.</h1>
+    <h1 style="font-size:28px;font-weight:900;color:#F5F3EE;margin:0 0 10px;line-height:1.2;">Your audit is in: ${firstName}.</h1>
     <p style="color:#8C8C8C;font-size:15px;margin:0 0 32px;line-height:1.6;">Here's how <strong style="color:#EBEBEB;">${url}</strong> scored across all five categories.</p>
     <table style="width:100%;border-collapse:collapse;background:#1B1B1B;margin-bottom:32px;">
       ${rows}

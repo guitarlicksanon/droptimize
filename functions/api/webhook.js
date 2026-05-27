@@ -1,4 +1,4 @@
-// POST /api/webhook — Stripe webhook handler for Droptimize
+// POST /api/webhook, Stripe webhook handler for Droptimize
 
 async function verifyStripeSignature(request, secret) {
   const body = await request.text();
@@ -20,9 +20,9 @@ async function verifyStripeSignature(request, secret) {
 }
 
 const planLabels = {
-  single:                "Single Site — $199",
-  standard:              "Standard — $799",
-  professional:          "Professional — $1,299",
+  single:                "Single Site, $199",
+  standard:              "Standard, $799",
+  professional:          "Professional, $1,299",
   "audit-watch-solo":     "Audit Watch Solo (subscription)",
   "audit-watch-business": "Audit Watch Business (subscription)",
   "audit-watch-agency":   "Audit Watch Agency (subscription)",
@@ -64,7 +64,7 @@ export async function onRequestPost({ request, env }) {
         body: JSON.stringify({
           from: "Droptimize <hello@droptimize.org>",
           to: ["lessthanblake@proton.me"],
-          subject: `New Droptimize booking — ${label}`,
+          subject: `New Droptimize booking, ${label}`,
           html: `<p>${lines}</p>`,
         }),
       });

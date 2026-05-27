@@ -128,7 +128,7 @@
       var v   = scores[k];
       var cls = 'live-score-val' + (v != null ? ' ' + colorClass(v) : '');
       return '<div class="live-score-tile">' +
-        '<div class="' + cls + '">' + (v != null ? v + '%' : '—') + '</div>' +
+        '<div class="' + cls + '">' + (v != null ? v + '%' : ', ') + '</div>' +
         '<div class="live-score-lbl">' + LABEL[k] + '</div>' +
       '</div>';
     }).join('');

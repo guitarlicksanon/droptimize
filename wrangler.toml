@@ -18,4 +18,4 @@ PRICE_AUDIT_WATCH_AGENCY   = "price_1TZZ3YJvPEXScjfdaBUf0eK6"
 #   STRIPE_SECRET_KEY
 #   STRIPE_WEBHOOK_SECRET
 #   RESEND_API_KEY
-#   PSI_KEY  (Google PageSpeed Insights API key - optional, improves rate limits)
+#   PSI_KEY  (Google PageSpeed Insights API key - optional: improves rate limits)
