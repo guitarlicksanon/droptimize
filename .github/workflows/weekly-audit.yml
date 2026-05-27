@@ -26,6 +26,8 @@ jobs:
             domain: "buzzresume.com"
           - url: "https://bottomsupfam.com"
             domain: "bottomsupfam.com"
+          - url: "https://multilingo.studio"
+            domain: "multilingo.studio"
 
     steps:
       - name: PageSpeed Insights - Mobile
