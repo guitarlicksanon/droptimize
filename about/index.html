@@ -330,6 +330,37 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
           </div>
         </div>
 
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            If we turn off email hiding, won't spammers get our email address?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>Here's the reality: if your email address is on your website, spam bots already know about it. They hit your site the moment it went live. Cloudflare's email scrambling came along after the fact and doesn't change what's already out there.</p>
+            <p>More importantly, there's a smarter way to protect your address that costs you nothing in speed. Write it in a format that human visitors can read but bots can't automatically harvest: <strong style="color:var(--warm)">contact [at] yourbusiness [dot] com</strong>. That pattern breaks the automated scanning that spam lists rely on. It's more effective than scrambling, and it doesn't add a single millisecond to your page load.</p>
+            <p>The email hiding feature exists to solve a problem that small formatting changes already solve better. What it actually does is add roughly a sixth of a second to every single page load, every visit, forever. That's a performance cost your real visitors pay so a spam bot might be slightly inconvenienced.</p>
+            <div class="callout">The spam is a solved problem. Your email provider's spam filter handles the rest. What's not solved is giving that speed back to your visitors, which is exactly what turning this feature off does.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            If we turn off bot protection, doesn't that let bad bots in?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a" role="region">
+            <p>There are two completely different kinds of bots. The ones you want out: spammers, scrapers, people trying to break into your site. The ones you desperately need in: Google, Bing, DuckDuckGo. Your search ranking depends entirely on that second group being allowed to visit freely and get a fast, clean response.</p>
+            <p>The problem with aggressive bot protection is that it doesn't always tell the difference. The most damaging version adds a challenge page that bots have to pass before seeing your site. Googlebot doesn't always wait. When the crawler that builds your search ranking hits a wall, it moves on and either skips you or marks you as slow.</p>
+            <p>Your audit scores are measured by Google's own tool, which sends a crawler to test your site. If that crawler gets slowed or blocked, your scores drop. We documented this on our own properties. Perfectly clean sites dropped from 100 to 81 because of a single bot protection setting. The site was fine. The protection was the problem.</p>
+            <p>Real spam attacks and login attempts are handled much more effectively at the firewall level, not by slowing down your pages for everyone. Good bots getting in is exactly what you want. They're the ones writing your Google ranking.</p>
+            <div class="pill-row">
+              <span class="pill good">Googlebot = your search ranking</span>
+              <span class="pill good">PageSpeed crawler = your audit score</span>
+              <span class="pill bad">Bot protection that blocks both = lower ranking</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -358,7 +389,7 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
           </button>
           <div class="faq-a" role="region">
             <p>WordPress is powerful, but it has a lot of moving parts. Plugins. Themes. Auto-updates. Every one of those is something that can break without warning, add unwanted code to your pages, or create security holes. Most WordPress sites are slower and more vulnerable than they need to be. Not because WordPress is bad, but because all those layers add up.</p>
-            <p>We build with simple code: just the content, the design, and nothing else. No hidden extras. No monthly plugin subscriptions. No "your site broke because a plugin updated overnight." What we build is exactly what your visitors get - nothing more, nothing less.</p>
+            <p>We build with simple code: just the content, the design, and nothing else. No hidden extras. No monthly plugin subscriptions. No "your site broke because a plugin updated overnight." What we build is exactly what your visitors get. Nothing more, nothing less.</p>
             <p>And when we hand it over, it's yours completely. No special software needed to edit it. No platform you have to keep paying to stay on. If you want to walk away from us tomorrow, you can take the site with you and never think about us again.</p>
             <div class="pill-row">
               <span class="pill gold">No surprise extras added to your pages</span>
@@ -424,11 +455,11 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
           </button>
           <div class="faq-a" role="region">
             <p>Four situations call for a real look, not just a score check:</p>
-            <p><strong style="color:var(--warm)">You moved your site to a new host</strong> - Moving a site is like moving a restaurant to a new building. Everything might look the same but the plumbing is different. Security settings that were in place before can disappear completely in a move.</p>
-            <p><strong style="color:var(--warm)">You added something new</strong> - A chat widget, a booking calendar, a payment button, a review feed. Each one of these is a third-party tool loading its own code on your site. Any one of them can slow things down or create security gaps.</p>
-            <p><strong style="color:var(--warm)">Someone added new pages</strong> - Especially if it wasn't the original developer. New pages built without following the same standards will often have problems the rest of the site doesn't.</p>
-            <p><strong style="color:var(--warm)">Any score drops, even a little</strong> - A small drop usually means something specific changed. It won't fix itself, and it won't stay small forever. Find it now while it's easy.</p>
-            <div class="callout">We give you a plain checklist at handover that covers all of these. You'll know exactly what to look for and when - no guessing required.</div>
+            <p><strong style="color:var(--warm)">You moved your site to a new host:</strong> Moving a site is like moving a restaurant to a new building. Everything might look the same but the plumbing is different. Security settings that were in place before can disappear completely in a move.</p>
+            <p><strong style="color:var(--warm)">You added something new:</strong> A chat widget, a booking calendar, a payment button, a review feed. Each one of these is a third-party tool loading its own code on your site. Any one of them can slow things down or create security gaps.</p>
+            <p><strong style="color:var(--warm)">Someone added new pages:</strong> Especially if it wasn't the original developer. New pages built without following the same standards will often have problems the rest of the site doesn't.</p>
+            <p><strong style="color:var(--warm)">Any score drops, even a little:</strong> A small drop usually means something specific changed. It won't fix itself, and it won't stay small forever. Find it now while it's easy.</p>
+            <div class="callout">We give you a plain checklist at handover that covers all of these. You'll know exactly what to look for and when. No guessing required.</div>
           </div>
         </div>
 
@@ -442,7 +473,7 @@ footer .f-copy { font-size: 12px; color: var(--muted); }
 <section class="cta-section" id="audit-form">
   <div class="container" style="max-width:600px;">
     <h2>Drop your URL.<br>We'll tell you what's actually wrong.</h2>
-    <p>Free audit. No sales call. Just a plain report that tells you where your site is losing visitors, ranking, and trust - and exactly what's causing it.</p>
+    <p>Free audit. No sales call. Just a plain report that tells you where your site is losing visitors, ranking, and trust, and exactly what's causing it.</p>
     <a href="/#audit-form" class="cta-link">Get the Free Audit &rarr;</a>
   </div>
 </section>
