@@ -1,5 +1,3 @@
-const DEFAULT_SECRET = 'droptimize-audit-2026';
-
 export async function onRequestOptions() {
   return new Response(null, { headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type, X-Audit-Secret' } });
 }
@@ -7,11 +5,16 @@ export async function onRequestOptions() {
 export async function onRequestPost(context) {
   const { request, env } = context;
 
-  const secret = request.headers.get('X-Audit-Secret') || '';
-  const expected = env.DROPTIMIZE_KV
-    ? (await env.DROPTIMIZE_KV.get('audit_secret')) || DEFAULT_SECRET
-    : DEFAULT_SECRET;
+  // Audit secret must be set in KV at audit_secret. Fail closed if absent.
+  if (!env.DROPTIMIZE_KV) {
+    return new Response(JSON.stringify({ ok: false, error: 'audit_store_misconfigured' }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+  }
+  const expected = await env.DROPTIMIZE_KV.get('audit_secret');
+  if (!expected) {
+    return new Response(JSON.stringify({ ok: false, error: 'audit_secret_not_set' }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+  }
 
+  const secret = request.headers.get('X-Audit-Secret') || '';
   if (secret !== expected) {
     return new Response(JSON.stringify({ ok: false, error: 'Unauthorized' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
   }
