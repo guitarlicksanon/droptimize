@@ -34,7 +34,13 @@ jobs:
         env:
           URL: ${{ inputs.url }}
         run: |
-          curl -sIL "$URL" -o headers.txt
+          set +e
+          curl -sIL -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0 Safari/537.36" \
+            -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" \
+            -H "Accept-Language: en-US,en;q=0.9" \
+            "$URL" -o headers.txt
+          STATUS=$(grep -i "^HTTP/" headers.txt | tail -1 | awk '{print $2}' || echo "0")
+          echo "http_status=$STATUS" >> $GITHUB_OUTPUT
           hsts=$(grep -ic "strict-transport-security" headers.txt || true)
           csp=$(grep -ic "content-security-policy" headers.txt || true)
           xcto=$(grep -ic "x-content-type-options" headers.txt || true)
@@ -56,9 +62,11 @@ jobs:
         env:
           URL: ${{ inputs.url }}
         run: |
-          SITEMAP=$(curl -s -o /dev/null -w "%{http_code}" "${URL}/sitemap.xml")
-          ROBOTS=$(curl -s -o /dev/null -w "%{http_code}" "${URL}/robots.txt")
-          RESPONSE_TIME=$(curl -s -o /dev/null -w "%{time_total}" "$URL" | python3 -c "import sys; print(int(float(sys.stdin.read())*1000))")
+          set +e
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0 Safari/537.36"
+          SITEMAP=$(curl -s -A "$UA" -o /dev/null -w "%{http_code}" "${URL}/sitemap.xml")
+          ROBOTS=$(curl -s -A "$UA" -o /dev/null -w "%{http_code}" "${URL}/robots.txt")
+          RESPONSE_TIME=$(curl -s -A "$UA" -o /dev/null -w "%{time_total}" "$URL" | python3 -c "import sys; v=sys.stdin.read().strip(); print(int(float(v)*1000) if v else 0)")
           echo "sitemap=$SITEMAP" >> $GITHUB_OUTPUT
           echo "robots=$ROBOTS" >> $GITHUB_OUTPUT
           echo "response_time=$RESPONSE_TIME" >> $GITHUB_OUTPUT
