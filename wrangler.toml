@@ -7,7 +7,7 @@ binding = "DROPTIMIZE_KV"
 id = "3a65033dab2a4058aff09e354761e3c4"
 
 [vars]
-PRICE_SINGLE       = "price_1TZYmtJvPEXScjfdHn6UCh71"
+PRICE_SINGLE       = "price_1TcDzqJvPEXScjfdtG1vgiot"
 PRICE_STANDARD     = "price_1TZYp7JvPEXScjfdIiRM2sNq"
 PRICE_PROFESSIONAL = "price_1TZYrYJvPEXScjfdkYrXeFE2"
 PRICE_AUDIT_WATCH_SOLO     = "price_1TZYxlJvPEXScjfdOuOhCKUB"
