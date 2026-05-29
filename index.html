@@ -547,6 +547,41 @@
     .pt-cat { min-width: 80px; }
     .pt-table th, .pt-table td { padding-right: 8px; font-size: 10px; }
   }
+
+  /* --- Conversion rework additions --- */
+  .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+  .cta--ghost { background: transparent; color: var(--gold); border: 1px solid rgba(201,168,76,0.5); }
+  .cta--ghost:hover { background: rgba(201,168,76,0.08); color: var(--gold); opacity: 1; }
+
+  .hero-trust { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; max-width: 680px; margin: 0 auto; }
+  .hero-trust-item { flex: 1 1 180px; border: 1px solid var(--border); background: var(--surface2); padding: 16px 18px; }
+  .hero-trust-num { display: block; font-family: "Playfair Display", serif; font-size: 24px; font-weight: 700; color: var(--gold); line-height: 1.1; }
+  .hero-trust-lbl { display: block; font-family: "DM Mono", monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.04em; margin-top: 6px; line-height: 1.4; }
+
+  .nav-cta { font-family: "DM Mono", monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #111; background: var(--gold); padding: 9px 18px; text-decoration: none; transition: opacity 0.15s; white-space: nowrap; }
+  .nav-cta:hover { opacity: 0.85; color: #111; }
+
+  .live-audit-intro { font-family: "DM Mono", monospace; font-size: 12px; color: var(--muted); margin-bottom: 14px; line-height: 1.6; max-width: 680px; }
+
+  .price-anchor { font-family: "DM Mono", monospace; font-size: 12px; color: var(--gold); letter-spacing: 0.04em; margin: 0 0 22px; max-width: 760px; line-height: 1.7; }
+
+  .pricing-card--popular { position: relative; }
+  .popular-badge { position: absolute; top: 0; right: 0; background: var(--gold); color: #111; font-family: "DM Mono", monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 11px; }
+
+  .guarantee-band { display: flex; align-items: center; gap: 18px; background: rgba(74,222,128,0.07); border: 1px solid rgba(74,222,128,0.35); border-left: 4px solid #4ADE80; padding: 20px 24px; margin: 20px 0 8px; }
+  .guarantee-check { flex: none; width: 36px; height: 36px; border-radius: 50%; background: #4ADE80; color: #0a1a0f; display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 700; }
+  .guarantee-title { font-family: "DM Mono", monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #4ADE80; margin-bottom: 4px; }
+  .guarantee-sub { font-size: 14px; color: #C9D6CD; line-height: 1.6; }
+
+  .pt-empty { color: #4A4A4A !important; }
+
+  .mobile-cta { display: none; }
+  @media (max-width: 640px) {
+    .nav-cta { display: none; }
+    .mobile-cta { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 200; align-items: center; justify-content: center; background: var(--gold); color: #111; font-family: "DM Mono", monospace; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; padding: 15px; text-decoration: none; box-shadow: 0 -4px 20px rgba(0,0,0,0.45); }
+    body { padding-bottom: 58px; }
+    .guarantee-band { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
 </style>
 </head>
 <body>
@@ -608,6 +643,7 @@
       <li><a href="/about/">About</a></li>
       <li><a href="#audit-form">Get Audited</a></li>
     </ul>
+    <a href="#audit-form" class="nav-cta">Free Audit</a>
   </div>
 </nav>
 
@@ -615,263 +651,18 @@
 
 <!-- Hero -->
 <section class="hero" id="heroSection">
-  <p class="eyebrow" id="heroEyebrow">Web Audit &amp; Rebuild, by OYE Creations</p>
-  <h1 id="heroH1"><em>Drop</em> your URL.<br>Get <em>optimized.</em></h1>
-  <p id="heroSub">Full SEO, security, performance, and accessibility audit, plus a clean rebuild targeting 90-100 across all five Lighthouse categories. We push for 100. One drop. No lock-in. You own everything.</p>
+  <p class="eyebrow" id="heroEyebrow">Website Audit + Custom Build, by OYE Creations</p>
+  <h1 id="heroH1"><em>Drop</em> your URL.<br>Get a site that scores <em>90 to 100.</em></h1>
+  <p id="heroSub">We rebuild your website from scratch in clean code, guaranteed to score 90 to 100 across all five Lighthouse categories or your money back. You own everything. No lock-in, no monthly platform fees.</p>
   <span class="hero-mission">10% of every project goes to a 501(c)(3) nonprofit of your choice.</span>
-  <a href="#audit-form" class="cta">Drop Your URL &rarr;</a>
-</section>
-
-<!-- How It Works -->
-<section class="what" id="how-it-works">
-  <div class="container">
-    <p class="eyebrow">Built for local business</p>
-    <h2 class="section-title">Real results. <span style="color:var(--gold);">Zero lock-in.</span></h2>
-    <p class="section-sub">We don't sell subscriptions or hold your site hostage. You own everything: the code, the domain, the hosting. We just make it excellent.</p>
-
-    <div class="gallery">
-      <div class="gallery-item">
-        <img
-          src="/assets/img/gallery-website.webp"
-          srcset="/assets/img/gallery-website-sm.webp 400w, /assets/img/gallery-website.webp 800w"
-          sizes="(max-width: 600px) 400px, 800px"
-          alt="Clean modern website on a laptop screen"
-          width="800" height="450"
-          loading="lazy"
-        />
-        <div class="gallery-caption">Clean build, zero dependencies</div>
-      </div>
-      <div class="gallery-item">
-        <img
-          src="/assets/img/gallery-business.webp"
-          srcset="/assets/img/gallery-business-sm.webp 400w, /assets/img/gallery-business.webp 800w"
-          sizes="(max-width: 600px) 400px, 800px"
-          alt="Local business storefront"
-          width="800" height="450"
-          loading="lazy"
-        />
-        <div class="gallery-caption">Local business, real presence</div>
-      </div>
-      <div class="gallery-item">
-        <img
-          src="/assets/img/gallery-analytics.webp"
-          srcset="/assets/img/gallery-analytics-sm.webp 400w, /assets/img/gallery-analytics.webp 800w"
-          sizes="(max-width: 600px) 400px, 800px"
-          alt="SEO and analytics dashboard"
-          width="800" height="450"
-          loading="lazy"
-        />
-        <div class="gallery-caption">100% SEO, verified live</div>
-      </div>
-    </div>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">STEP 01</div>
-        <h3><span style="color:var(--gold);">Audit</span></h3>
-        <p>Drop your URL. We score every signal: SEO, Security, Accessibility, Performance, Best Practices. Every gap documented with a fix priority and plain-English explanation.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">STEP 02</div>
-        <h3><span style="color:var(--gold);">Rebuild</span></h3>
-        <p>Plain HTML/CSS/JS. No WordPress, no page builders, no monthly platform fees. We don't ship until every category is in the 90-100 range. We push for 100.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">STEP 03</div>
-        <h3><span style="color:var(--gold);">Transfer</span></h3>
-        <p>Your code, your GitHub, your Cloudflare account. We move everything into your name. No lock-in, no ongoing dependency on us.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">STEP 04</div>
-        <h3><span style="color:var(--gold);">Verify</span></h3>
-        <p>Post-transfer audit confirms all scores are holding in the 90-100 range in your environment. You get the report. We're done.</p>
-      </div>
-    </div>
+  <div class="cta-row">
+    <a href="#audit-form" class="cta">Get My Free Audit &rarr;</a>
+    <a href="#pricing" class="cta cta--ghost">See Pricing</a>
   </div>
-</section>
-
-<!-- Live Audit Report -->
-<section class="live-audit-section">
-  <div class="container">
-    <div id="live-audit-list">
-      <div class="live-audit-bar">
-        <div class="live-audit-meta">
-          <svg class="live-audit-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" aria-hidden="true" fill="none"><path d="M6,20 A18,18 0 0,1 42,20 Q42,38 24,54 Q6,38 6,20 Z" fill="#C9A84C"/><polyline points="13,28 24,14 35,28" stroke="#111111" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <div class="live-audit-indicator"><span class="live-pulse"></span><span class="live-audit-lbl">Live</span></div>
-          <a href="https://droptimize.org" target="_blank" rel="noopener" class="live-audit-domain">droptimize.org &#x2197;</a>
-          <span class="live-audit-date">Loading...</span>
-        </div>
-        <div class="live-score-grid">
-          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Search Engine</div></div>
-          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Security</div></div>
-          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Performance</div></div>
-          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Accessibility</div></div>
-          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Best Practices</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Pricing + Give Back -->
-<section style="border-top:1px solid var(--border);padding:80px 24px;" id="pricing">
-  <div class="container">
-    <p class="eyebrow">Pricing and Give Back</p>
-    <h2 class="section-title">Simple pricing. <span style="color:var(--gold);">Built to give back.</span></h2>
-    <p class="section-sub">Every paid project includes a charitable donation. 10% of the service fee goes to a 501(c)(3) nonprofit of your choice. If you don't pick one, <span style="white-space:nowrap;">it goes to <a href="https://tkf.org" target="_blank" rel="noopener" style="color:var(--gold);">TKF</a>.</span></p>
-
-    <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:20px 28px;margin-bottom:16px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-      <div>
-        <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Free Audit</div>
-        <div style="font-family:'DM Mono',monospace;font-size:13px;color:#C0C0C0;line-height:1.6;">Full scored report across all 5 categories: SEO, Security, Performance, Accessibility, Best Practices. Gap analysis with plain-English fixes. No rebuild, no commitment. 1-3 business days.</div>
-      </div>
-      <a href="#audit-form" class="free-audit-cta">Request Free Audit</a>
-    </div>
-
-    <div class="pricing-grid">
-
-      <div class="pricing-card">
-        <div class="pricing-tier">Single Site</div>
-        <div class="pricing-price">$549</div>
-        <div class="pricing-price-note">Custom 1-page website build</div>
-        <div class="pricing-donation">Includes $55 to charity of your choice</div>
-        <ul class="pricing-list">
-          <li>Full scored audit report</li>
-          <li>Complete website build (HTML/CSS/JS), hand-coded from scratch</li>
-          <li>Cloudflare Pages deployment</li>
-          <li>Handover docs &amp; DNS setup</li>
-          <li>90+ in every category, or your money back</li>
-          <li>You own everything, no lock-in</li>
-        </ul>
-        <a href="#" class="pricing-cta pricing-cta--ghost checkout-btn" data-plan="single">Get Started</a>
-      </div>
-
-      <div class="pricing-card pricing-card--featured">
-        <div class="pricing-tier">Standard</div>
-        <div class="pricing-price">$1,599</div>
-        <div class="pricing-price-note">Custom website build, up to 5 pages</div>
-        <div class="pricing-donation">Includes $160 to charity of your choice</div>
-        <ul class="pricing-list">
-          <li>Everything in Single Site</li>
-          <li>Full custom website build, up to 5 pages (HTML/CSS/JS)</li>
-          <li>Cloudflare Pages deployment</li>
-          <li>Admin panel for content edits</li>
-          <li>Handover docs &amp; DNS setup</li>
-          <li>90+ in every category, or your money back</li>
-          <li>You own everything, no lock-in</li>
-        </ul>
-        <a href="#" class="pricing-cta checkout-btn" data-plan="standard">Get Started</a>
-      </div>
-
-      <div class="pricing-card pricing-card--featured">
-        <div class="pricing-tier">Professional</div>
-        <div class="pricing-price">$2,999</div>
-        <div class="pricing-price-note">Custom website build, up to 10 pages</div>
-        <div class="pricing-donation">Includes $300 to charity of your choice</div>
-        <ul class="pricing-list">
-          <li>Everything in Standard</li>
-          <li>Up to 10 pages or sections</li>
-          <li>Contact form with KV storage</li>
-          <li>Weekly automated audit reports (1 month included)</li>
-          <li>GitHub Actions CI/CD setup</li>
-          <li>Priority turnaround (5-7 days)</li>
-          <li>30-day post-launch support</li>
-        </ul>
-        <a href="#" class="pricing-cta checkout-btn" data-plan="professional">Get Started</a>
-      </div>
-
-      <div class="pricing-card">
-        <div class="pricing-tier">Enterprise</div>
-        <div class="pricing-price" style="font-size:32px;">Custom</div>
-        <div class="pricing-price-note">10+ pages or complex builds</div>
-        <div class="pricing-donation">10% of project total to charity</div>
-        <ul class="pricing-list">
-          <li>Everything in Professional</li>
-          <li>Unlimited pages &amp; sections</li>
-          <li>E-commerce or booking integration</li>
-          <li>Multi-language support</li>
-          <li>API &amp; Worker backend builds</li>
-          <li>Ongoing maintenance available</li>
-        </ul>
-        <a href="#audit-form" class="pricing-cta pricing-cta--ghost">Contact Us</a>
-      </div>
-
-    </div>
-
-    <div style="background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.2);padding:10px 16px;margin-top:12px;margin-bottom:8px;display:flex;align-items:center;gap:12px;">
-      <span style="font-size:14px;line-height:1;color:#4ADE80;">&#x2713;</span>
-      <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#4ADE80;">Score Guarantee</span>
-      <span style="font-family:'DM Mono',monospace;font-size:11px;color:#8C8C8C;">90+ across all 5 Lighthouse categories or full refund.</span>
-    </div>
-
-    <div style="margin-top:64px;">
-      <p class="eyebrow">Audit Watch, Monthly Monitoring</p>
-      <h2 class="section-title">Keep the scores you paid for. <span style="color:var(--gold);">Automatically.</span></h2>
-      <p class="section-sub">A clean launch is step one. Audit Watch re-runs the full 5-category audit every week and alerts you the moment a score slips. It watches and tells you what dropped. Fixes are a separate quote or roll into a build.</p>
-
-      <div class="pricing-grid">
-
-        <div class="pricing-card">
-          <div class="pricing-tier">Audit Watch Solo</div>
-          <div class="pricing-price">$29</div>
-          <div class="pricing-price-note">per month, 1 site</div>
-          <div class="pricing-donation">10% to charity of your choice</div>
-          <ul class="pricing-list">
-            <li>Weekly audit across all 5 categories</li>
-            <li>Email alerts when any score drops</li>
-            <li>Monthly trend report</li>
-            <li>Cancel anytime, no lock-in</li>
-          </ul>
-          <a href="#" class="pricing-cta pricing-cta--ghost checkout-btn" data-plan="audit-watch-solo">Get Started</a>
-        </div>
-
-        <div class="pricing-card pricing-card--featured">
-          <div class="pricing-tier">Audit Watch Business</div>
-          <div class="pricing-price">$79</div>
-          <div class="pricing-price-note">per month, up to 5 sites</div>
-          <div class="pricing-donation">10% to charity of your choice</div>
-          <ul class="pricing-list">
-            <li>Everything in Solo</li>
-            <li>Up to 5 sites monitored</li>
-            <li>Consolidated weekly dashboard</li>
-            <li>Priority drop alerts</li>
-            <li>Cancel anytime, no lock-in</li>
-          </ul>
-          <a href="#" class="pricing-cta checkout-btn" data-plan="audit-watch-business">Get Started</a>
-        </div>
-
-        <div class="pricing-card">
-          <div class="pricing-tier">Audit Watch Agency</div>
-          <div class="pricing-price">$199</div>
-          <div class="pricing-price-note">per month, up to 25 sites</div>
-          <div class="pricing-donation">10% to charity of your choice</div>
-          <ul class="pricing-list">
-            <li>Everything in Business</li>
-            <li>Up to 25 sites monitored</li>
-            <li>White-label client reports</li>
-            <li>Bulk score export</li>
-            <li>Cancel anytime, no lock-in</li>
-          </ul>
-          <a href="#" class="pricing-cta pricing-cta--ghost checkout-btn" data-plan="audit-watch-agency">Get Started</a>
-        </div>
-
-      </div>
-
-      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:12px;">Monitoring only. Audit Watch flags what slipped, it does not fix it. Need the fix? We quote it or fold it into a build.</p>
-      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;">Annual billing available, 2 months free. Just ask.</p>
-    </div>
-
-    <div class="give-back-banner">
-      <h3>The Give Back Standard</h3>
-      <p>Every project includes a charitable donation to a 501(c)(3) of your choice. Default: <a href="https://tkf.org" target="_blank" rel="noopener">TKF (Tariq Khamisa Foundation)</a>.</p>
-      <div class="charity-chips">
-        <span class="charity-chip charity-chip--default">TKF (default)</span>
-        <span class="charity-chip">St. Jude</span>
-        <span class="charity-chip">Feeding America</span>
-        <span class="charity-chip">Local food bank</span>
-        <span class="charity-chip">Any IRS-verified 501(c)(3)</span>
-      </div>
-    </div>
+  <div class="hero-trust">
+    <div class="hero-trust-item"><span class="hero-trust-num">90 to 100</span><span class="hero-trust-lbl">guaranteed, or your money back</span></div>
+    <div class="hero-trust-item"><span class="hero-trust-num">100%</span><span class="hero-trust-lbl">yours to own, no lock-in</span></div>
+    <div class="hero-trust-item"><span class="hero-trust-num">10%</span><span class="hero-trust-lbl">to a charity you choose</span></div>
   </div>
 </section>
 
@@ -883,7 +674,7 @@
   <div class="container">
     <p class="eyebrow">Portfolio, Verified Scores</p>
     <h2 class="section-title" style="margin-bottom:4px;">Sites we've <span style="color:var(--warm);">drop</span><span style="color:var(--gold);">timized.</span></h2>
-    <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:0;">Click any row to expand scores and notes.</p>
+    <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:0;">Click any row to expand scores and notes. A &middot; marks a stage not yet logged, filled in as a project moves from audit to verified.</p>
     <div class="pt-list" id="pt-list">
 
       <!-- pupgrade.app -->
@@ -907,11 +698,11 @@
             <table class="pt-table">
               <thead><tr><th scope="col"></th><th scope="col">1. Audit</th><th scope="col">2. Fixing</th><th scope="col">3. Pre-Launch</th><th scope="col" class="pt-th-final">4. Verified</th></tr></thead>
               <tbody>
-                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">91%</td><td>&mdash;</td><td>&mdash;</td><td class="pt-final">&mdash;</td></tr>
-                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-amber">83%</td><td>&mdash;</td><td>&mdash;</td><td class="pt-final">&mdash;</td></tr>
-                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">77%</td><td>&mdash;</td><td>&mdash;</td><td class="pt-final">&mdash;</td></tr>
-                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">93%</td><td>&mdash;</td><td>&mdash;</td><td class="pt-final">&mdash;</td></tr>
-                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-gold">96%</td><td>&mdash;</td><td>&mdash;</td><td class="pt-final">&mdash;</td></tr>
+                <tr><th scope="row" class="pt-cat">SEO</th><td class="pv-amber">91%</td><td class="pt-empty">&middot;</td><td class="pt-empty">&middot;</td><td class="pt-final pt-empty">&middot;</td></tr>
+                <tr><th scope="row" class="pt-cat">Security</th><td class="pv-amber">83%</td><td class="pt-empty">&middot;</td><td class="pt-empty">&middot;</td><td class="pt-final pt-empty">&middot;</td></tr>
+                <tr><th scope="row" class="pt-cat">Performance</th><td class="pv-amber">77%</td><td class="pt-empty">&middot;</td><td class="pt-empty">&middot;</td><td class="pt-final pt-empty">&middot;</td></tr>
+                <tr><th scope="row" class="pt-cat">Accessibility</th><td class="pv-amber">93%</td><td class="pt-empty">&middot;</td><td class="pt-empty">&middot;</td><td class="pt-final pt-empty">&middot;</td></tr>
+                <tr><th scope="row" class="pt-cat">Best Practices</th><td class="pv-gold">96%</td><td class="pt-empty">&middot;</td><td class="pt-empty">&middot;</td><td class="pt-final pt-empty">&middot;</td></tr>
               </tbody>
             </table>
           </div>
@@ -1225,6 +1016,266 @@
   </div>
 </section>
 
+<!-- How It Works -->
+<section class="what" id="how-it-works">
+  <div class="container">
+    <p class="eyebrow">Built for local business</p>
+    <h2 class="section-title">Real results. <span style="color:var(--gold);">Zero lock-in.</span></h2>
+    <p class="section-sub">We don't sell subscriptions or hold your site hostage. You own everything: the code, the domain, the hosting. We just make it excellent.</p>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img
+          src="/assets/img/gallery-website.webp"
+          srcset="/assets/img/gallery-website-sm.webp 400w, /assets/img/gallery-website.webp 800w"
+          sizes="(max-width: 600px) 400px, 800px"
+          alt="Clean modern website on a laptop screen"
+          width="800" height="450"
+          loading="lazy"
+        />
+        <div class="gallery-caption">Clean build, zero dependencies</div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="/assets/img/gallery-business.webp"
+          srcset="/assets/img/gallery-business-sm.webp 400w, /assets/img/gallery-business.webp 800w"
+          sizes="(max-width: 600px) 400px, 800px"
+          alt="Local business storefront"
+          width="800" height="450"
+          loading="lazy"
+        />
+        <div class="gallery-caption">Local business, real presence</div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="/assets/img/gallery-analytics.webp"
+          srcset="/assets/img/gallery-analytics-sm.webp 400w, /assets/img/gallery-analytics.webp 800w"
+          sizes="(max-width: 600px) 400px, 800px"
+          alt="SEO and analytics dashboard"
+          width="800" height="450"
+          loading="lazy"
+        />
+        <div class="gallery-caption">100% SEO, verified live</div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">STEP 01</div>
+        <h3><span style="color:var(--gold);">Audit</span></h3>
+        <p>Drop your URL. We score every signal: SEO, Security, Accessibility, Performance, Best Practices. Every gap documented with a fix priority and plain-English explanation.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 02</div>
+        <h3><span style="color:var(--gold);">Rebuild</span></h3>
+        <p>Plain HTML/CSS/JS. No WordPress, no page builders, no monthly platform fees. We don't ship until every category is in the 90-100 range. We push for 100.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 03</div>
+        <h3><span style="color:var(--gold);">Transfer</span></h3>
+        <p>Your code, your GitHub, your Cloudflare account. We move everything into your name. No lock-in, no ongoing dependency on us.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 04</div>
+        <h3><span style="color:var(--gold);">Verify</span></h3>
+        <p>Post-transfer audit confirms all scores are holding in the 90-100 range in your environment. You get the report. We're done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Live Audit Report -->
+<section class="live-audit-section">
+  <div class="container">
+    <p class="eyebrow" style="margin-bottom:10px;">Live Demo</p>
+    <p class="live-audit-intro">The exact audit you get, running live on droptimize.org right now. This is the standard every build is held to.</p>
+    <div id="live-audit-list">
+      <div class="live-audit-bar">
+        <div class="live-audit-meta">
+          <svg class="live-audit-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" aria-hidden="true" fill="none"><path d="M6,20 A18,18 0 0,1 42,20 Q42,38 24,54 Q6,38 6,20 Z" fill="#C9A84C"/><polyline points="13,28 24,14 35,28" stroke="#111111" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="live-audit-indicator"><span class="live-pulse"></span><span class="live-audit-lbl">Live</span></div>
+          <a href="https://droptimize.org" target="_blank" rel="noopener" class="live-audit-domain">droptimize.org &#x2197;</a>
+          <span class="live-audit-date">Loading...</span>
+        </div>
+        <div class="live-score-grid">
+          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Search Engine</div></div>
+          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Security</div></div>
+          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Performance</div></div>
+          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Accessibility</div></div>
+          <div class="live-score-tile"><div class="live-score-val">-</div><div class="live-score-lbl">Best Practices</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing + Give Back -->
+<section style="border-top:1px solid var(--border);padding:80px 24px;" id="pricing">
+  <div class="container">
+    <p class="eyebrow">Pricing and Give Back</p>
+    <h2 class="section-title">Simple pricing. <span style="color:var(--gold);">Built to give back.</span></h2>
+    <p class="section-sub">Every paid project includes a charitable donation. 10% of the service fee goes to a 501(c)(3) nonprofit of your choice. If you don't pick one, <span style="white-space:nowrap;">it goes to <a href="https://tkf.org" target="_blank" rel="noopener" style="color:var(--gold);">TKF</a>.</span></p>
+
+    <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:20px 28px;margin-bottom:16px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Free Audit</div>
+        <div style="font-family:'DM Mono',monospace;font-size:13px;color:#C0C0C0;line-height:1.6;">Full scored report across all 5 categories: SEO, Security, Performance, Accessibility, Best Practices. Gap analysis with plain-English fixes. No rebuild, no commitment. 1-3 business days.</div>
+      </div>
+      <a href="#audit-form" class="free-audit-cta">Request Free Audit</a>
+    </div>
+
+    <p class="price-anchor">Agencies charge $6,000 and up for a custom build like this. Ours is a flat price, hand-coded, and you own every line of it.</p>
+
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <div class="pricing-tier">Single Site</div>
+        <div class="pricing-price">$549</div>
+        <div class="pricing-price-note">Custom 1-page website build</div>
+        <div class="pricing-donation">Includes $55 to charity of your choice</div>
+        <ul class="pricing-list">
+          <li>Full scored audit report</li>
+          <li>Complete website build (HTML/CSS/JS), hand-coded from scratch</li>
+          <li>Cloudflare Pages deployment</li>
+          <li>Handover docs &amp; DNS setup</li>
+          <li>90+ in every category, or your money back</li>
+          <li>You own everything, no lock-in</li>
+        </ul>
+        <a href="#" class="pricing-cta pricing-cta--ghost checkout-btn" data-plan="single">Get Started</a>
+      </div>
+
+      <div class="pricing-card pricing-card--featured pricing-card--popular">
+        <span class="popular-badge">Most Popular</span>
+        <div class="pricing-tier">Standard</div>
+        <div class="pricing-price">$1,599</div>
+        <div class="pricing-price-note">Custom website build, up to 5 pages</div>
+        <div class="pricing-donation">Includes $160 to charity of your choice</div>
+        <ul class="pricing-list">
+          <li>Everything in Single Site</li>
+          <li>Full custom website build, up to 5 pages (HTML/CSS/JS)</li>
+          <li>Cloudflare Pages deployment</li>
+          <li>Admin panel for content edits</li>
+          <li>Handover docs &amp; DNS setup</li>
+          <li>90+ in every category, or your money back</li>
+          <li>You own everything, no lock-in</li>
+        </ul>
+        <a href="#" class="pricing-cta checkout-btn" data-plan="standard">Get Started</a>
+      </div>
+
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-tier">Professional</div>
+        <div class="pricing-price">$2,999</div>
+        <div class="pricing-price-note">Custom website build, up to 10 pages</div>
+        <div class="pricing-donation">Includes $300 to charity of your choice</div>
+        <ul class="pricing-list">
+          <li>Everything in Standard</li>
+          <li>Up to 10 pages or sections</li>
+          <li>Contact form with KV storage</li>
+          <li>Weekly automated audit reports (1 month included)</li>
+          <li>GitHub Actions CI/CD setup</li>
+          <li>Priority turnaround (5-7 days)</li>
+          <li>30-day post-launch support</li>
+        </ul>
+        <a href="#" class="pricing-cta checkout-btn" data-plan="professional">Get Started</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-price" style="font-size:32px;">Custom</div>
+        <div class="pricing-price-note">10+ pages or complex builds</div>
+        <div class="pricing-donation">10% of project total to charity</div>
+        <ul class="pricing-list">
+          <li>Everything in Professional</li>
+          <li>Unlimited pages &amp; sections</li>
+          <li>E-commerce or booking integration</li>
+          <li>Multi-language support</li>
+          <li>API &amp; Worker backend builds</li>
+          <li>Ongoing maintenance available</li>
+        </ul>
+        <a href="#audit-form" class="pricing-cta pricing-cta--ghost">Contact Us</a>
+      </div>
+
+    </div>
+
+    <div class="guarantee-band">
+      <span class="guarantee-check">&#x2713;</span>
+      <div class="guarantee-text">
+        <div class="guarantee-title">The 90 to 100 Guarantee</div>
+        <div class="guarantee-sub">Every build hits 90 to 100 across all five Lighthouse categories, or you get a full refund. You take zero risk.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:64px;">
+      <p class="eyebrow">Audit Watch, Monthly Monitoring</p>
+      <h2 class="section-title">Keep the scores you paid for. <span style="color:var(--gold);">Automatically.</span></h2>
+      <p class="section-sub">A clean launch is step one. Audit Watch re-runs the full 5-category audit every week and alerts you the moment a score slips. It watches and tells you what dropped. Fixes are a separate quote or roll into a build.</p>
+
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <div class="pricing-tier">Audit Watch Solo</div>
+          <div class="pricing-price">$29</div>
+          <div class="pricing-price-note">per month, 1 site</div>
+          <div class="pricing-donation">10% to charity of your choice</div>
+          <ul class="pricing-list">
+            <li>Weekly audit across all 5 categories</li>
+            <li>Email alerts when any score drops</li>
+            <li>Monthly trend report</li>
+            <li>Cancel anytime, no lock-in</li>
+          </ul>
+          <a href="#" class="pricing-cta pricing-cta--ghost checkout-btn" data-plan="audit-watch-solo">Get Started</a>
+        </div>
+
+        <div class="pricing-card pricing-card--featured">
+          <div class="pricing-tier">Audit Watch Business</div>
+          <div class="pricing-price">$79</div>
+          <div class="pricing-price-note">per month, up to 5 sites</div>
+          <div class="pricing-donation">10% to charity of your choice</div>
+          <ul class="pricing-list">
+            <li>Everything in Solo</li>
+            <li>Up to 5 sites monitored</li>
+            <li>Consolidated weekly dashboard</li>
+            <li>Priority drop alerts</li>
+            <li>Cancel anytime, no lock-in</li>
+          </ul>
+          <a href="#" class="pricing-cta checkout-btn" data-plan="audit-watch-business">Get Started</a>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-tier">Audit Watch Agency</div>
+          <div class="pricing-price">$199</div>
+          <div class="pricing-price-note">per month, up to 25 sites</div>
+          <div class="pricing-donation">10% to charity of your choice</div>
+          <ul class="pricing-list">
+            <li>Everything in Business</li>
+            <li>Up to 25 sites monitored</li>
+            <li>White-label client reports</li>
+            <li>Bulk score export</li>
+            <li>Cancel anytime, no lock-in</li>
+          </ul>
+          <a href="#" class="pricing-cta pricing-cta--ghost checkout-btn" data-plan="audit-watch-agency">Get Started</a>
+        </div>
+
+      </div>
+
+      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:12px;">Monitoring only. Audit Watch flags what slipped, it does not fix it. Need the fix? We quote it or fold it into a build.</p>
+      <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;">Annual billing available, 2 months free. Just ask.</p>
+    </div>
+
+    <div class="give-back-banner">
+      <h3>The Give Back Standard</h3>
+      <p>Every project includes a charitable donation to a 501(c)(3) of your choice. Default: <a href="https://tkf.org" target="_blank" rel="noopener">TKF (Tariq Khamisa Foundation)</a>.</p>
+      <div class="charity-chips">
+        <span class="charity-chip charity-chip--default">TKF (default)</span>
+        <span class="charity-chip">St. Jude</span>
+        <span class="charity-chip">Feeding America</span>
+        <span class="charity-chip">Local food bank</span>
+        <span class="charity-chip">Any IRS-verified 501(c)(3)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- About Snippet -->
 <section style="border-top:1px solid var(--border);padding:72px 24px;">
   <div class="container">
@@ -1260,26 +1311,18 @@
         <input type="url" name="website" id="input-website" placeholder="Your website URL" required>
       </div>
       <div class="form-group">
-        <label class="form-label" for="charity-select">Charity for your 10% donation</label>
-        <select name="charity" id="charity-select">
-          <option value="TKF - Tariq Khamisa Foundation (tkf.org)">TKF, Tariq Khamisa Foundation (default)</option>
-          <option value="St. Jude Children's Research Hospital">St. Jude Children's Research Hospital</option>
-          <option value="Feeding America">Feeding America</option>
-          <option value="Local food bank - client will specify">Local food bank - I'll tell you which</option>
-          <option value="Other 501(c)(3) - client will specify below">Other 501(c)(3), I'll specify below</option>
-        </select>
-        <p class="form-charity-note">No selection needed. TKF is the default. We send donation confirmation after your project closes.</p>
-      </div>
-      <div class="form-group">
         <label class="form-label" for="input-message">Additional notes (optional)</label>
         <textarea name="message" id="input-message" placeholder="Anything else we should know? (optional)"></textarea>
       </div>
       <button type="submit" class="form-submit">Send Audit Request</button>
+      <p class="form-charity-note" style="text-align:center;margin-top:14px;">Free, no commitment. Every paid build includes a 10% donation to a 501(c)(3) you choose at checkout.</p>
     </form>
   </div>
 </section>
 
 </main>
+
+<a href="#audit-form" class="mobile-cta">Get My Free Audit &rarr;</a>
 
 <footer>
   <div class="inner">

@@ -1,9 +1,9 @@
 (function(){
   var S={
-    es:{ey:'Auditoria Web y Rediseno - por OYE Creations',h1:'<em>Envia</em> tu URL.<br>Queda <em>optimizado.</em>',sub:'Auditoria completa de SEO, seguridad, rendimiento y accesibilidad - mas un rediseno limpio. Una sola caida. Sin contratos. El codigo es tuyo.'},
-    fr:{ey:'Audit Web et Refonte - par OYE Creations',h1:'<em>Deposez</em> votre URL.<br>Soyez <em>optimise.</em>',sub:'Audit complet SEO, securite, performance et accessibilite - plus une refonte propre. Un seul depot. Sans engagement. Vous etes proprietaire du code.'},
-    pt:{ey:'Auditoria Web e Reconstrucao - por OYE Creations',h1:'<em>Envie</em> sua URL.<br>Fique <em>otimizado.</em>',sub:'Auditoria completa de SEO, seguranca, desempenho e acessibilidade - mais uma reconstrucao limpa. Uma queda. Sem contrato. O codigo e seu.'},
-    de:{ey:'Web-Audit und Neubau - von OYE Creations',h1:'<em>Drop</em> deine URL.<br>Werde <em>optimiert.</em>',sub:'Vollstaendiger SEO-, Sicherheits-, Performance- und Accessibility-Audit - plus ein sauberer Neubau. Ein Drop. Kein Vertrag. Der Code gehoert dir.'}
+    es:{ey:'Auditoria Web y Construccion - por OYE Creations',h1:'<em>Envia</em> tu URL.<br>Obten un sitio que puntua <em>90 a 100.</em>',sub:'Reconstruimos tu sitio desde cero en codigo limpio, con garantia de 90 a 100 en las cinco categorias de Lighthouse o te devolvemos tu dinero. El codigo es tuyo. Sin contratos.'},
+    fr:{ey:'Audit Web et Construction - par OYE Creations',h1:'<em>Deposez</em> votre URL.<br>Obtenez un site qui marque <em>90 a 100.</em>',sub:'Nous reconstruisons votre site a partir de zero en code propre, garanti de 90 a 100 sur les cinq categories Lighthouse ou rembourse. Vous etes proprietaire du code. Sans engagement.'},
+    pt:{ey:'Auditoria Web e Construcao - por OYE Creations',h1:'<em>Envie</em> sua URL.<br>Tenha um site que pontua <em>90 a 100.</em>',sub:'Reconstruimos seu site do zero em codigo limpo, com garantia de 90 a 100 nas cinco categorias do Lighthouse ou seu dinheiro de volta. O codigo e seu. Sem contrato.'},
+    de:{ey:'Web-Audit und Aufbau - von OYE Creations',h1:'<em>Drop</em> deine URL.<br>Erhalte eine Seite mit <em>90 bis 100.</em>',sub:'Wir bauen deine Website von Grund auf in sauberem Code neu, garantiert 90 bis 100 in allen fuenf Lighthouse-Kategorien oder Geld zurueck. Der Code gehoert dir. Kein Vertrag.'}
   };
   fetch('https://bink.oyecreations.com/api/region').then(function(r){return r.json()}).then(function(d){
     var s=S[(d.languageCode||'').split('-')[0]];if(!s)return;
