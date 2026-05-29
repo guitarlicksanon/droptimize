@@ -53,7 +53,10 @@
   a { transition: color 150ms; }
   a:hover { color: var(--gold); }
   h1, h2, h3 { transition: color 150ms; }
+  h1 span, h2 span, h3 span, h1 em, h2 em, h3 em { transition: color 150ms; }
   h1:hover, h2:hover, h3:hover { color: var(--gold); }
+  h1:hover span, h2:hover span, h3:hover span,
+  h1:hover em, h2:hover em, h3:hover em { color: var(--gold) !important; }
 
   /* ── OYE BAR ─────────────────────────────────────────────── */
   .oye-bar {
@@ -1163,7 +1166,7 @@
         <a href="#" class="pricing-cta checkout-btn" data-plan="standard">Get Started</a>
       </div>
 
-      <div class="pricing-card pricing-card--featured">
+      <div class="pricing-card">
         <div class="pricing-tier">Professional</div>
         <div class="pricing-price">$2,999</div>
         <div class="pricing-price-note">Custom website build, up to 10 pages</div>
