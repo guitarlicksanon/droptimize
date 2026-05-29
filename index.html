@@ -179,7 +179,7 @@
     display: block;
   }
   .hamburger:hover .hamburger-line { background: var(--gold); }
-  @media (max-width: 640px) {
+  @media (max-width: 860px) {
     .hamburger { display: flex; }
     .nav-links {
       display: none;
@@ -556,7 +556,7 @@
   .hero-trust { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; max-width: 680px; margin: 0 auto; }
   .hero-trust-item { flex: 1 1 180px; border: 1px solid var(--border); background: var(--surface2); padding: 16px 18px; }
   .hero-trust-num { display: block; font-family: "Playfair Display", serif; font-size: 24px; font-weight: 700; color: var(--gold); line-height: 1.1; }
-  .hero-trust-lbl { display: block; font-family: "DM Mono", monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.04em; margin-top: 6px; line-height: 1.4; }
+  .hero-trust-lbl { display: block; font-family: "DM Mono", monospace; font-size: 13px; color: #D2D2D2; letter-spacing: 0.04em; margin-top: 8px; line-height: 1.5; }
 
   .nav-cta { font-family: "DM Mono", monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #111; background: var(--gold); padding: 9px 18px; text-decoration: none; transition: opacity 0.15s; white-space: nowrap; }
   .nav-cta:hover { opacity: 0.85; color: #111; }
@@ -576,10 +576,12 @@
   .pt-empty { color: #4A4A4A !important; }
 
   .mobile-cta { display: none; }
-  @media (max-width: 640px) {
+  @media (max-width: 860px) {
     .nav-cta { display: none; }
     .mobile-cta { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 200; align-items: center; justify-content: center; background: var(--gold); color: #111; font-family: "DM Mono", monospace; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; padding: 15px; text-decoration: none; box-shadow: 0 -4px 20px rgba(0,0,0,0.45); }
     body { padding-bottom: 58px; }
+  }
+  @media (max-width: 640px) {
     .guarantee-band { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 </style>
@@ -641,7 +643,6 @@
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="/about/">About</a></li>
-      <li><a href="#audit-form">Get Audited</a></li>
     </ul>
     <a href="#audit-form" class="nav-cta">Free Audit</a>
   </div>
